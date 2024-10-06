@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class VentanaJuego extends JFrame {
 	
-	public ApartGrafico() {
+	public VentanaJuego() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("EstudianteClicker");
         setSize(1600,900);

@@ -3,7 +3,7 @@ package clases;
 public class Principal {
 	
 	public static void main(String[] args) {
-		ApartGrafico juego = new ApartGrafico();
+		VentanaJuego juego = new VentanaJuego();
 		juego.setVisible(true);
 	}
 }
