@@ -5,9 +5,12 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class VentanaJuego extends JFrame {
 	
@@ -22,19 +25,20 @@ public class VentanaJuego extends JFrame {
         setTitle("EstudianteClicker");
         setSize(600,400);
         
-        setLayout(new BorderLayout());
-        
         JPanel clickerPanel = new JPanel();
         JPanel objetosPanel = new JPanel();
         JPanel mejorasPanel = new JPanel();
+        
         clickerPanel.setBackground(Color.blue);
         objetosPanel.setBackground(Color.GREEN);
-        mejorasPanel.setBackground(Color.ORANGE);
-        add(clickerPanel, BorderLayout.WEST);
-        add(objetosPanel, BorderLayout.SOUTH);
-        add(mejorasPanel, BorderLayout.EAST);
         
-
+        add(clickerPanel,BorderLayout.CENTER);
+        add(objetosPanel,BorderLayout.SOUTH);
         
+        DefaultListModel modeloJList = new DefaultListModel<Mejora>();
+        JList jListMejoras = new JList<Mejora>(modeloJList);
+		jListMejoras.setFixedCellWidth(200);
+		JScrollPane panelScroll = new JScrollPane(jListMejoras);
+		add(panelScroll, BorderLayout.EAST);
 	}
 }
