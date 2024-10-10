@@ -26,19 +26,19 @@ public class VentanaJuego extends JFrame {
         setSize(600,400);
         
         JPanel clickerPanel = new JPanel();
-        JPanel objetosPanel = new JPanel();
-        JPanel mejorasPanel = new JPanel();
+        clickerPanel.setBackground(Color.lightGray);
         
-        clickerPanel.setBackground(Color.blue);
-        objetosPanel.setBackground(Color.GREEN);
-        
+        JButton estudianteClick = new JButton();
+        clickerPanel.add(estudianteClick);
         add(clickerPanel,BorderLayout.CENTER);
-        add(objetosPanel,BorderLayout.SOUTH);
         
+        //jListMejoras -> las mejoras para el estudiante
         DefaultListModel modeloJList = new DefaultListModel<Mejora>();
         JList jListMejoras = new JList<Mejora>(modeloJList);
 		jListMejoras.setFixedCellWidth(200);
+		jListMejoras.setFixedCellHeight(20);
 		JScrollPane panelScroll = new JScrollPane(jListMejoras);
 		add(panelScroll, BorderLayout.EAST);
+		
 	}
 }
