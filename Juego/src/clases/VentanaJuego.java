@@ -34,12 +34,12 @@ public class VentanaJuego extends JFrame {
         clickerPanel.setBackground(Color.lightGray);
         
         // JLabel para mostrar los puntos
-        JLabel labelPuntos = new JLabel("Puntos: 0");
+        JLabel labelPuntos = new JLabel("Creditos: 0");
         labelPuntos.setBackground(Color.white);
         labelPuntos.setAlignmentX(CENTER_ALIGNMENT);  // Centrar el label en el panel
         clickerPanel.add(labelPuntos);
 
-        // Botón
+        // Botón Principal (CREDITOS)
         JButton estudianteClick = new JButton("Estudiante");
         estudianteClick.setPreferredSize(new Dimension(150, 150));
         estudianteClick.setAlignmentX(CENTER_ALIGNMENT);
@@ -50,23 +50,30 @@ public class VentanaJuego extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 puntos++;
-                labelPuntos.setText("Puntos: " + puntos);
+                labelPuntos.setText("Creditos: " + puntos);
             }
         });
 
         add(clickerPanel, BorderLayout.CENTER);
         
         // jListMejoras -> las mejoras para el estudiante
-        DefaultListModel<Mejora> modeloJList = new DefaultListModel<Mejora>();
-        JList<Mejora> jListMejoras = new JList<>(modeloJList);
-        jListMejoras.setFixedCellWidth(200);
-        jListMejoras.setFixedCellHeight(20);
-        JScrollPane panelScroll = new JScrollPane(jListMejoras);
-        add(panelScroll, BorderLayout.EAST);
-    }
-
-    public static void main(String[] args) {
-        VentanaJuego ventana = new VentanaJuego();
-        ventana.setVisible(true);
-    }
+//        DefaultListModel<Mejora> modeloJList = new DefaultListModel<Mejora>();
+//        JList<Mejora> jListMejoras = new JList<>(modeloJList);
+//        jListMejoras.setFixedCellWidth(200);
+//        jListMejoras.setFixedCellHeight(20);
+//        JScrollPane panelScroll = new JScrollPane(jListMejoras);
+//        add(panelScroll, BorderLayout.EAST);  // Colocamos el JList en el lado derecho
+        
+        //SCROLL de los Materiales
+        JScrollPane jScrollMats = new Materiales();
+        jScrollMats.setPreferredSize(new Dimension(200,100));
+        //jScrollMats.add(listaMats); //Hay que añadir la lista de materiales(Botones) al Scroll
+		//this.add(jScrollMats, BorderLayout.EAST);
+		
+		
+		
+		
+    }	
+        
+        
 }
