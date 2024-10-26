@@ -69,10 +69,7 @@ public class VentanaJuego extends JFrame {
         jScrollMats.setPreferredSize(new Dimension(200,100));
         //jScrollMats.add(listaMats); //Hay que añadir la lista de materiales(Botones) al Scroll
 		//this.add(jScrollMats, BorderLayout.EAST);
-		
-		
-		
-		
+				
     }	
         
         
