@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,8 +42,7 @@ public class VentanaJuego extends JFrame {
         // Botón
         JButton estudianteClick = new JButton("Estudiante");
         estudianteClick.setPreferredSize(new Dimension(150, 150));
-        estudianteClick.setMaximumSize(new Dimension(150, 150));  // Para que el botón no se expanda más allá de su tamaño
-        estudianteClick.setAlignmentX(CENTER_ALIGNMENT);  // Centrar el botón en el panel
+        estudianteClick.setAlignmentX(CENTER_ALIGNMENT);
         clickerPanel.add(estudianteClick);
 
         // Acción del botón para incrementar los puntos
@@ -54,7 +54,7 @@ public class VentanaJuego extends JFrame {
             }
         });
 
-        add(clickerPanel, BorderLayout.CENTER);  // Alineamos el clickerPanel al centro
+        add(clickerPanel, BorderLayout.CENTER);
         
         // jListMejoras -> las mejoras para el estudiante
         DefaultListModel<Mejora> modeloJList = new DefaultListModel<Mejora>();
@@ -62,7 +62,7 @@ public class VentanaJuego extends JFrame {
         jListMejoras.setFixedCellWidth(200);
         jListMejoras.setFixedCellHeight(20);
         JScrollPane panelScroll = new JScrollPane(jListMejoras);
-        add(panelScroll, BorderLayout.EAST);  // Colocamos el JList en el lado derecho
+        add(panelScroll, BorderLayout.EAST);
     }
 
     public static void main(String[] args) {
