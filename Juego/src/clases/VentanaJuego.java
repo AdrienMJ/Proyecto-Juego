@@ -56,19 +56,10 @@ public class VentanaJuego extends JFrame {
 
         add(clickerPanel, BorderLayout.CENTER);
         
-        // jListMejoras -> las mejoras para el estudiante
-//        DefaultListModel<Mejora> modeloJList = new DefaultListModel<Mejora>();
-//        JList<Mejora> jListMejoras = new JList<>(modeloJList);
-//        jListMejoras.setFixedCellWidth(200);
-//        jListMejoras.setFixedCellHeight(20);
-//        JScrollPane panelScroll = new JScrollPane(jListMejoras);
-//        add(panelScroll, BorderLayout.EAST);  // Colocamos el JList en el lado derecho
         
         //SCROLL de los Materiales
-        JScrollPane jScrollMats = new Materiales();
-        jScrollMats.setPreferredSize(new Dimension(200,100));
-        //jScrollMats.add(listaMats); //Hay que añadir la lista de materiales(Botones) al Scroll
-		//this.add(jScrollMats, BorderLayout.EAST);
+        JScrollPane jScrollMateriales = new Materiales();
+        add(jScrollMateriales,BorderLayout.EAST);
 				
     }	
         
