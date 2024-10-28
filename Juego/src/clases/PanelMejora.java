@@ -25,31 +25,33 @@ public class PanelMejora extends JPanel {
 		JLabel cantidadMejora = new JLabel("Cantidad: " + cantidadMejoraString);
 		String precioMejoraString = String.valueOf(mejora.getPrecio());
 		JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
-		JButton botonx1 = new JButton("x1");
-		JButton botonx10 = new JButton("x10");
-		JButton botonx100 = new JButton("x100");
-		
-		//Los Botones tendran un panel propio para que se visualicen bien los datos
-		JPanel panelBotones = new JPanel();
+//		JButton botonx1 = new JButton("x1");
+//		JButton botonx10 = new JButton("x10");
+//		JButton botonx100 = new JButton("x100");
+//		
+//		//Los Botones tendran un panel propio para que se visualicen bien los datos
+//		JPanel panelBotones = new JPanel();
 		
 //		Dimension dimensionBoton = new Dimension(60,30);
 //		botonx1.setPreferredSize(dimensionBoton);
 //		botonx10.setPreferredSize(dimensionBoton);
 //		botonx100.setPreferredSize(dimensionBoton);
 		
-		panelBotones.setLayout(new BoxLayout(panelBotones,BoxLayout.X_AXIS));
-		panelBotones.add(botonx1);
-		panelBotones.add(botonx10);
-		panelBotones.add(botonx100);
+//		panelBotones.setLayout(new BoxLayout(panelBotones,BoxLayout.X_AXIS));
+//		panelBotones.add(botonx1);
+//		panelBotones.add(botonx10);
+//		panelBotones.add(botonx100);
 				
 		add(tipoMejora,BorderLayout.NORTH);
-		add(precioMejora, BorderLayout.WEST);
-		add(panelBotones,BorderLayout.CENTER);
+		add(precioMejora, BorderLayout.CENTER);
+//		add(panelBotones,BorderLayout.CENTER);
 		add(cantidadMejora,BorderLayout.SOUTH);
 		
 		this.setMaximumSize(new Dimension(1000,60));
 		
 	}
+	
+	
 //	public static void main(String[] args) {
 //		Mejora m = new Mejora("Lapiz",2,1);
 //		PanelMejora panelLapiz = new PanelMejora(m);

@@ -7,6 +7,7 @@ import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,12 +21,32 @@ public class Materiales extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 	
 	public Materiales() {
+		
 		//Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
         //DefaultListModel<JPanel> modeloJList = new DefaultListModel<JPanel>();
 		
 		//Panel principal
 		JPanel panelContenedor = new JPanel();
 		panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
+		JPanel panelBotonesCompra = new JPanel();
+		panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
+		
+		JButton botonx1 = new JButton("x1");
+		JButton botonx10 = new JButton("x10");
+		JButton botonx100 = new JButton("x100");
+		
+		Dimension dimensionBoton = new Dimension(60,30);
+		botonx1.setPreferredSize(dimensionBoton);
+		botonx10.setPreferredSize(dimensionBoton);
+		botonx100.setPreferredSize(dimensionBoton);
+		
+		panelBotonesCompra.add(new JLabel("Comprar"));
+		panelBotonesCompra.add(botonx1);
+		panelBotonesCompra.add(botonx10);
+		panelBotonesCompra.add(botonx100);
+		
+		
+		panelContenedor.add(panelBotonesCompra);
 
 			
 		//lapiz

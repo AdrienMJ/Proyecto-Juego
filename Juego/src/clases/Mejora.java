@@ -53,5 +53,11 @@ public class Mejora {
 		this.numero = numero;
 	}
 	
-	
+	/**
+	 * Actualiza la cantidad de "Edificios" que tiene una mejora
+	 * @param cantidad numero que se suma a la cantidad actual
+	 */
+	public void actualizarCantidad(int cantidad) {
+		
+	}
 }
