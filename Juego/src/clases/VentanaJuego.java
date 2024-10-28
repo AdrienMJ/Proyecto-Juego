@@ -34,7 +34,7 @@ public class VentanaJuego extends JFrame {
         clickerPanel.setBackground(Color.lightGray);
         
         // JLabel para mostrar los puntos
-        JLabel labelPuntos = new JLabel("Creditos: 0");
+        JLabel labelPuntos = new JLabel("Conocimiento: 0");
         labelPuntos.setBackground(Color.white);
         labelPuntos.setAlignmentX(CENTER_ALIGNMENT);  // Centrar el label en el panel
         clickerPanel.add(labelPuntos);
@@ -50,7 +50,7 @@ public class VentanaJuego extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 puntos++;
-                labelPuntos.setText("Creditos: " + puntos);
+                labelPuntos.setText("Conocimiento: " + puntos);
             }
         });
 
