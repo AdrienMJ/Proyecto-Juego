@@ -24,7 +24,11 @@ public class PanelMejora extends JPanel {
 		String cantidadMejoraString = String.valueOf(mejora.getNumero());
 		JLabel cantidadMejora = new JLabel("Cantidad: " + cantidadMejoraString);
 		String precioMejoraString = String.valueOf(mejora.getPrecio());
-		JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
+		//JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
+		
+		JButton botonCompra = new JButton();
+		botonCompra.setText("Precio: "+ precioMejoraString);
+		
 //		JButton botonx1 = new JButton("x1");
 //		JButton botonx10 = new JButton("x10");
 //		JButton botonx100 = new JButton("x100");
@@ -43,7 +47,7 @@ public class PanelMejora extends JPanel {
 //		panelBotones.add(botonx100);
 				
 		add(tipoMejora,BorderLayout.NORTH);
-		add(precioMejora, BorderLayout.CENTER);
+		add(botonCompra, BorderLayout.CENTER);
 //		add(panelBotones,BorderLayout.CENTER);
 		add(cantidadMejora,BorderLayout.SOUTH);
 		

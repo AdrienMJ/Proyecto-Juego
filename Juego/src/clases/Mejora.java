@@ -58,6 +58,7 @@ public class Mejora {
 	 * @param cantidad numero que se suma a la cantidad actual
 	 */
 	public void actualizarCantidad(int cantidad) {
+		this.setNumero(this.getNumero() + cantidad);
 		
 	}
 }

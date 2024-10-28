@@ -2,6 +2,7 @@ package clases;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -15,10 +16,12 @@ import javax.swing.JScrollPane;
 
 public class Materiales extends JScrollPane{
 	
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	
 	public Materiales() {
 		
@@ -29,6 +32,7 @@ public class Materiales extends JScrollPane{
 		JPanel panelContenedor = new JPanel();
 		panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
 		JPanel panelBotonesCompra = new JPanel();
+		//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
 		panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
 		
 		JButton botonx1 = new JButton("x1");
@@ -44,8 +48,7 @@ public class Materiales extends JScrollPane{
 		panelBotonesCompra.add(botonx1);
 		panelBotonesCompra.add(botonx10);
 		panelBotonesCompra.add(botonx100);
-		
-		
+			
 		panelContenedor.add(panelBotonesCompra);
 
 			
@@ -102,6 +105,8 @@ public class Materiales extends JScrollPane{
 		panelContenedor.setVisible(true);
 		this.setViewportView(panelContenedor);
 		this.setVisible(true);
+		
+
 	}
 	
 	
