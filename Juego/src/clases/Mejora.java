@@ -6,9 +6,14 @@ package clases;
 
 public class Mejora {
 	private String nombre;
-	private float precio;
-	private float ganacias;
-	private int numero;
+	private double precio;
+	private double precioInicial;
+	private int numero;	
+	private double ganacias;
+	private double ganaciaInicial;
+	private double multiplicador;
+	
+	
 	
 	/**Crea un objeto Mejora, que es el propio material como: lapiz,libro,cuaderno....
 	 * Se puede saber y cambiar su nombre, precio y ganancia(cuanto multiplica)
@@ -17,52 +22,77 @@ public class Mejora {
 	 * @param precio Precio del material escolar
 	 * @param ganacias Cuanto multiplica a las ganacias totales
 	 */
-	public Mejora(String nombre, float precio, float ganacias) {
+	public Mejora(String nombre, double precioInicial, double ganaciaInicial, double multiplicador ) {
 		super();
 		this.nombre = nombre;
-		this.precio = precio;
-		this.ganacias = ganacias;
+		this.precioInicial = precioInicial;
+		this.ganaciaInicial = ganaciaInicial;
 		this.numero = 0;
+		this.multiplicador = multiplicador;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
-	public float getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+
+
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
-	public float getGanacias() {
-		return ganacias;
-	}
 
-	public void setGanacias(float ganacias) {
-		this.ganacias = ganacias;
-	}
 
 	public int getNumero() {
 		return numero;
 	}
 
+
+
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	
-	/**
-	 * Actualiza la cantidad de "Edificios" que tiene una mejora
-	 * @param cantidad numero que se suma a la cantidad actual
-	 */
-	public void actualizarCantidad(int cantidad) {
-		this.setNumero(this.getNumero() + cantidad);
-		
+
+
+
+	public double getGanacias() {
+		return ganacias;
 	}
+
+
+
+	public void setGanacias(double ganacias) {
+		this.ganacias = ganacias;
+	}
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+	public double getPrecioInicial() {
+		return precioInicial;
+	}
+
+
+
+	public double getGanaciaInicial() {
+		return ganaciaInicial;
+	}
+
+
+
+	public double getMultiplicador() {
+		return multiplicador;
+	}
+	
+
+	
+	
+	
 }
