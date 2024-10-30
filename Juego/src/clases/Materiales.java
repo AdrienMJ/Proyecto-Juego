@@ -28,10 +28,12 @@ public class Materiales extends JScrollPane{
 		//Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
         //DefaultListModel<JPanel> modeloJList = new DefaultListModel<JPanel>();
 		
-		//Panel principal
+		//Panel principal de los Multiplicadores
 		JPanel panelContenedor = new JPanel();
 		panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
+		panelContenedor.setSize(getPreferredSize());
 		JPanel panelBotonesCompra = new JPanel();
+		
 		//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
 		panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
 		
@@ -39,12 +41,12 @@ public class Materiales extends JScrollPane{
 		JButton botonx10 = new JButton("x10");
 		JButton botonx100 = new JButton("x100");
 		
-		Dimension dimensionBoton = new Dimension(60,30);
+		Dimension dimensionBoton = new Dimension(60,20);
 		botonx1.setPreferredSize(dimensionBoton);
 		botonx10.setPreferredSize(dimensionBoton);
 		botonx100.setPreferredSize(dimensionBoton);
 		
-		panelBotonesCompra.add(new JLabel("Comprar"));
+		panelBotonesCompra.add(new JLabel("Comprar: "));
 		panelBotonesCompra.add(botonx1);
 		panelBotonesCompra.add(botonx10);
 		panelBotonesCompra.add(botonx100);
@@ -62,20 +64,31 @@ public class Materiales extends JScrollPane{
 		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 		panelContenedor.add(panelCuaderno);
 
-		
 		//Borragoma
 		Mejora borragoma = new Mejora("Borragoma",5_000_000,1_000);
 		PanelMejora panelBorragoma = new PanelMejora(borragoma);
 		panelContenedor.add(panelBorragoma);
 		
 		//Saca puntas
+		Mejora sacaPuntas = new Mejora("Saca-puntas",5_000_000,1_000);
+		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
+		panelContenedor.add(panelSacaPuntas);
 				
 		//Mesa
+		Mejora mesa = new Mejora("mesa",5_000_000,1_000);
+		PanelMejora panelMesa = new PanelMejora(mesa);
+		panelContenedor.add(panelMesa);
 				
 		//Boligrafo
-				
+		Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
+		PanelMejora panelBoli = new PanelMejora(boligrafo);
+		panelContenedor.add(panelBoli);		
+		
 		//Libro de Matematicas (Se desbloquean los minijuegos)
-				
+		Mejora libroMate = new Mejora("Libro de Mate",5_000_000,1_000);
+		PanelMejora panelLibroMate = new PanelMejora(libroMate);
+		panelContenedor.add(panelLibroMate);		
+		
 		//Subrrayador
 				
 		//Tipex

@@ -17,15 +17,21 @@ public class PanelMejora extends JPanel {
 	 * @param mejora objeto(ppotenciador) del que se quiera crear un panel
 	 */
 	public PanelMejora(Mejora mejora) {
+		
 		//Componentes de cada Panel de mejora
 		setLayout(new BorderLayout());
 		JLabel tipoMejora = new JLabel(mejora.getNombre());
+		
 		//Hay que hacer una pequeña conversion de int a String
 		String cantidadMejoraString = String.valueOf(mejora.getNumero());
 		JLabel cantidadMejora = new JLabel("Cantidad: " + cantidadMejoraString);
 		String precioMejoraString = String.valueOf(mejora.getPrecio());
 		//JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
 		
+		/*
+		 * Boton de cada objeto
+		 * con su respectivo precio
+		 */
 		JButton botonCompra = new JButton();
 		botonCompra.setText("Precio: "+ precioMejoraString);
 		
