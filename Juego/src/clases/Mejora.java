@@ -2,7 +2,7 @@ package clases;
 //TODO - Implementar en la clase mejoras dos métodos (uno para el precio de las mejoras y otro para las ganacias)
 //Precio(n) = Precio inicial x Multiplicardor**n
 //Produccion(n) = Produccion inicial x n x (1 + Bonificadores)
-//Siendo los bonificadores otro apartado de mejoras
+//Siendo los bonificadores otro apartado en las mejoras
 
 public class Mejora {
 	private String nombre;
