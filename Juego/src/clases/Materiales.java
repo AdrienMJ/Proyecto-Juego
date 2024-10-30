@@ -13,7 +13,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-
+//TODO Añadir poco a poco los materiales con los precios de los cokieclicker
 public class Materiales extends JScrollPane{
 	
 	
@@ -55,39 +55,39 @@ public class Materiales extends JScrollPane{
 
 			
 		//lapiz
-		Mejora lapiz = new Mejora("Lapiz",100,1);
+		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15);
 		PanelMejora panelLapiz = new PanelMejora(lapiz);				
 		panelContenedor.add(panelLapiz);
 		
 		//Cuaderno
-		Mejora cuaderno = new Mejora("Cuaderno",1_000,10);
+		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
 		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 		panelContenedor.add(panelCuaderno);
 
 		//Borragoma
-		Mejora borragoma = new Mejora("Borragoma",5_000_000,1_000);
+		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
 		PanelMejora panelBorragoma = new PanelMejora(borragoma);
 		panelContenedor.add(panelBorragoma);
 		
 		//Saca puntas
-		Mejora sacaPuntas = new Mejora("Saca-puntas",5_000_000,1_000);
+		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
 		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
 		panelContenedor.add(panelSacaPuntas);
 				
-		//Mesa
-		Mejora mesa = new Mejora("mesa",5_000_000,1_000);
-		PanelMejora panelMesa = new PanelMejora(mesa);
-		panelContenedor.add(panelMesa);
-				
-		//Boligrafo
-		Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
-		PanelMejora panelBoli = new PanelMejora(boligrafo);
-		panelContenedor.add(panelBoli);		
-		
-		//Libro de Matematicas (Se desbloquean los minijuegos)
-		Mejora libroMate = new Mejora("Libro de Mate",5_000_000,1_000);
-		PanelMejora panelLibroMate = new PanelMejora(libroMate);
-		panelContenedor.add(panelLibroMate);		
+//		//Mesa
+//		Mejora mesa = new Mejora("mesa",5_000_000,1_000);
+//		PanelMejora panelMesa = new PanelMejora(mesa);
+//		panelContenedor.add(panelMesa);
+//				
+//		//Boligrafo
+//		Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
+//		PanelMejora panelBoli = new PanelMejora(boligrafo);
+//		panelContenedor.add(panelBoli);		
+//		
+//		//Libro de Matematicas (Se desbloquean los minijuegos)
+//		Mejora libroMate = new Mejora("Libro de Mate",5_000_000,1_000);
+//		PanelMejora panelLibroMate = new PanelMejora(libroMate);
+//		panelContenedor.add(panelLibroMate);		
 		
 		//Subrrayador
 				
