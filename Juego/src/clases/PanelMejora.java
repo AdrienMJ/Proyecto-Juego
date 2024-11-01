@@ -25,7 +25,7 @@ public class PanelMejora extends JPanel {
 		//Hay que hacer una pequeña conversion de int a String
 		String cantidadMejoraString = String.valueOf(mejora.getNumero());
 		JLabel cantidadMejora = new JLabel("Cantidad: " + cantidadMejoraString);
-		String precioMejoraString = String.valueOf(mejora.getPrecio());
+		String precioMejoraString = String.valueOf(mejora.getPrecioInicial());
 		//JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
 		
 		/*
