@@ -27,6 +27,7 @@ public class VentanaJuego extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("EstudianteClicker");
         setSize(600, 400);
+        setVisible(true);
 
         // Panel para el botón y el label de puntos
         JPanel clickerPanel = new JPanel();

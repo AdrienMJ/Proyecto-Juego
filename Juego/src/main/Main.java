@@ -1,10 +1,19 @@
 package main;
 
+import javax.swing.SwingUtilities;
+
 import clases.VentanaJuego;
+import tema3.tema3A.EjemploJButton;
 
 public class Main {
 	public static void main(String[] args) {
-		VentanaJuego juego = new VentanaJuego();
-		juego.setVisible(true);
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                new VentanaJuego();
+            }
+
+        });
 	}
 }
