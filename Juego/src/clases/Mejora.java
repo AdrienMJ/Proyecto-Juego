@@ -4,34 +4,49 @@ package clases;
 //Produccion(n) = Produccion inicial x n x (1 + Bonificadores)
 //Siendo los bonificadores otro apartado en las mejoras
 
-public class Mejora {
+public class Mejora extends Conocimiento { // Esta clase hace todo el proceso de compra de un material
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String nombre;
 	private double precio;
 	private double precioInicial;
 	private int numero;	
-	private double ganacias;
-	private double ganaciaInicial;
+	private double ganancias;
+	private double gananciaInicial;
 	private double multiplicador;
 	
 	
 	
 	/**Crea un objeto Mejora, que es el propio material como: lapiz,libro,cuaderno....
-	 * Se puede saber y cambiar su nombre, precio y ganancia
+	 * Se puede saber y cambiar su nombre, precio y ganancia(cuanto multiplica)
 	 * 
 	 * @param nombre Nombre del material escolar
 	 * @param precio Precio del material escolar
-	 * @param ganacias Cuanto multiplica a las ganacias totales
+	 * @param ganacias Cuanto multiplica a las ganancias totales
 	 */
-	public Mejora(String nombre, double precioInicial, double ganaciaInicial, double multiplicador ) {
+	public Mejora(String nombre, double precioInicial, double gananciaInicial, int numero, double multiplicador ) {
 		super();
 		this.nombre = nombre;
 		this.precioInicial = precioInicial;
-		this.precio = precioInicial;
-		this.ganaciaInicial = ganaciaInicial;
-		this.numero = 0;
-		this.multiplicador = multiplicador;
+		this.gananciaInicial = gananciaInicial;
+		this.numero = numero; //cantidad de materiales
+		this.multiplicador = multiplicador; // El incremento de precio
 	}
 
+	// Comprar lápiz
+    public void comprar() {
+        if (conocimientoTotal >= precio) {
+            conocimientoTotal -= precio;
+            numero++;
+            precio *= multiplicador; // Aumenta el precio para la próxima compra
+            calcularConocimientoPorSegundo(); // Actualiza los créditos por segundo
+        } else {
+            System.out.println("No tienes suficientes créditos para comprar este material.");
+        }
+    }
 
 
 	public double getPrecio() {
@@ -59,13 +74,13 @@ public class Mejora {
 
 
 	public double getGanacias() {
-		return ganacias;
+		return ganancias;
 	}
 
 
 
 	public void setGanacias(double ganacias) {
-		this.ganacias = ganacias;
+		this.ganancias = ganacias;
 	}
 
 
@@ -83,25 +98,18 @@ public class Mejora {
 
 
 	public double getGanaciaInicial() {
-		return ganaciaInicial;
+		return gananciaInicial;
 	}
 
 
 
 	public double getMultiplicador() {
+		//precio = precio * 1.2 // Coge el precio de el material en cuestión y lo multiplica en base al multiplicador que hay en el contructor de ese material
 		return multiplicador;
 	}
 	
-	//Precio(n) = Precio inicial x Multiplicardor**n
-	//Produccion(n) = Produccion inicial x n x (1 + Bonificadores)
-	/**
-	 * Actualiza el numero del item en 1 unidad, el precio del material y las ganacias de ese material
-	 */
-	public void comprarMejora() {
-		numero = numero++;
-		precio = precioInicial*multiplicador*numero;
-		ganacias = ganaciaInicial*numero;
-	}
+
+	
 	
 	
 }
