@@ -16,7 +16,7 @@ public class Mejora {
 	
 	
 	/**Crea un objeto Mejora, que es el propio material como: lapiz,libro,cuaderno....
-	 * Se puede saber y cambiar su nombre, precio y ganancia(cuanto multiplica)
+	 * Se puede saber y cambiar su nombre, precio y ganancia
 	 * 
 	 * @param nombre Nombre del material escolar
 	 * @param precio Precio del material escolar
@@ -26,6 +26,7 @@ public class Mejora {
 		super();
 		this.nombre = nombre;
 		this.precioInicial = precioInicial;
+		this.precio = precioInicial;
 		this.ganaciaInicial = ganaciaInicial;
 		this.numero = 0;
 		this.multiplicador = multiplicador;
@@ -91,8 +92,16 @@ public class Mejora {
 		return multiplicador;
 	}
 	
-
-	
+	//Precio(n) = Precio inicial x Multiplicardor**n
+	//Produccion(n) = Produccion inicial x n x (1 + Bonificadores)
+	/**
+	 * Actualiza el numero del item en 1 unidad, el precio del material y las ganacias de ese material
+	 */
+	public void comprarMejora() {
+		numero = numero++;
+		precio = precioInicial*multiplicador*numero;
+		ganacias = ganaciaInicial*numero;
+	}
 	
 	
 }
