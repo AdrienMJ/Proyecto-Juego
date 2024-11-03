@@ -133,7 +133,7 @@ public class VentanaJuego extends JFrame {
                 //Actualizacion mensaje:
                 int seleccion;
                 if (puntos % 10 == 0) {
-                	seleccion = randomizador.nextInt(3, 15); //0, 21        	
+                	seleccion = randomizador.nextInt(0, 21);        	
                 	labelMensajes.setText(mensajes.get(seleccion));
                 }
             }
