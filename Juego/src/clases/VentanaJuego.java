@@ -40,7 +40,7 @@ public class VentanaJuego extends JFrame {
     
     public VentanaJuego() {
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setTitle("EstudianteClicker");
         setSize(600, 400);
         setVisible(true);
@@ -98,7 +98,7 @@ public class VentanaJuego extends JFrame {
                 	puntosBarra = 0;
                 	barraCreditos.setValue(puntosBarra);
                 	creditos++;
-                	labelCreditos.setText("Creditos: " + creditos);
+                	labelCreditos.setText("Créditos: " + creditos);
                 	
         		}
             }
@@ -120,28 +120,76 @@ public class VentanaJuego extends JFrame {
         menuCheats.setMnemonic(KeyEvent.VK_C);
         menuPrincipal.add(menuCheats);
         
-        JMenuItem menuSumarPuntos = new JMenuItem("Sumar 100 puntos (conocimiento)");
-        menuSumarPuntos.addActionListener(new ActionListener() {
+        JMenuItem menuSumar100Puntos = new JMenuItem("Sumar 100 puntos (conocimiento)");
+        menuSumar100Puntos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				puntos = puntos + 100;
+				creditos = creditos + 10;
 				labelPuntos.setText("Conocimiento: " + puntos);
+				labelCreditos.setText("Créditos: " + creditos);
 			}
 		});
-        menuCheats.add(menuSumarPuntos);
+        menuCheats.add(menuSumar100Puntos);
         
-        JMenuItem menuResetPuntos = new JMenuItem("Reset puntos (conocimiento)");
-        menuResetPuntos.addActionListener(new ActionListener() {
+        JMenuItem menuSumar1000Puntos = new JMenuItem("Sumar 1000 puntos (conocimiento)");
+        menuSumar1000Puntos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				puntos = puntos + 1000;
+				creditos = creditos + 100;
+				labelPuntos.setText("Conocimiento: " + puntos);
+				labelCreditos.setText("Créditos: " + creditos);
+			}
+		});
+        menuCheats.add(menuSumar1000Puntos);
+        
+        menuCheats.addSeparator();
+        
+        JMenuItem menuSumar10Creditos = new JMenuItem("Sumar 100 créditos");
+        menuSumar10Creditos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				puntos = puntos + 1000;
+				creditos = creditos + 100;
+				labelPuntos.setText("Conocimiento: " + puntos);
+				labelCreditos.setText("Créditos: " + creditos);
+			}
+		});
+        menuCheats.add(menuSumar10Creditos);
+        
+        JMenuItem menuSumar100Creditos = new JMenuItem("Sumar 100 créditos");
+        menuSumar100Creditos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				puntos = puntos + 10000; 
+				creditos = creditos + 1000;
+				labelPuntos.setText("Conocimiento: " + puntos);
+				labelCreditos.setText("Créditos: " + creditos);
+			}
+		});
+        menuCheats.add(menuSumar100Creditos);
+        
+        menuCheats.addSeparator();
+        
+        JMenuItem menuReset = new JMenuItem("Reset valores");
+        menuReset.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				puntos = 0;
+				creditos = 0;
 				labelPuntos.setText("Conocimiento: ");
+				labelCreditos.setText("Créditos: ");
 			}
 		});
-        menuCheats.add(menuResetPuntos);        
+        menuCheats.add(menuReset);
         
+      
         menuPrincipal.addSeparator();
         
         JMenuItem menuSalir = new JMenuItem("Salir");
