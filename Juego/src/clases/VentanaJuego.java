@@ -9,6 +9,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -25,18 +31,27 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 
-import gui.main.MainWindow;
 
 public class VentanaJuego extends JFrame {
 
     private static final long serialVersionUID = 1L;
     
+    //Random:
+    static Random randomizador = new Random();
+    
     //PUNTOS DE CONOCIMIENTO
-    public int puntos = 0;  // Contador de puntos
+    public static int puntos = 0;  // Contador de puntos
     public int puntosBarra = 0;
     //BARRA Y CREDITOS
     public JProgressBar barraCreditos; //Barra de progreso de creditos
     public int creditos = 0;
+    
+    //REFERENCIA AL JLABEL DE MENSAJES:
+    public JLabel labelMensajes;
+    
+    //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR:
+    private List<String> mensajes;
+    
     
     public VentanaJuego() {
 
@@ -45,6 +60,8 @@ public class VentanaJuego extends JFrame {
         setSize(600, 400);
         setVisible(true);
         setLocationRelativeTo(null);
+        
+        
 
         // Panel para el botón y el label de puntos
         JPanel clickerPanel = new JPanel();
@@ -56,17 +73,27 @@ public class VentanaJuego extends JFrame {
         labelPuntos.setBackground(Color.white);
         labelPuntos.setAlignmentX(CENTER_ALIGNMENT);  // Centrar el label en el panel
         clickerPanel.add(labelPuntos);
-
-        // Botón Principal (CREDITOS)
+        
+        // Botón Principal (CRÉDITOS)
         JButton estudianteClick = new JButton("Estudiante");
         estudianteClick.setPreferredSize(new Dimension(150, 150));
         estudianteClick.setAlignmentX(CENTER_ALIGNMENT);
         clickerPanel.add(estudianteClick);
 
-       
-
+     
         add(clickerPanel, BorderLayout.CENTER);
         
+        //Se llama al método para cargar los mensajes del csv
+        cargarMensajesCSV();
+        
+        // Se añade el panel de mensajes
+        Mensaje mensaje = new Mensaje();
+        labelMensajes = new JLabel("¡Empieza a hacer click!");
+        mensaje.add(labelMensajes);
+        add(mensaje, BorderLayout.NORTH);
+        
+        //Se crea la lista que contendrá los mensajes
+        mensajes = new ArrayList<String>();
         
         //CREDITOS:
         //Panel de la barra de progreso
@@ -88,6 +115,7 @@ public class VentanaJuego extends JFrame {
         estudianteClick.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	//Puntos:
                 puntos++;
                 puntosBarra ++;
                 labelPuntos.setText("Conocimiento: " + puntos);
@@ -101,6 +129,13 @@ public class VentanaJuego extends JFrame {
                 	labelCreditos.setText("Créditos: " + creditos);
                 	
         		}
+                
+                //Actualizacion mensaje:
+                int seleccion;
+                if (puntos % 10 == 0) {
+                	seleccion = randomizador.nextInt(3, 15); //0, 21        	
+                	labelMensajes.setText(mensajes.get(seleccion));
+                }
             }
         });
         
@@ -222,8 +257,29 @@ public class VentanaJuego extends JFrame {
 				}
 			}
 		});
+        
+
     }
     
+    //Método encargado de leer el csv de mensajes
+    public void cargarMensajesCSV() {
+		try (Scanner scanner = new Scanner(new File("/src/mensajes.csv"))) {
+			int contador = 0;
+			while (scanner.hasNextLine()) {
+				String linea = scanner.nextLine();
+				if (contador > 0) { //La primera línea del fichero no contiene un mensaje
+					try {
+						mensajes.add(linea);
+					} catch (Exception e) {
+						System.out.println("Error procesando los datos del fichero de mensajes.");
+					}
+				}
+				contador++;
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("No se ha podido abrir el fichero de mensajes.");
+		} 
+	}  
 }
         
         
