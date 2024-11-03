@@ -89,9 +89,9 @@ public class Materiales extends JScrollPane{
 //		PanelMejora panelLibroMate = new PanelMejora(libroMate);
 //		panelContenedor.add(panelLibroMate);		
 		
-		//Subrrayador
+		//Profesor particular
 				
-		//Tipex
+		//Proyectos escolares
 				
 		//Ordenador
 				
@@ -107,7 +107,9 @@ public class Materiales extends JScrollPane{
 				
 		//Albert Einstein
 				
-		//Ordenador Cuántico	
+		//Ordenador Cuántico
+		
+		//Rick Sanchez
 		
 //		JList<JPanel> listaPanelesMejoras = new JList<JPanel>(modeloJList);
 //        listaPanelesMejoras.setFixedCellWidth(200);
