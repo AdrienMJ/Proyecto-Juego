@@ -2,6 +2,8 @@ package clases;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -25,7 +27,7 @@ public class PanelMejora extends JPanel {
 		//Hay que hacer una pequeña conversion de int a String
 		String cantidadMejoraString = String.valueOf(mejora.getNumero());
 		JLabel cantidadMejora = new JLabel("Cantidad: " + cantidadMejoraString);
-		String precioMejoraString = String.valueOf(mejora.getPrecioInicial());
+		String precioMejoraString = String.valueOf(mejora.getPrecio());
 		//JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
 		
 		/*
@@ -35,29 +37,23 @@ public class PanelMejora extends JPanel {
 		JButton botonCompra = new JButton();
 		botonCompra.setText("Precio: "+ precioMejoraString);
 		
-//		JButton botonx1 = new JButton("x1");
-//		JButton botonx10 = new JButton("x10");
-//		JButton botonx100 = new JButton("x100");
-//		
-//		//Los Botones tendran un panel propio para que se visualicen bien los datos
-//		JPanel panelBotones = new JPanel();
-		
-//		Dimension dimensionBoton = new Dimension(60,30);
-//		botonx1.setPreferredSize(dimensionBoton);
-//		botonx10.setPreferredSize(dimensionBoton);
-//		botonx100.setPreferredSize(dimensionBoton);
-		
-//		panelBotones.setLayout(new BoxLayout(panelBotones,BoxLayout.X_AXIS));
-//		panelBotones.add(botonx1);
-//		panelBotones.add(botonx10);
-//		panelBotones.add(botonx100);
 				
 		add(tipoMejora,BorderLayout.NORTH);
 		add(botonCompra, BorderLayout.CENTER);
-//		add(panelBotones,BorderLayout.CENTER);
 		add(cantidadMejora,BorderLayout.SOUTH);
 		
 		this.setMaximumSize(new Dimension(1000,60));
+		
+		//TODO Si la puntuación es mayor que el precio utilizar el metodo comprarMejora y restar el precio al los puntos
+		botonCompra.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+			
+		});
 		
 	}
 	

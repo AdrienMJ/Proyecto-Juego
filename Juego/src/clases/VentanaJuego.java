@@ -97,7 +97,7 @@ public class VentanaJuego extends JFrame {
         JScrollPane jScrollMateriales = new Materiales();
         add(jScrollMateriales,BorderLayout.EAST);
 				
-    }	
-        
+    }
+     
         
 }
