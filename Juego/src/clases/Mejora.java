@@ -36,7 +36,7 @@ public class Mejora extends Conocimiento { // Esta clase hace todo el proceso de
 		this.multiplicador = multiplicador; // El incremento de precio
 	}
 
-	// Comprar lápiz
+	// Comprar algo
     public void comprar() {
         if (conocimientoTotal >= precio) {
             conocimientoTotal -= precio;
