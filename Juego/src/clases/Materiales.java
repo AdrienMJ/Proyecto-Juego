@@ -3,6 +3,7 @@ package clases;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -16,7 +17,7 @@ import javax.swing.JScrollPane;
 //TODO Añadir poco a poco los materiales con los precios de los cokieclicker
 public class Materiales extends JScrollPane{
 	
-	
+	HashMap<String, Double> mapaCantidades;
 	/**
 	 * 
 	 */
@@ -55,22 +56,22 @@ public class Materiales extends JScrollPane{
 
 			
 		//lapiz
-		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15);
+		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1, 1.15);
 		PanelMejora panelLapiz = new PanelMejora(lapiz);				
 		panelContenedor.add(panelLapiz);
 		
 		//Cuaderno
-		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
+		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1, 1.152);
 		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 		panelContenedor.add(panelCuaderno);
 
 		//Borragoma
-		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
+		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1, 1.154);
 		PanelMejora panelBorragoma = new PanelMejora(borragoma);
 		panelContenedor.add(panelBorragoma);
 		
 		//Saca puntas
-		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
+		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1, 1.156);
 		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
 		panelContenedor.add(panelSacaPuntas);
 				
@@ -89,9 +90,9 @@ public class Materiales extends JScrollPane{
 //		PanelMejora panelLibroMate = new PanelMejora(libroMate);
 //		panelContenedor.add(panelLibroMate);		
 		
-		//Subrrayador
+		//Profesor particular
 				
-		//Tipex
+		//Proyectos escolares
 				
 		//Ordenador
 				
@@ -107,7 +108,9 @@ public class Materiales extends JScrollPane{
 				
 		//Albert Einstein
 				
-		//Ordenador Cuántico	
+		//Ordenador Cuántico
+		
+		//Rick Sanchez
 		
 //		JList<JPanel> listaPanelesMejoras = new JList<JPanel>(modeloJList);
 //        listaPanelesMejoras.setFixedCellWidth(200);
@@ -118,6 +121,12 @@ public class Materiales extends JScrollPane{
 		panelContenedor.setVisible(true);
 		this.setViewportView(panelContenedor);
 		this.setVisible(true);
+		
+		new HashMap<>();
+		mapaCantidades.put("Lapiz", 0d);
+		mapaCantidades.put("Cuaderno", 0d);
+		mapaCantidades.put("Borragoma", 0d);
+		mapaCantidades.put("Sacapuntas", 0d);
 		
 
 	}
