@@ -140,9 +140,24 @@ public class VentanaJuego extends JFrame {
         });
         
        
+        
+        
+        
+        
+        
+        /*
+        
         //SCROLL de los Materiales
         JScrollPane jScrollMateriales = new Materiales();
         add(jScrollMateriales,BorderLayout.EAST);
+        
+        */
+        
+        
+        
+        
+        
+        
         
         
         //JMENU (ajustes)
@@ -261,9 +276,11 @@ public class VentanaJuego extends JFrame {
 
     }
     
+    
+    
     //Método encargado de leer el csv de mensajes
     public void cargarMensajesCSV() {
-		try (Scanner scanner = new Scanner(new File("/src/mensajes.csv"))) {
+		try (Scanner scanner = new Scanner(new File("src/mensajes.csv"))) {
 			int contador = 0;
 			while (scanner.hasNextLine()) {
 				String linea = scanner.nextLine();
@@ -281,5 +298,4 @@ public class VentanaJuego extends JFrame {
 		} 
 	}  
 }
-        
-        
+    
