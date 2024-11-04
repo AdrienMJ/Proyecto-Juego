@@ -30,7 +30,7 @@ public class VentanaJuego extends JFrame {
     
     public VentanaJuego() {
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("EstudianteClicker");
         setSize(600, 400);
 
