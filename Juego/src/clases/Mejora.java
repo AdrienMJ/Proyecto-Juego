@@ -4,7 +4,7 @@ package clases;
 //Produccion(n) = Produccion inicial x n x (1 + Bonificadores)
 //Siendo los bonificadores otro apartado en las mejoras
 
-public class Mejora extends Conocimiento { // Esta clase hace todo el proceso de compra de un material
+public class Mejora  { // Esta clase hace todo el proceso de compra de un material
 	/**
 	 * 
 	 */
@@ -27,26 +27,26 @@ public class Mejora extends Conocimiento { // Esta clase hace todo el proceso de
 	 * @param precio Precio del material escolar
 	 * @param ganacias Cuanto multiplica a las ganancias totales
 	 */
-	public Mejora(String nombre, double precioInicial, double gananciaInicial, int numero, double multiplicador ) {
+	public Mejora(String nombre, double precioInicial, double gananciaInicial, double multiplicador ) {
 		super();
 		this.nombre = nombre;
 		this.precioInicial = precioInicial;
 		this.gananciaInicial = gananciaInicial;
-		this.numero = numero; //cantidad de materiales
+		this.numero = 0; //cantidad de materiales
 		this.multiplicador = multiplicador; // El incremento de precio
 	}
 
 	// Comprar algo
-    public void comprar() {
-        if (conocimientoTotal >= precio) {
-            conocimientoTotal -= precio;
-            numero++;
-            precio *= multiplicador; // Aumenta el precio para la próxima compra
-            calcularConocimientoPorSegundo(); // Actualiza los créditos por segundo
-        } else {
-            System.out.println("No tienes suficientes créditos para comprar este material.");
-        }
-    }
+//    public void comprar() {
+//        if (conocimientoTotal >= precio) {
+//            conocimientoTotal -= precio;
+//            numero++;
+//            precio *= multiplicador; // Aumenta el precio para la próxima compra
+//            calcularConocimientoPorSegundo(); // Actualiza los créditos por segundo
+//        } else {
+//            System.out.println("No tienes suficientes créditos para comprar este material.");
+//        }
+//    }
 
 
 	public double getPrecio() {
