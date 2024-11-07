@@ -45,21 +45,11 @@ public class PanelMejora extends JPanel {
 		this.setMaximumSize(new Dimension(1000,60));
 		
 		//TODO Si la puntuación es mayor que el precio utilizar el metodo comprarMejora y restar el precio al los puntos
-		botonCompra.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				
-			}
-			
-		});
-		
 	}
 	
 	
 //	public static void main(String[] args) {
-//		Mejora m = new Mejora("Lapiz",2,1);
+//		Mejora m = new Mejora("Lapiz",2,1,1.15);
 //		PanelMejora panelLapiz = new PanelMejora(m);
 //		JFrame ventana = new JFrame();
 //		ventana.setSize(300,100);
