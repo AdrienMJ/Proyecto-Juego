@@ -56,22 +56,22 @@ public class Materiales extends JScrollPane{
 
 			
 		//lapiz
-		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1, 1.15);
+		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15);
 		PanelMejora panelLapiz = new PanelMejora(lapiz);				
 		panelContenedor.add(panelLapiz);
 		
 		//Cuaderno
-		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1, 1.152);
+		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
 		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 		panelContenedor.add(panelCuaderno);
 
 		//Borragoma
-		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1, 1.154);
+		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
 		PanelMejora panelBorragoma = new PanelMejora(borragoma);
 		panelContenedor.add(panelBorragoma);
 		
 		//Saca puntas
-		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1, 1.156);
+		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
 		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
 		panelContenedor.add(panelSacaPuntas);
 				
@@ -122,11 +122,11 @@ public class Materiales extends JScrollPane{
 		this.setViewportView(panelContenedor);
 		this.setVisible(true);
 		
-		new HashMap<>();
-		mapaCantidades.put("Lapiz", 0d);
-		mapaCantidades.put("Cuaderno", 0d);
-		mapaCantidades.put("Borragoma", 0d);
-		mapaCantidades.put("Sacapuntas", 0d);
+//		new HashMap<>();
+//		mapaCantidades.put("Lapiz", 0d);
+//		mapaCantidades.put("Cuaderno", 0d);
+//		mapaCantidades.put("Borragoma", 0d);
+//		mapaCantidades.put("Sacapuntas", 0d);
 		
 
 	}
