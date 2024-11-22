@@ -11,7 +11,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
 public class PanelMejora extends JPanel {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public JButton botonCompra;
+	public JLabel cantidadMejora;
+	public JLabel tipoMejora;
 	
 	/**Clase que añade paneles para comprar y visualizar las mejoras(Los Potenciadores)
 	 * Hay que poner la un objeto de la Clase Mejora para que construya el panel
@@ -22,30 +33,26 @@ public class PanelMejora extends JPanel {
 		
 		//Componentes de cada Panel de mejora
 		setLayout(new BorderLayout());
-		JLabel tipoMejora = new JLabel(mejora.getNombre());
+		tipoMejora = new JLabel(mejora.getNombre());
 		
-		//Hay que hacer una pequeña conversion de int a String
-		String cantidadMejoraString = String.valueOf(mejora.getNumero());
-		JLabel cantidadMejora = new JLabel("Cantidad: " + cantidadMejoraString);
-		String precioMejoraString = String.valueOf(mejora.getPrecio());
-		//JLabel precioMejora = new JLabel("Precio: " + precioMejoraString);
-		
-		/*
-		 * Boton de cada objeto
-		 * con su respectivo precio
-		 */
-		JButton botonCompra = new JButton();
-		botonCompra.setText("Precio: "+ precioMejoraString);
+		//Boton de cada objeto con su respectivo precio
+		botonCompra = new JButton();
+		botonCompra.setText("Precio: "+ mejora.getPrecio());
+		cantidadMejora = new JLabel("Cantidad: " + mejora.getNumero());
 		
 				
 		add(tipoMejora,BorderLayout.NORTH);
 		add(botonCompra, BorderLayout.CENTER);
 		add(cantidadMejora,BorderLayout.SOUTH);
 		
-		this.setMaximumSize(new Dimension(1000,60));
+		this.setMaximumSize(new Dimension(1000,100));
+		this.setMinimumSize(new Dimension (100,40));
 		
-		//TODO Si la puntuación es mayor que el precio utilizar el metodo comprarMejora y restar el precio al los puntos
+		
+		
+		
 	}
+	
 	
 	
 //	public static void main(String[] args) {
