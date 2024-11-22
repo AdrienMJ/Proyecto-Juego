@@ -40,7 +40,7 @@ public class VentanaJuego extends JFrame {
     static Random randomizador = new Random();
     
     //PUNTOS DE CONOCIMIENTO
-    public static int puntos = 0;  // Contador de puntos
+    public  double puntos = 0;  // Contador de puntos
     public int puntosBarra = 0;
     //BARRA Y CREDITOS
     public JProgressBar barraCreditos; //Barra de progreso de creditos
@@ -139,27 +139,117 @@ public class VentanaJuego extends JFrame {
             }
         });
         
-       
-        
-        
-        
-        
-        
-        
-        
+   
         //SCROLL de los Materiales
-        JScrollPane jScrollMateriales = new Materiales();
+        JScrollPane jScrollMateriales = new JScrollPane();
+        
+        
+      //Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
+        //DefaultListModel<JPanel> modeloJList = new DefaultListModel<JPanel>();
+		
+		//Panel principal de los Multiplicadores
+		JPanel panelContenedor = new JPanel();
+		panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
+		panelContenedor.setSize(getPreferredSize());
+		JPanel panelBotonesCompra = new JPanel();
+		
+		//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
+		panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
+		
+		JButton botonx1 = new JButton("x1");
+		JButton botonx10 = new JButton("x10");
+		JButton botonx100 = new JButton("x100");
+		
+		Dimension dimensionBoton = new Dimension(60,20);
+		botonx1.setPreferredSize(dimensionBoton);
+		botonx10.setPreferredSize(dimensionBoton);
+		botonx100.setPreferredSize(dimensionBoton);
+		
+		panelBotonesCompra.add(new JLabel("Comprar: "));
+		panelBotonesCompra.add(botonx1);
+		panelBotonesCompra.add(botonx10);
+		panelBotonesCompra.add(botonx100);
+			
+		panelContenedor.add(panelBotonesCompra);
+		
+		//TODO - Hay que seguir construyendo las mejoras como se ha construido el lapiz
+			
+		//lapiz
+		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15);
+		PanelMejora panelLapiz = new PanelMejora(lapiz);
+		panelContenedor.add(panelLapiz);
+		panelLapiz.botonCompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				puntos = lapiz.comprarMejora(puntos); // Actualiza los puntos
+				labelPuntos.setText("Conocimiento: " + puntos); // Actualiza el label de los puntos
+				panelLapiz.cantidadMejora.setText("Cantidad: " + lapiz.getNumero()); // Actualiza la cantidad actual de la mejora
+				panelLapiz.botonCompra.setText("Precio: "+ lapiz.getPrecio()); // Actuliza el precio actual de la mejora
+
+			}
+		});
+		
+		//Cuaderno
+		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
+		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
+		panelContenedor.add(panelCuaderno);
+
+		//Borragoma
+		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
+		PanelMejora panelBorragoma = new PanelMejora(borragoma);
+		panelContenedor.add(panelBorragoma);
+		
+		//Saca puntas
+		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
+		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
+		panelContenedor.add(panelSacaPuntas);
+				
+//		//Mesa
+//		Mejora mesa = new Mejora("mesa",5_000_000,1_000);
+//		PanelMejora panelMesa = new PanelMejora(mesa);
+//		panelContenedor.add(panelMesa);
+//				
+//		//Boligrafo
+//		Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
+//		PanelMejora panelBoli = new PanelMejora(boligrafo);
+//		panelContenedor.add(panelBoli);		
+//		
+//		//Libro de Matematicas (Se desbloquean los minijuegos)
+//		Mejora libroMate = new Mejora("Libro de Mate",5_000_000,1_000);
+//		PanelMejora panelLibroMate = new PanelMejora(libroMate);
+//		panelContenedor.add(panelLibroMate);		
+		
+		//Profesor particular
+				
+		//Proyectos escolares
+				
+		//Ordenador
+				
+		//Cerebro
+				
+		//IQ
+				
+		//ChatGPT
+				
+		//Ganas
+				
+		//Atención
+				
+		//Albert Einstein
+				
+		//Ordenador Cuántico
+		
+		//Rick Sanchez
+		
+		panelContenedor.setVisible(true);
+		jScrollMateriales.setViewportView(panelContenedor);
+		jScrollMateriales.setVisible(true);
+    
         add(jScrollMateriales,BorderLayout.EAST);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+             
+
         //JMENU (ajustes)
         JMenuBar menuBar = new JMenuBar();
         

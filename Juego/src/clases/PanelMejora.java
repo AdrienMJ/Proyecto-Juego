@@ -27,7 +27,7 @@ public class PanelMejora extends JPanel {
 	/**Clase que añade paneles para comprar y visualizar las mejoras(Los Potenciadores)
 	 * Hay que poner la un objeto de la Clase Mejora para que construya el panel
 	 * 
-	 * @param mejora objeto(ppotenciador) del que se quiera crear un panel
+	 * @param mejora objeto(potenciador) del que se quiera crear un panel
 	 */
 	public PanelMejora(Mejora mejora) {
 		
