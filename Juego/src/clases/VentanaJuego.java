@@ -3,7 +3,7 @@ package clases;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.MenuBar;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -30,6 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+
 
 
 public class VentanaJuego extends JFrame {
@@ -41,17 +43,22 @@ public class VentanaJuego extends JFrame {
     
     //PUNTOS DE CONOCIMIENTO
     public  double puntos = 0;  // Contador de puntos
-    public int puntosBarra = 0;
+    
     //BARRA Y CREDITOS
     public JProgressBar barraCreditos; //Barra de progreso de creditos
     public int creditos = 0;
+    public int puntosBarra = 0;
+    public int maxCreditos = 10; //Puntos iniciales de los creditos
     
     //REFERENCIA AL JLABEL DE MENSAJES:
     public JLabel labelMensajes;
     
     //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR:
-    private List<String> mensajes;
+    public List<String> mensajes;
     
+    //PESTAÑA DE ESTADISTICAS:
+    public JTabbedPane jTabbPrincipal;
+    public JTabbedPane jTabbEstadis;
     
     public VentanaJuego() {
 
@@ -62,22 +69,27 @@ public class VentanaJuego extends JFrame {
         setLocationRelativeTo(null);
         
         
-
+        
+        //Panel PRINCIPAL:
+        JPanel panelPrincipal = new JPanel();
+        
         // Panel para el botón y el label de puntos
         JPanel clickerPanel = new JPanel();
-        clickerPanel.setLayout(new BoxLayout(clickerPanel, BoxLayout.X_AXIS));  // Aseguramos que el BoxLayout se aplique al clickerPanel
-        clickerPanel.setBackground(Color.lightGray);
+        clickerPanel.setLayout(new BoxLayout(clickerPanel, BoxLayout.Y_AXIS));  // Aseguramos que el BoxLayout se aplique al clickerPanel
+       
         
         // JLabel para mostrar los puntos
-        JLabel labelPuntos = new JLabel("Conocimiento: 0");
-        labelPuntos.setBackground(Color.white);
+        JLabel labelPuntos = new JLabel("Conocimiento: " +  puntos);
+        labelPuntos.setBackground(Color.GRAY);
         labelPuntos.setAlignmentX(CENTER_ALIGNMENT);  // Centrar el label en el panel
+        labelPuntos.setFont(new Font("Arial", Font.BOLD, 16));
         clickerPanel.add(labelPuntos);
         
-        // Botón Principal (CRÉDITOS)
-        JButton estudianteClick = new JButton("Estudiante");
-        estudianteClick.setPreferredSize(new Dimension(150, 150));
+        // Botón Principal (Puntos de CONOCIMIENTO)
+        JButton estudianteClick = new JButton();
+        estudianteClick.setPreferredSize(new Dimension(150, 250));
         estudianteClick.setAlignmentX(CENTER_ALIGNMENT);
+        estudianteClick.setIcon(new ImageIcon(getClass().getResource("/Imagenes/estuadinte2.png")));
         clickerPanel.add(estudianteClick);
 
      
@@ -101,7 +113,7 @@ public class VentanaJuego extends JFrame {
       	panelBarra.setPreferredSize(new Dimension(100,100));
       		
       	//Se crea la barra de progreso
-      	barraCreditos = new JProgressBar(0, 10); //Los valores son de que valor MAX y min
+      	barraCreditos = new JProgressBar(0, maxCreditos); //Los valores son de que valor MAX y min
       	barraCreditos.setStringPainted(true);//Queremos que se pinte el X% (SÍ/NO)
       	
       	JLabel labelCreditos = new JLabel();
@@ -109,10 +121,12 @@ public class VentanaJuego extends JFrame {
       	//Añadimos la barra y el Label al panel
       	panelBarra.add(labelCreditos);
       	panelBarra.add(barraCreditos);
+      	panelBarra.setBackground(Color.LIGHT_GRAY);
       	clickerPanel.add(panelBarra, BorderLayout.CENTER);
         
       	//Acción del botón para incrementar los PUNTOS y los CREDITOS
-        estudianteClick.addActionListener(new ActionListener() {
+      	labelCreditos.setText("Créditos: " + creditos);
+      	estudianteClick.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             	//Puntos:
@@ -122,18 +136,22 @@ public class VentanaJuego extends JFrame {
                 
                 //Creditos:
                 barraCreditos.setValue(puntosBarra);// Actualiza la barra con el valor de puntosBarra
+                
                 if (puntosBarra == barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
                 	puntosBarra = 0;
+                	maxCreditos *= 1.5;
                 	barraCreditos.setValue(puntosBarra);
+                	barraCreditos.setMaximum(maxCreditos);;
                 	creditos++;
                 	labelCreditos.setText("Créditos: " + creditos);
                 	
         		}
                 
+                //ESTO DA ERROR!!!!!!!!!!! ("Index "el que sea" out of bounds for length 0")
                 //Actualizacion mensaje:
                 int seleccion;
                 if (puntos % 10 == 0) {
-                	seleccion = randomizador.nextInt(0, 21);        	
+                	seleccion = randomizador.nextInt(0, 20);        	
                 	labelMensajes.setText(mensajes.get(seleccion));
                 }
             }
@@ -363,7 +381,24 @@ public class VentanaJuego extends JFrame {
 			}
 		});
         
-
+        
+        panelPrincipal.add(clickerPanel);
+        panelPrincipal.add(panelBarra);
+        panelPrincipal.add(jScrollMateriales);
+        panelPrincipal.setBackground(Color.LIGHT_GRAY);
+        
+        jTabbPrincipal = new JTabbedPane();
+        jTabbPrincipal.addTab("Ventana Principal", panelPrincipal);
+        add(jTabbPrincipal);
+        
+        //Pestaña estadisticas (Tabla): 
+        JPanel panelEstadis = new JPanel();
+        
+        jTabbPrincipal.addTab("Estadísticas", panelEstadis);
+        add(jTabbEstadis);       
+        
+        
+        
     }
     
     
@@ -378,14 +413,19 @@ public class VentanaJuego extends JFrame {
 					try {
 						mensajes.add(linea);
 					} catch (Exception e) {
-						System.out.println("Error procesando los datos del fichero de mensajes.");
+						System.err.println("Error procesando los datos del fichero de mensajes.");
 					}
 				}
 				contador++;
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("No se ha podido abrir el fichero de mensajes.");
+			System.err.println("No se ha podido abrir el fichero de mensajes.");
 		} 
-	}  
+		
+		
+	}
+    
+    
+    
 }
     
