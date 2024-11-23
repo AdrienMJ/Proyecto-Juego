@@ -163,7 +163,6 @@ public class VentanaJuego extends JFrame {
         
         
       //Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
-        //DefaultListModel<JPanel> modeloJList = new DefaultListModel<JPanel>();
 		
 		//Panel principal de los Multiplicadores
 		JPanel panelContenedor = new JPanel();
