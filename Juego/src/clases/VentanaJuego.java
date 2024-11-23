@@ -212,21 +212,65 @@ public class VentanaJuego extends JFrame {
 		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
 		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 		panelContenedor.add(panelCuaderno);
+		panelCuaderno.botonCompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				puntos = cuaderno.comprarMejora(puntos); // Actualiza los puntos
+				labelPuntos.setText("Conocimiento: " + puntos); // Actualiza el label de los puntos
+				panelCuaderno.actualizarPanel(cuaderno);
+
+			}
+		});
 
 		//Borragoma
 		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
 		PanelMejora panelBorragoma = new PanelMejora(borragoma);
 		panelContenedor.add(panelBorragoma);
+		panelBorragoma.botonCompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				puntos = borragoma.comprarMejora(puntos); // Actualiza los puntos
+				labelPuntos.setText("Conocimiento: " + puntos); // Actualiza el label de los puntos
+				panelBorragoma.actualizarPanel(borragoma);
+
+			}
+		});
 		
 		//Saca puntas
 		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
 		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
 		panelContenedor.add(panelSacaPuntas);
+		panelSacaPuntas.botonCompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				
-//		//Mesa
-//		Mejora mesa = new Mejora("mesa",5_000_000,1_000);
-//		PanelMejora panelMesa = new PanelMejora(mesa);
-//		panelContenedor.add(panelMesa);
+				puntos = sacaPuntas.comprarMejora(puntos); // Actualiza los puntos
+				labelPuntos.setText("Conocimiento: " + puntos); // Actualiza el label de los puntos
+				panelSacaPuntas.actualizarPanel(sacaPuntas);
+
+			}
+		});
+				
+		//Mesa
+		Mejora mesa = new Mejora("Mesa", 130_000, 260, 1.158);
+		PanelMejora panelMesa = new PanelMejora(mesa);
+		panelContenedor.add(panelMesa);
+		panelMesa.botonCompra.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				puntos = mesa.comprarMejora(puntos); // Actualiza los puntos
+				labelPuntos.setText("Conocimiento: " + puntos); // Actualiza el label de los puntos
+				panelMesa.actualizarPanel(mesa);
+
+			}
+		});
 //				
 //		//Boligrafo
 //		Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
