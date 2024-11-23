@@ -26,7 +26,8 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 	 * 
 	 * @param nombre Nombre del material escolar
 	 * @param precio Precio del material escolar
-	 * @param ganacias Cuanto multiplica a las ganancias totales
+	 * @param ganancia cuanto gana en el "nivel 1"
+	 * @param multiplicador Cuanto multiplica a las ganancias totales
 	 */
 	public Mejora(String nombre, double precioInicial, double gananciaInicial, double multiplicador ) {
 		super();
