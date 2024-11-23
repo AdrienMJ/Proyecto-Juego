@@ -52,6 +52,14 @@ public class PanelMejora extends JPanel {
 		
 		
 	}
+	/**
+	 * Actualiza el Jlabel
+	 * @param mejora la mejora con la que se trabaje
+	 */
+	public void actualizarPanel(Mejora mejora) {
+		cantidadMejora.setText("Cantidad: " + mejora.getNumero()); // Actualiza la cantidad actual de la mejora
+		botonCompra.setText("Precio: "+ mejora.getPrecio()); // Actuliza el precio actual de la mejora
+	}
 	
 	
 	

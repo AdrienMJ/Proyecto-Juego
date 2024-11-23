@@ -203,8 +203,7 @@ public class VentanaJuego extends JFrame {
 				
 				puntos = lapiz.comprarMejora(puntos); // Actualiza los puntos
 				labelPuntos.setText("Conocimiento: " + puntos); // Actualiza el label de los puntos
-				panelLapiz.cantidadMejora.setText("Cantidad: " + lapiz.getNumero()); // Actualiza la cantidad actual de la mejora
-				panelLapiz.botonCompra.setText("Precio: "+ lapiz.getPrecio()); // Actuliza el precio actual de la mejora
+				panelLapiz.actualizarPanel(lapiz);
 
 			}
 		});
@@ -420,7 +419,10 @@ public class VentanaJuego extends JFrame {
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("No se ha podido abrir el fichero de mensajes.");
-		} 
+		}
+		
+		
+		
 		
 		
 	}
