@@ -461,6 +461,8 @@ public class VentanaJuego extends JFrame {
         add(jTabbEstadis);       
         
         
+        //PARTE DE HILOS
+        
         
     }
     
