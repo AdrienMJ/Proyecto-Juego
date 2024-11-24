@@ -56,9 +56,13 @@ public class VentanaJuego extends JFrame {
     //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR:
     public List<String> mensajes;
     
+    //LISTA DE LAS MEJORAS
+    public ArrayList<Mejora> listaMejoras;
+    
     //PESTAÑA DE ESTADISTICAS:
     public JTabbedPane jTabbPrincipal;
     public JTabbedPane jTabbEstadis;
+    
     
     public VentanaJuego() {
 
@@ -67,6 +71,9 @@ public class VentanaJuego extends JFrame {
         setSize(600, 400);
         setVisible(true);
         setLocationRelativeTo(null);
+        
+        //Lista de Mejoras
+        listaMejoras = new ArrayList<Mejora>();
         
         
         
@@ -162,12 +169,13 @@ public class VentanaJuego extends JFrame {
         JScrollPane jScrollMateriales = new JScrollPane();
         
         
+        
       //Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
 		
 		//Panel principal de los Multiplicadores
 		JPanel panelContenedor = new JPanel();
 		panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
-		panelContenedor.setSize(getPreferredSize());
+		panelContenedor.setSize(new Dimension(400, 1000));
 		JPanel panelBotonesCompra = new JPanel();
 		
 		//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
@@ -192,9 +200,10 @@ public class VentanaJuego extends JFrame {
 		//TODO - Hay que seguir construyendo las mejoras como se ha construido el lapiz
 			
 		//lapiz
-		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15);
-		PanelMejora panelLapiz = new PanelMejora(lapiz);
-		panelContenedor.add(panelLapiz);
+		Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15); //Se crea la mejora con el contructor
+		listaMejoras.add(lapiz); // Se añade la mejora a una lista para su posterior uso
+		PanelMejora panelLapiz = new PanelMejora(lapiz); // Se crea un panel personalizado para cada mejora
+		panelContenedor.add(panelLapiz); // Se añade el panel al panel que contendrá todas las mejoras
 		panelLapiz.botonCompra.addActionListener(new ActionListener() {
 			
 			@Override
@@ -209,6 +218,7 @@ public class VentanaJuego extends JFrame {
 		
 		//Cuaderno
 		Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
+		listaMejoras.add(cuaderno);
 		PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 		panelContenedor.add(panelCuaderno);
 		panelCuaderno.botonCompra.addActionListener(new ActionListener() {
@@ -225,6 +235,7 @@ public class VentanaJuego extends JFrame {
 
 		//Borragoma
 		Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
+		listaMejoras.add(borragoma);
 		PanelMejora panelBorragoma = new PanelMejora(borragoma);
 		panelContenedor.add(panelBorragoma);
 		panelBorragoma.botonCompra.addActionListener(new ActionListener() {
@@ -241,6 +252,7 @@ public class VentanaJuego extends JFrame {
 		
 		//Saca puntas
 		Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
+		listaMejoras.add(sacaPuntas);
 		PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
 		panelContenedor.add(panelSacaPuntas);
 		panelSacaPuntas.botonCompra.addActionListener(new ActionListener() {
@@ -257,6 +269,7 @@ public class VentanaJuego extends JFrame {
 				
 		//Mesa
 		Mejora mesa = new Mejora("Mesa", 130_000, 260, 1.158);
+		listaMejoras.add(mesa);
 		PanelMejora panelMesa = new PanelMejora(mesa);
 		panelContenedor.add(panelMesa);
 		panelMesa.botonCompra.addActionListener(new ActionListener() {
@@ -303,11 +316,19 @@ public class VentanaJuego extends JFrame {
 		
 		//Rick Sanchez
 		
+		
 		panelContenedor.setVisible(true);
 		jScrollMateriales.setViewportView(panelContenedor);
 		jScrollMateriales.setVisible(true);
     
         add(jScrollMateriales,BorderLayout.EAST);
+        
+        
+        
+        
+        
+        
+        //
              
 
         //JMENU (ajustes)
@@ -445,30 +466,33 @@ public class VentanaJuego extends JFrame {
     
     
     
-    //Método encargado de leer el csv de mensajes
-    public void cargarMensajesCSV() {
-		try (Scanner scanner = new Scanner(new File("src/mensajes.csv"))) {
-			int contador = 0;
-			while (scanner.hasNextLine()) {
-				String linea = scanner.nextLine();
-				if (contador > 0) { //La primera línea del fichero no contiene un mensaje
-					try {
-						mensajes.add(linea);
-					} catch (Exception e) {
-						System.err.println("Error procesando los datos del fichero de mensajes.");
+    	//Método encargado de leer el csv de mensajes
+    	public void cargarMensajesCSV() {
+			try (Scanner scanner = new Scanner(new File("src/mensajes.csv"))) {
+				int contador = 0;
+				while (scanner.hasNextLine()) {
+					String linea = scanner.nextLine();
+					if (contador > 0) { //La primera línea del fichero no contiene un mensaje
+						try {
+							mensajes.add(linea);
+						} catch (Exception e) {
+							System.err.println("Error procesando los datos del fichero de mensajes.");
+						}
 					}
+					contador++;
 				}
-				contador++;
+			} catch (FileNotFoundException e) {
+				System.err.println("No se ha podido abrir el fichero de mensajes.");
 			}
-		} catch (FileNotFoundException e) {
-			System.err.println("No se ha podido abrir el fichero de mensajes.");
-		}
-		
-		
-		
-		
-		
-	}
+	
+    	}
+    	
+    	//Método para ir actualizando los puntos según la ListaMejoras
+    	public void actualizarPuntos() {
+    		for (Mejora mejora : listaMejoras) {
+    				puntos = puntos	+ mejora.getGanacia();
+    		}
+    	}
     
     
     
