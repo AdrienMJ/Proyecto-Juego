@@ -60,7 +60,7 @@ public class JScrollMateriales extends JScrollPane {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					ventana.puntos = lapiz.comprarMejora(ventana.puntos); // Actualiza los puntos
+					ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos); // Actualiza los puntos
 					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
 					panelLapiz.actualizarPanel(lapiz);
 
@@ -77,7 +77,7 @@ public class JScrollMateriales extends JScrollPane {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					ventana.puntos = cuaderno.comprarMejora(ventana.puntos); // Actualiza los puntos
+					ventana.puntos = (int) cuaderno.comprarMejora(ventana.puntos); // Actualiza los puntos
 					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
 					panelCuaderno.actualizarPanel(cuaderno);
 
@@ -94,7 +94,7 @@ public class JScrollMateriales extends JScrollPane {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					ventana.puntos = borragoma.comprarMejora(ventana.puntos); // Actualiza los puntos
+					ventana.puntos = (int) borragoma.comprarMejora(ventana.puntos); // Actualiza los puntos
 					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
 					panelBorragoma.actualizarPanel(borragoma);
 
@@ -111,7 +111,7 @@ public class JScrollMateriales extends JScrollPane {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					ventana.puntos = sacaPuntas.comprarMejora(ventana.puntos); // Actualiza los puntos
+					ventana.puntos = (int) sacaPuntas.comprarMejora(ventana.puntos); // Actualiza los puntos
 					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
 					panelSacaPuntas.actualizarPanel(sacaPuntas);
 
@@ -128,7 +128,7 @@ public class JScrollMateriales extends JScrollPane {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					ventana.puntos = mesa.comprarMejora(ventana.puntos); // Actualiza los puntos
+					ventana.puntos = (int) mesa.comprarMejora(ventana.puntos); // Actualiza los puntos
 					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
 					panelMesa.actualizarPanel(mesa);
 

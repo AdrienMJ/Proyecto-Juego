@@ -22,7 +22,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 
 
@@ -83,7 +83,7 @@ public class VentanaJuego extends JFrame {
         //Panel PRINCIPAL:
         JPanel panelPrincipal = new JPanel();
         
-        // Panel para el botón y el label de puntos
+        //Panel para el botón y el label de puntos
         JPanel clickerPanel = new JPanel();
         clickerPanel.setLayout(new BoxLayout(clickerPanel, BoxLayout.Y_AXIS));  // Aseguramos que el BoxLayout se aplique al clickerPanel
        
@@ -129,8 +129,8 @@ public class VentanaJuego extends JFrame {
       	JLabel labelCreditos = new JLabel();
       	
       	//Añadimos la barra y el Label al panel
-      	panelBarra.add(labelCreditos);
-      	panelBarra.add(barraCreditos);
+      	panelBarra.add(labelCreditos , BorderLayout.NORTH);
+      	panelBarra.add(barraCreditos, BorderLayout.NORTH);
       	panelBarra.setBackground(Color.LIGHT_GRAY);
       	clickerPanel.add(panelBarra, BorderLayout.CENTER);
         
@@ -161,7 +161,7 @@ public class VentanaJuego extends JFrame {
                 //Actualizacion mensaje:
                 int seleccion;
                 if (puntos % 10 == 0) {
-                	seleccion = randomizador.nextInt(0, 20);        	
+                	seleccion = randomizador.nextInt(1, 20);        	
                 	labelMensajes.setText(mensajes.get(seleccion));
                 }
             }
@@ -170,18 +170,9 @@ public class VentanaJuego extends JFrame {
    
         //SCROLL de los Materiales
         JScrollMateriales jScrollMateriales = new JScrollMateriales(this);
-
 		jScrollMateriales.setVisible(true);
-		
         panelPrincipal.add(jScrollMateriales,BorderLayout.EAST);
-        
-        
-        
-        
-        
-        
-        //
-             
+         
 
         //JMENU (ajustes)
         JMenuBar menuBar = new JMenuBar();
@@ -306,19 +297,24 @@ public class VentanaJuego extends JFrame {
         jTabbPrincipal.addTab("Ventana Principal", panelPrincipal);
         add(jTabbPrincipal);
         
-        //Pestaña estadisticas (Tabla): 
-        JPanel panelEstadis = new JPanel();
-        
+        //Pestaña estadisticas (Tabla):
+        JPanel panelEstadis = new JPanel(new BorderLayout());
         jTabbPrincipal.addTab("Estadísticas", panelEstadis);
-        add(jTabbEstadis);       
+        add(jTabbPrincipal);
+
+        // Tabla de estadísticas
+        JTable tablaEstadis = new JTable(new ModeloTablaEstadis(listaMejoras));
+        tablaEstadis.setDefaultRenderer(Object.class, new RendererTablaEstadis()); 
+        JScrollPane jScrollTablaEstadis = new JScrollPane(tablaEstadis);
+
+        // Añadir componentes al panel
+        panelEstadis.add(jScrollTablaEstadis, BorderLayout.CENTER);
         
         
         //PARTE DE HILOS
         
         
     }
-    
-    
     
     	//Método encargado de leer el csv de mensajes
     	public void cargarMensajesCSV() {
