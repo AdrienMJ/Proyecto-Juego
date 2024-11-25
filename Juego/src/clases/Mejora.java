@@ -38,7 +38,7 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 		this.multiplicador = multiplicador; // El incremento de precio
 		this.bonificador = 0;
 		this.precio = precioInicial;
-		this.ganancia = gananciaInicial;
+		this.ganancia = 0;
 		
 	}
 
