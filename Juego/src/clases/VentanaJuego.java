@@ -15,6 +15,8 @@ import java.util.Random;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -62,6 +64,10 @@ public class VentanaJuego extends JFrame {
     //LISTA DE LAS MEJORAS
     public ArrayList<Mejora> listaMejoras;
     
+    //HILOS
+    public Thread hiloActualizarPuntos;
+    public ThreadActualizadorPuntos actualizarPuntos;
+    
     //PESTAÑA DE ESTADISTICAS:
     public JTabbedPane jTabbPrincipal;
     public JTabbedPane jTabbEstadis;
@@ -78,6 +84,10 @@ public class VentanaJuego extends JFrame {
         //Lista de Mejoras
         listaMejoras = new ArrayList<Mejora>();
         
+        //Hilo creado
+        actualizarPuntos = new ThreadActualizadorPuntos(this);
+        hiloActualizarPuntos = new Thread(actualizarPuntos);
+        hiloActualizarPuntos.start();
         
         
         //Panel PRINCIPAL:
@@ -282,6 +292,10 @@ public class VentanaJuego extends JFrame {
 			public void windowClosing(WindowEvent e) {
 				int seleccion = JOptionPane.showConfirmDialog(VentanaJuego.this, "¿Quiere salir?", "Salir", JOptionPane.YES_NO_OPTION);
 				if (seleccion == JOptionPane.YES_OPTION) {
+					
+					//PARTE DE HILOS
+					actualizarPuntos.detener();// Detén el hilo 
+	                
 					System.exit(0);
 				}
 			}
@@ -311,7 +325,6 @@ public class VentanaJuego extends JFrame {
         panelEstadis.add(jScrollTablaEstadis, BorderLayout.CENTER);
         
         
-        //PARTE DE HILOS
         
         
     }
