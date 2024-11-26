@@ -2,6 +2,7 @@ package clases;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -33,9 +34,11 @@ public class VentanaLogin extends JFrame {
 		setLocationRelativeTo(null);
 		
 		//Componentes
-		JLabel labelBienvenida = new JLabel("  Hola! Introduce tu usuario y contraseña porfavor! \n O registrate si aún no lo has hecho!");
-		labelUsuario = new JLabel("  Usuario");
-		labelContraseña = new JLabel("  Contraseña");
+		JLabel labelBienvenida = new JLabel("<html>Hola! Introduce tu usuario y contraseña porfavor! <br> O registrate si aún no lo has hecho!</html>");
+		labelUsuario = new JLabel("  Usuario:");
+		labelUsuario.setFont(new Font("Arial" , Font.BOLD ,  18));
+		labelContraseña = new JLabel("  Contraseña:");
+		labelContraseña.setFont(new Font("Arial" , Font.BOLD ,  18));
 		usuario = new JTextField();
 		contraseña = new JPasswordField();
 		inicioSesion = new JButton("Iniciar Sesion");

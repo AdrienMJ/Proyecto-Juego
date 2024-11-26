@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTablaEstadis extends AbstractTableModel  {
-	private String[] nombreColumnas = {"Matrial", "Cantidad"}; //NOMBRE de las COLUMNAS
+	private String[] nombreColumnas = {"MATERIAL", "CANTIDAD" , "PRODUCCIÓN"}; //NOMBRE de las COLUMNAS
 	private List<Mejora> mejoras;
 	
 	//el nombre del metodo == nombre de la clase
@@ -38,6 +38,7 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 		switch(columnIndex) {
 		case 0: return m.getNombre();
 		case 1: return m.getNumero();
+		case 2: return m.getGanacia();
 		default: return null;
 		}
 		
@@ -48,7 +49,7 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		return columnIndex == 1;  
+		return columnIndex == 2;  
 	}
 
 	
@@ -58,6 +59,7 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 		switch (columnIndex) {
 		case 0: return String.class;
 		case 1: return int.class;
+		case 2: return double.class;
 		default: return null;
 		}
 	}

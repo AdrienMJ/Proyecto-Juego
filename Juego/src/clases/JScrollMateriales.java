@@ -141,9 +141,21 @@ public class JScrollMateriales extends JScrollPane {
 //			panelContenedor.add(panelBoli);		
 //			
 //			//Libro de Matematicas (Se desbloquean los minijuegos)
-//			Mejora libroMate = new Mejora("Libro de Mate",5_000_000,1_000);
-//			PanelMejora panelLibroMate = new PanelMejora(libroMate);
-//			panelContenedor.add(panelLibroMate);		
+			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 300, 1.208);
+			ventana.listaMejoras.add(libroMate);
+			PanelMejora PanelLibroMate = new PanelMejora(libroMate);
+			panelContenedor.add(PanelLibroMate);
+			PanelLibroMate.botonCompra.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					ventana.puntos = (int) libroMate.comprarMejora(ventana.puntos); // Actualiza los puntos
+					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+					PanelLibroMate.actualizarPanel(libroMate);
+
+				}
+			});
 			
 			//Profesor particular
 					

@@ -3,6 +3,7 @@ package clases;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,7 +79,7 @@ public class VentanaJuego extends JFrame {
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setTitle("EstudianteClicker");
-        setSize(600, 400);
+        setSize(600, 480);
         setVisible(true);
         setLocationRelativeTo(null);
         
@@ -93,10 +94,14 @@ public class VentanaJuego extends JFrame {
         
         //Panel PRINCIPAL:
         JPanel panelPrincipal = new JPanel();
+        //panelPrincipal.setLayout(new FlowLayout());
         
         //Panel para el botón y el label de puntos
         JPanel clickerPanel = new JPanel();
         clickerPanel.setLayout(new BoxLayout(clickerPanel, BoxLayout.Y_AXIS));  // Aseguramos que el BoxLayout se aplique al clickerPanel
+        clickerPanel.setBackground(Color.BLUE);
+        
+        
        
         
         // JLabel para mostrar los puntos
@@ -113,8 +118,9 @@ public class VentanaJuego extends JFrame {
         estudianteClick.setIcon(new ImageIcon(getClass().getResource("/Imagenes/estuadinte2.png")));
         clickerPanel.add(estudianteClick);
 
-     
-        add(clickerPanel, BorderLayout.CENTER);
+        add(clickerPanel, BorderLayout.EAST);
+        
+        
         
         //Se llama al método para cargar los mensajes del csv
         cargarMensajesCSV();
@@ -178,6 +184,7 @@ public class VentanaJuego extends JFrame {
             }
         });
         
+      
    
         //SCROLL de los Materiales
         JScrollMateriales jScrollMateriales = new JScrollMateriales(this);
@@ -306,7 +313,7 @@ public class VentanaJuego extends JFrame {
         panelPrincipal.add(clickerPanel);
         panelPrincipal.add(panelBarra);
         panelPrincipal.add(jScrollMateriales);
-        panelPrincipal.setBackground(Color.LIGHT_GRAY);
+        
         
         jTabbPrincipal = new JTabbedPane();
         jTabbPrincipal.addTab("Ventana Principal", panelPrincipal);
@@ -327,7 +334,10 @@ public class VentanaJuego extends JFrame {
         
         
         
-        
+        //Boton de minijuego(Libro de Matemáticas)!!!!!!!!!!!!!!!!!!!
+        JButton botonMiniJuego = new JButton("JUEGA AQUÍ");
+        botonMiniJuego.setSize(new Dimension(50, 20));
+        clickerPanel.add(botonMiniJuego, BorderLayout.EAST);
     }
     
     	//Método encargado de leer el csv de mensajes
