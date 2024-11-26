@@ -60,11 +60,13 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 			precio = Math.round(precioInicial*(Math.pow(multiplicador, numero))); //Actualiza el precio
 			ganancia = gananciaInicial*numero*(1+bonificador);
 			
-			return puntosRestantes;
+			puntosRestantes = Math.round(puntosRestantes * 100.0) / 100.0;
+
+	        return puntosRestantes;
 			
 		} else { //Si no se puede comprar devuelve los puntos actuales
 
-			return puntos;
+			return Math.round(puntos * 100.0) / 100.0;
 		}
 		
 	 }
