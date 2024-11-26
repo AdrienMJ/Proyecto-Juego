@@ -54,6 +54,7 @@ public class VentanaJuego extends JFrame {
     public int creditos = 0;
     public double puntosBarra = 0;
     public int maxCreditos = 10; //Puntos iniciales de los creditos
+    public JLabel labelCreditos;
     
     //REFERENCIA AL JLABEL DE MENSAJES:
     public JLabel labelMensajes;
@@ -136,7 +137,7 @@ public class VentanaJuego extends JFrame {
       	barraCreditos = new JProgressBar(0, maxCreditos); //Los valores son de que valor MAX y min
       	barraCreditos.setStringPainted(true);//Queremos que se pinte el X% (SÍ/NO)
       	
-      	JLabel labelCreditos = new JLabel();
+      	labelCreditos = new JLabel();
       	
       	//Añadimos la barra y el Label al panel
       	panelBarra.add(labelCreditos , BorderLayout.NORTH);
@@ -157,7 +158,7 @@ public class VentanaJuego extends JFrame {
                 //Creditos:
                 barraCreditos.setValue((int)puntosBarra);// Actualiza la barra con el valor de puntosBarra
                 
-                if (puntosBarra == barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
+                if (puntosBarra >= barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
                 	puntosBarra = 0;
                 	maxCreditos *= 1.5;
                 	barraCreditos.setValue((int)puntosBarra);
