@@ -52,7 +52,7 @@ public class VentanaJuego extends JFrame {
     //BARRA Y CREDITOS
     public JProgressBar barraCreditos; //Barra de progreso de creditos
     public int creditos = 0;
-    public int puntosBarra = 0;
+    public double puntosBarra = 0;
     public int maxCreditos = 10; //Puntos iniciales de los creditos
     
     //REFERENCIA AL JLABEL DE MENSAJES:
@@ -155,12 +155,12 @@ public class VentanaJuego extends JFrame {
                 labelPuntos.setText("Conocimiento: " + puntos);
                 
                 //Creditos:
-                barraCreditos.setValue(puntosBarra);// Actualiza la barra con el valor de puntosBarra
+                barraCreditos.setValue((int)puntosBarra);// Actualiza la barra con el valor de puntosBarra
                 
                 if (puntosBarra == barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
                 	puntosBarra = 0;
                 	maxCreditos *= 1.5;
-                	barraCreditos.setValue(puntosBarra);
+                	barraCreditos.setValue((int)puntosBarra);
                 	barraCreditos.setMaximum(maxCreditos);;
                 	creditos++;
                 	labelCreditos.setText("Créditos: " + creditos);
