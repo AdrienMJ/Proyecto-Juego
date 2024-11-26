@@ -26,7 +26,7 @@ public class ThreadActualizadorPuntos implements Runnable {
 					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia();
 				}
 				ventana.puntos = ventana.puntos + ganaciasPuntos;
-				ventana.puntosBarra =  ventana.puntosBarra + ventana.puntos;
+				
 				
 				javax.swing.SwingUtilities.invokeLater(() -> {
                     ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos);
