@@ -342,7 +342,7 @@ public class VentanaJuego extends JFrame {
     
     	//Método encargado de leer el csv de mensajes
     	public void cargarMensajesCSV() {
-			try (Scanner scanner = new Scanner(new File("src/mensajes.csv"))) {
+			try (Scanner scanner = new Scanner(new File("src/ficheros/mensajes.csv"))) {
 				int contador = 0;
 				while (scanner.hasNextLine()) {
 					String linea = scanner.nextLine();
@@ -352,6 +352,7 @@ public class VentanaJuego extends JFrame {
 						} catch (Exception e) {
 							System.err.println("Error procesando los datos del fichero de mensajes.");
 						}
+						//"/Imagenes/estuadinte2.png"
 					}
 					contador++;
 				}
