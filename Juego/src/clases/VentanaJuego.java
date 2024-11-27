@@ -212,12 +212,12 @@ public class VentanaJuego extends JFrame {
 		});
         menuCheats.add(menuSumar100Puntos);
         
-        JMenuItem menuSumar1000Puntos = new JMenuItem("Sumar 1000 puntos (conocimiento)");
+        JMenuItem menuSumar1000Puntos = new JMenuItem("Sumar 1000000000 puntos (conocimiento)");
         menuSumar1000Puntos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				puntos = puntos + 1000;
+				puntos = puntos + 1000000000;
 				creditos = creditos + 100;
 				labelPuntos.setText("Conocimiento: " + puntos);
 				labelCreditos.setText("Créditos: " + creditos);
