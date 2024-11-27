@@ -61,7 +61,7 @@ public class VentanaJuego extends JFrame {
     public JLabel labelMensajes;
     
     //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR:
-    public List<String> mensajes;
+    public List<String> mensajes = new ArrayList<String>();
     
     //LISTA DE LAS MEJORAS
     public ArrayList<Mejora> listaMejoras;
@@ -131,9 +131,6 @@ public class VentanaJuego extends JFrame {
         mensaje.add(labelMensajes);
         add(mensaje, BorderLayout.NORTH);
         
-        //Se crea la lista que contendrá los mensajes
-        mensajes = new ArrayList<String>();
-        
         //CREDITOS:
         //Panel de la barra de progreso
       	JPanel panelBarra = new JPanel();
@@ -178,7 +175,7 @@ public class VentanaJuego extends JFrame {
                 //Actualizacion mensaje:
                 int seleccion;
                 if (puntos % 10 == 0) {
-                	seleccion = randomizador.nextInt(1, 20);        	
+                	seleccion = randomizador.nextInt(1, mensajes.size());        	
                 	labelMensajes.setText(mensajes.get(seleccion));
                 }
             }
@@ -215,12 +212,12 @@ public class VentanaJuego extends JFrame {
 		});
         menuCheats.add(menuSumar100Puntos);
         
-        JMenuItem menuSumar1000Puntos = new JMenuItem("Sumar 1000 puntos (conocimiento)");
+        JMenuItem menuSumar1000Puntos = new JMenuItem("Sumar 1000000000 puntos (conocimiento)");
         menuSumar1000Puntos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				puntos = puntos + 1000;
+				puntos = puntos + 1000000000;
 				creditos = creditos + 100;
 				labelPuntos.setText("Conocimiento: " + puntos);
 				labelCreditos.setText("Créditos: " + creditos);
@@ -356,6 +353,7 @@ public class VentanaJuego extends JFrame {
 						try {
 							mensajes.add(linea);
 						} catch (Exception e) {
+							e.printStackTrace();
 							System.err.println("Error procesando los datos del fichero de mensajes.");
 						}
 						//"/Imagenes/estuadinte2.png"
