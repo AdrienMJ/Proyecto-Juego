@@ -43,6 +43,7 @@ public class JScrollMateriales extends JScrollPane {
 			opcionCompraButtonGroup.add(botonx1);
 			opcionCompraButtonGroup.add(botonx10);
 			opcionCompraButtonGroup.add(botonx100);
+			botonx1.setSelected(true);
 			
 			
 			Dimension dimensionBoton = new Dimension(60,20);
@@ -68,10 +69,24 @@ public class JScrollMateriales extends JScrollPane {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
-					ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos); // Actualiza los puntos
-					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-					panelLapiz.actualizarPanel(lapiz);
+					if (botonx1.isSelected()) {
+						ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos); // Actualiza los puntos
+						ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+						panelLapiz.actualizarPanel(lapiz);
+					} else if (botonx10.isSelected() && ventana.puntos >= lapiz.getPrecioInicial()* Math.pow(lapiz.getMultiplicador(), lapiz.getNumero()+10)) {
+						for (int i = 0; i<10; i++) {
+							ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos);
+							ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+							panelLapiz.actualizarPanel(lapiz);
+						}
+					} else if(botonx100.isSelected() && ventana.puntos >= lapiz.getPrecioInicial()* Math.pow(lapiz.getMultiplicador(), lapiz.getNumero()+100))  {
+						for (int i = 0; i < 100; i++) {
+							ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos);
+							ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+							panelLapiz.actualizarPanel(lapiz);
+							
+						}
+					}
 
 				}
 			});
