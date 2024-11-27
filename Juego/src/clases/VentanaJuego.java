@@ -131,9 +131,6 @@ public class VentanaJuego extends JFrame {
         mensaje.add(labelMensajes);
         add(mensaje, BorderLayout.NORTH);
         
-        //Se crea la lista que contendrá los mensajes
-        //mensajes = new ArrayList<String>();
-        
         //CREDITOS:
         //Panel de la barra de progreso
       	JPanel panelBarra = new JPanel();
