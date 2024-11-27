@@ -217,6 +217,7 @@ public class JScrollMateriales extends JScrollPane {
 	
 	
 	public void panelDeCompra(VentanaJuego ventana, Mejora mejora) {
+		
 	}
 	
 	

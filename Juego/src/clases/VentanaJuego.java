@@ -113,7 +113,7 @@ public class VentanaJuego extends JFrame {
         
         // Botón Principal (Puntos de CONOCIMIENTO)
         JButton estudianteClick = new JButton();
-        estudianteClick.setPreferredSize(new Dimension(150, 250));
+        estudianteClick.setPreferredSize(new Dimension(200, 250));
         estudianteClick.setAlignmentX(CENTER_ALIGNMENT);
         estudianteClick.setIcon(new ImageIcon(getClass().getResource("/Imagenes/estuadinte2.png")));
         clickerPanel.add(estudianteClick);
