@@ -61,7 +61,7 @@ public class VentanaJuego extends JFrame {
     public JLabel labelMensajes;
     
     //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR:
-    public List<String> mensajes = new ArrayList<String>();
+    public List<String> mensajes;
     
     //LISTA DE LAS MEJORAS
     public ArrayList<Mejora> listaMejoras;
@@ -131,6 +131,9 @@ public class VentanaJuego extends JFrame {
         mensaje.add(labelMensajes);
         add(mensaje, BorderLayout.NORTH);
         
+        //Se crea la lista que contendrá los mensajes
+        mensajes = new ArrayList<String>();
+        
         //CREDITOS:
         //Panel de la barra de progreso
       	JPanel panelBarra = new JPanel();
@@ -175,7 +178,7 @@ public class VentanaJuego extends JFrame {
                 //Actualizacion mensaje:
                 int seleccion;
                 if (puntos % 10 == 0) {
-                	seleccion = randomizador.nextInt(1, mensajes.size());        	
+                	seleccion = randomizador.nextInt(1, 20);        	
                 	labelMensajes.setText(mensajes.get(seleccion));
                 }
             }
@@ -316,12 +319,16 @@ public class VentanaJuego extends JFrame {
         jTabbPrincipal.addTab("Ventana Principal", panelPrincipal);
         add(jTabbPrincipal);
         
-        //Pestaña estadisticas (Libro de Matemáticas):
+      //Pestaña estadisticas (Libro de Matemáticas):
         JPanel panelMinijuego = new JPanel(new BorderLayout());
         jTabbPrincipal.addTab("Mini Juego", panelMinijuego);
         add(jTabbPrincipal);
         
-       
+        //Boton de minijuego(Libro de Matemáticas)!!!!!!!!!!!!!!!!!!!
+        JButton botonMiniJuego = new JButton("JUEGA AQUÍ");
+        botonMiniJuego.setSize(new Dimension(50, 20));
+        panelMinijuego.add(botonMiniJuego, BorderLayout.EAST);
+        
         //Pestaña estadisticas (Tabla):
         JPanel panelEstadis = new JPanel(new BorderLayout());
         jTabbPrincipal.addTab("Estadísticas", panelEstadis);
@@ -353,7 +360,6 @@ public class VentanaJuego extends JFrame {
 						try {
 							mensajes.add(linea);
 						} catch (Exception e) {
-							e.printStackTrace();
 							System.err.println("Error procesando los datos del fichero de mensajes.");
 						}
 						//"/Imagenes/estuadinte2.png"
