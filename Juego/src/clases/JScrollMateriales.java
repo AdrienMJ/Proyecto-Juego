@@ -5,10 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 public class JScrollMateriales extends JScrollPane {
@@ -33,9 +35,15 @@ public class JScrollMateriales extends JScrollPane {
 			//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
 			panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
 			
-			JButton botonx1 = new JButton("x1");
-			JButton botonx10 = new JButton("x10");
-			JButton botonx100 = new JButton("x100");
+			JRadioButton botonx1 = new JRadioButton("x1");
+			JRadioButton botonx10 = new JRadioButton("x10");
+			JRadioButton botonx100 = new JRadioButton("x100");
+			
+			ButtonGroup opcionCompraButtonGroup = new ButtonGroup();
+			opcionCompraButtonGroup.add(botonx1);
+			opcionCompraButtonGroup.add(botonx10);
+			opcionCompraButtonGroup.add(botonx100);
+			
 			
 			Dimension dimensionBoton = new Dimension(60,20);
 			botonx1.setPreferredSize(dimensionBoton);
