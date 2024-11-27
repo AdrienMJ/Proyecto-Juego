@@ -19,6 +19,10 @@ public class JScrollMateriales extends JScrollPane {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public JRadioButton botonx1;
+	public JRadioButton botonx10;
+	public JRadioButton botonx100;
 
 	public JScrollMateriales(VentanaJuego ventana) {
 		
@@ -35,9 +39,9 @@ public class JScrollMateriales extends JScrollPane {
 			//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
 			panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
 			
-			JRadioButton botonx1 = new JRadioButton("x1");
-			JRadioButton botonx10 = new JRadioButton("x10");
-			JRadioButton botonx100 = new JRadioButton("x100");
+			botonx1 = new JRadioButton("x1");
+			botonx10 = new JRadioButton("x10");
+			botonx100 = new JRadioButton("x100");
 			
 			ButtonGroup opcionCompraButtonGroup = new ButtonGroup();
 			opcionCompraButtonGroup.add(botonx1);
@@ -212,7 +216,8 @@ public class JScrollMateriales extends JScrollPane {
 	
 	
 	
-	
+	public void panelDeCompra(VentanaJuego ventana, Mejora mejora) {
+	}
 	
 	
  
