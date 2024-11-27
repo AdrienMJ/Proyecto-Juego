@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -72,6 +73,7 @@ public class JScrollMateriales extends JScrollPane {
 			ventana.listaMejoras.add(cuaderno);
 			PanelMejora panelCuaderno = new PanelMejora(cuaderno);
 			panelContenedor.add(panelCuaderno);
+
 			panelCuaderno.botonCompra.addActionListener(new ActionListener() {
 				
 				@Override

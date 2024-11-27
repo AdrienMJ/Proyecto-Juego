@@ -2,10 +2,12 @@ package clases;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -49,7 +51,11 @@ public class PanelMejora extends JPanel {
 		this.setMinimumSize(new Dimension (100,40));
 		
 		
-		
+//		ImageIcon iconoLapiz = new ImageIcon(getClass().getResource("/Imagenes/lapiz.png"));
+//		Image imagenEscalada = iconoLapiz.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+//	    ImageIcon iconoLapizEscalado = new ImageIcon(imagenEscalada);
+//	    
+//	    botonCompra.setIcon(iconoLapizEscalado);
 		
 	}
 	/**
@@ -59,8 +65,50 @@ public class PanelMejora extends JPanel {
 	public void actualizarPanel(Mejora mejora) {
 		cantidadMejora.setText("Cantidad: " + mejora.getNumero()); // Actualiza la cantidad actual de la mejora
 		botonCompra.setText("Precio: "+ mejora.getPrecio()); // Actuliza el precio actual de la mejora
+		
+	    
+	    botonCompra.setIcon(elegirImagen(mejora)); //se elige la imagen del botón
 	}
 	
+	
+	/**
+	 * Elige la imagen de cada mejora
+	 * @param mejora junto con la que irá la imagen
+	 */
+	public ImageIcon elegirImagen(Mejora mejora) {
+		
+		ImageIcon icono = new ImageIcon(getClass().getResource("/Imagenes/lapiz.png")); //hacemos que el "defecto sea el lápiz, por ejemplo"
+		Image imagenTamanyoAdecuado;
+		
+		if (mejora.getNumero() >= 1) { //la imagen solo saldrá a partir de la primera compra
+			if (mejora.getNombre().equals("Lapiz")) {
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH); //hacemos esto para que el png no sea demasiado grande
+				icono = new ImageIcon(imagenTamanyoAdecuado);
+			} else if (mejora.getNombre().equals("Cuaderno")) {
+				icono = new ImageIcon(getClass().getResource("/Imagenes/cuaderno.png"));
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				icono = new ImageIcon(imagenTamanyoAdecuado);
+			} else if (mejora.getNombre().equals("Borragoma")) {
+				icono = new ImageIcon(getClass().getResource("/Imagenes/borragoma.png"));
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				icono = new ImageIcon(imagenTamanyoAdecuado);
+			} else if (mejora.getNombre().equals("Saca-puntas")) {
+				icono = new ImageIcon(getClass().getResource("/Imagenes/sacapuntas.png"));
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				icono = new ImageIcon(imagenTamanyoAdecuado);
+			} else if (mejora.getNombre().equals("Mesa")) {
+				icono = new ImageIcon(getClass().getResource("/Imagenes/mesa.png"));
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				icono = new ImageIcon(imagenTamanyoAdecuado);
+			} else if (mejora.getNombre().equals("Libro de Matemáticas")) {
+				icono = new ImageIcon(getClass().getResource("/Imagenes/libroMates.png"));
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				icono = new ImageIcon(imagenTamanyoAdecuado);
+			}
+			return icono;
+			}
+		return null; //este caso se supone que nunca se dará, pero ha de estar cubierto
+	}
 	
 	
 //	public static void main(String[] args) {
