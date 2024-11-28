@@ -45,7 +45,7 @@ public class VentanaJuego extends JFrame {
     static Random randomizador = new Random();
     
     //PUNTOS DE CONOCIMIENTO
-    public  double puntos = 0;  // Contador de puntos
+    public  float puntos = 0;  // Contador de puntos
     
     //LABEL DE PUNTOS
     public JLabel labelPuntos;
@@ -92,7 +92,7 @@ public class VentanaJuego extends JFrame {
         //Lista de Mejoras
         listaMejoras = new ArrayList<Mejora>();
         
-        //Hilo creado
+        //Hilo  de puntos creado
         actualizarPuntos = new ThreadActualizadorPuntos(this);
         hiloActualizarPuntos = new Thread(actualizarPuntos);
         hiloActualizarPuntos.start();
@@ -390,12 +390,7 @@ public class VentanaJuego extends JFrame {
 	
     	}
     	
-    	//Método para ir actualizando los puntos según la ListaMejoras
-    	public void actualizarPuntos() {
-    		for (Mejora mejora : listaMejoras) {
-    				puntos = puntos	+ mejora.getGanacia();
-    		}
-    	}
+    	
     
     
     

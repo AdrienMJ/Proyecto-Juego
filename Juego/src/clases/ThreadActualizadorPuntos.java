@@ -25,7 +25,8 @@ public class ThreadActualizadorPuntos implements Runnable {
 				for (Mejora mejora: ventana.listaMejoras) {
 					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia();
 				}
-				ventana.puntos = ventana.puntos + ganaciasPuntos;
+				float puntosRedondeado = (float) (ventana.puntos + ganaciasPuntos);
+				ventana.puntos = Math.round(puntosRedondeado*100)/100f;
 				
 				
 				javax.swing.SwingUtilities.invokeLater(() -> {
