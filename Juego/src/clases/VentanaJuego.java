@@ -74,6 +74,12 @@ public class VentanaJuego extends JFrame {
     public JTabbedPane jTabbPrincipal;
     public JTabbedPane jTabbEstadis;
     
+    //PESTAÑA ESTADISTICAS:
+    
+    
+    //PESTAÑA TIENDA:
+    JLabel labelCreditosTienda = new JLabel(); //Label de la tienda
+    
     
     public VentanaJuego() {
 
@@ -148,8 +154,14 @@ public class VentanaJuego extends JFrame {
       	panelBarra.setBackground(Color.LIGHT_GRAY);
       	clickerPanel.add(panelBarra, BorderLayout.CENTER);
         
+      	
+      	 
+         
+      	
+      	
       	//Acción del botón para incrementar los PUNTOS y los CREDITOS, y para cambiar el mensaje motivacional
       	labelCreditos.setText("Créditos: " + creditos);
+      	labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos)); //Se hace un formato String para poder aplicar correctamente el formato
       	estudianteClick.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -160,6 +172,9 @@ public class VentanaJuego extends JFrame {
                 
                 //Creditos:
                 barraCreditos.setValue((int)puntosBarra);// Actualiza la barra con el valor de puntosBarra
+                
+                //Creditos de la pestaña tienda
+                labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos)); //Se hace un formato String para poder aplicar correctamente el formato
                 
                 if (puntosBarra >= barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
                 	puntosBarra = 0;
@@ -315,10 +330,21 @@ public class VentanaJuego extends JFrame {
         jTabbPrincipal.addTab("Ventana Principal", panelPrincipal);
         add(jTabbPrincipal);
         
-        //Pestaña Tienda (Libro de Matemáticas):
+        //Pestaña Tienda (Tabla):
         JPanel panelTienda = new JPanel();
         jTabbPrincipal.addTab("Tienda", panelTienda);
+        panelTienda.setLayout(new BoxLayout(panelTienda, BoxLayout.Y_AXIS));
+        
+       
+        panelTienda.add(labelCreditosTienda);
         add(jTabbPrincipal);
+        
+        //Tabla de tienda:
+//        JTable tablaTienda = new JTable(new ModeloTablaTienda(/*lista*/));
+//        tablaTienda.setDefaultRenderer(Object.class, new RendererTablaEstadis()); 
+//        JScrollPane jScrollTablaEstadis = new JScrollPane(tablaTienda);
+        
+        
         
         
         
@@ -330,9 +356,11 @@ public class VentanaJuego extends JFrame {
        
         
         //Pestaña estadisticas (Tabla):
+        labelCreditosTienda.setFont(new Font("Arial", Font.BOLD, 20));
         JPanel panelEstadis = new JPanel(new BorderLayout());
         jTabbPrincipal.addTab("Estadísticas", panelEstadis);
         add(jTabbPrincipal);
+        
 
         // Tabla de estadísticas
         JTable tablaEstadis = new JTable(new ModeloTablaEstadis(listaMejoras));
