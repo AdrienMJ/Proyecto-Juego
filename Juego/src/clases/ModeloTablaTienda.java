@@ -1,22 +1,28 @@
 package clases;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
-public class ModeloTablaEstadis extends AbstractTableModel  {
-	private String[] nombreColumnas = {"MATERIAL", "CANTIDAD" , "PRODUCCIÓN"}; //NOMBRE de las COLUMNAS
-	private List<Mejora> mejoras;
+public class ModeloTablaTienda extends AbstractTableModel {
+
+    private String[] nombreColumnas = { "NOMBRE DEL OBJETO", "DESCRIPCIÓN", "COSTE", "BOTÓN DE COMPRA" }; // Nombre de las columnas
+    
+
+
 	
-	
-	public ModeloTablaEstadis(List<Mejora> mejoras) {
-		this.mejoras = mejoras;
+	public ModeloTablaTienda(ArrayList<Objetos> objetos) {
+		this.objetos = objetos;
 	}
+	
+	private ArrayList<Objetos> objetos;
 
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return mejoras.size();
+		return objetos.size();
 	}
 
 	@Override
@@ -34,11 +40,12 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 	//*CAMBIAR DEPENDIENDO DE LOS VALORES DEL CONSTRUCTOR DE LA VARIABLE*
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Mejora m = mejoras.get(rowIndex); //personas es la lista de coches que hay.
+		Objetos o = objetos.get(rowIndex); //personas es la lista de coches que hay.
 		switch(columnIndex) {
-		case 0: return m.getNombre();
-		case 1: return m.getNumero();
-		case 2: return m.getGanacia();
+		case 0: return o.getNombreObjeto();
+		case 1: return o.getDescrip();
+		case 2: return o.getCosteCreditos();
+		case 3: return o.getBotonObjeto();
 		default: return null;
 		}
 		
@@ -49,7 +56,7 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		return columnIndex == 2;  
+		return columnIndex == 3;  
 	}
 
 	
@@ -58,8 +65,9 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 		// TODO Auto-generated method stub
 		switch (columnIndex) {
 		case 0: return String.class;
-		case 1: return int.class;
-		case 2: return double.class;
+		case 1: return String.class;
+		case 2: return int.class;
+		case 3: return JButton.class;
 		default: return null;
 		}
 	}

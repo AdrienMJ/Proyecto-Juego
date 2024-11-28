@@ -79,7 +79,7 @@ public class VentanaJuego extends JFrame {
     
     //PESTAÑA TIENDA:
     JLabel labelCreditosTienda = new JLabel(); //Label de la tienda
-    
+    public ArrayList<Objetos> listaObjetos;
     
     public VentanaJuego() {
 
@@ -334,17 +334,14 @@ public class VentanaJuego extends JFrame {
         JPanel panelTienda = new JPanel();
         jTabbPrincipal.addTab("Tienda", panelTienda);
         panelTienda.setLayout(new BoxLayout(panelTienda, BoxLayout.Y_AXIS));
-        
-       
         panelTienda.add(labelCreditosTienda);
         add(jTabbPrincipal);
         
         //Tabla de tienda:
-//        JTable tablaTienda = new JTable(new ModeloTablaTienda(/*lista*/));
-//        tablaTienda.setDefaultRenderer(Object.class, new RendererTablaEstadis()); 
-//        JScrollPane jScrollTablaEstadis = new JScrollPane(tablaTienda);
-        
-        
+//        JTable tablaTienda = new JTable(new ModeloTablaTienda(listaObjetos));
+//        tablaTienda.setDefaultRenderer(Object.class, new RendererTablaTienda()); 
+//        JScrollPane jScrollTablaTienda = new JScrollPane(tablaTienda);
+//        panelTienda.add(jScrollTablaTienda);
         
         
         
