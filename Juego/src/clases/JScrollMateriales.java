@@ -86,6 +86,33 @@ public class JScrollMateriales extends JScrollPane {
 			Mejora mesa = new Mejora("Mesa", 12_000, 47, 1.158);
 			ventana.listaMejoras.add(mesa);
 			crearPanelMejora(ventana, mesa);
+		
+			//Libro de Matematicas (Se desbloquean los minijuegos)
+			Mejora libroMate = new Mejora("Libro de Mate", 130_000, 260, 1.6);
+			ventana.listaMejoras.add(libroMate);
+			crearPanelMejora(ventana, libroMate);
+			
+			//Profesor particular
+					
+			//Proyectos escolares
+					
+			//Ordenador
+					
+			//Cerebro
+					
+			//IQ
+					
+			//ChatGPT
+					
+			//Ganas
+					
+			//Atención
+					
+			//Albert Einstein
+					
+			//Ordenador Cuántico
+			
+			//Rick Sanchez
 			
 //			PanelMejora panelLapiz = new PanelMejora(lapiz); // Se crea un panel personalizado para cada mejora
 //			panelContenedor.add(panelLapiz); // Se añade el panel al panel que contendrá todas las mejoras
@@ -116,48 +143,6 @@ public class JScrollMateriales extends JScrollPane {
 //
 //				}
 //			});
-//			
-	
-	
-//			
-//			//Libro de Matematicas (Se desbloquean los minijuegos)
-//			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 300, 1.208);
-//			ventana.listaMejoras.add(libroMate);
-//			PanelMejora PanelLibroMate = new PanelMejora(libroMate);
-//			panelContenedor.add(PanelLibroMate);
-//			PanelLibroMate.botonCompra.addActionListener(new ActionListener() {
-//				
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					
-//					ventana.puntos = (int) libroMate.comprarMejora(ventana.puntos); // Actualiza los puntos
-//					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-//					PanelLibroMate.actualizarPanel(libroMate);
-//
-//				}
-//			});
-			
-			//Profesor particular
-					
-			//Proyectos escolares
-					
-			//Ordenador
-					
-			//Cerebro
-					
-			//IQ
-					
-			//ChatGPT
-					
-			//Ganas
-					
-			//Atención
-					
-			//Albert Einstein
-					
-			//Ordenador Cuántico
-			
-			//Rick Sanchez
 			
 			
 			
