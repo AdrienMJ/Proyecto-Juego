@@ -23,6 +23,7 @@ public class JScrollMateriales extends JScrollPane {
 	public JRadioButton botonx1;
 	public JRadioButton botonx10;
 	public JRadioButton botonx100;
+	public  JPanel panelContenedor;
 
 	public JScrollMateriales(VentanaJuego ventana) {
 		
@@ -31,11 +32,11 @@ public class JScrollMateriales extends JScrollPane {
 	      //Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
 		
 			//Panel principal de los Multiplicadores
-			JPanel panelContenedor = new JPanel();
+			panelContenedor = new JPanel();
 			panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
 			panelContenedor.setSize(new Dimension(400, 1000));
-			JPanel panelBotonesCompra = new JPanel();
 			
+			JPanel panelBotonesCompra = new JPanel();
 			//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
 			panelBotonesCompra.setLayout(new BoxLayout(panelBotonesCompra,BoxLayout.X_AXIS));
 			
@@ -62,129 +63,88 @@ public class JScrollMateriales extends JScrollPane {
 				
 			panelContenedor.add(panelBotonesCompra);
 			
+			
+			
 			//TODO - Hay que seguir construyendo las mejoras como se ha construido el lapiz
 				
 			//lapiz
 			Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15); //Se crea la mejora con el contructor
-			ventana.listaMejoras.add(lapiz); // Se añade la mejora a una lista para su posterior uso
-			PanelMejora panelLapiz = new PanelMejora(lapiz); // Se crea un panel personalizado para cada mejora
-			panelContenedor.add(panelLapiz); // Se añade el panel al panel que contendrá todas las mejoras
-			panelLapiz.botonCompra.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (botonx1.isSelected()) {
-						ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos); // Actualiza los puntos
-						ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-						panelLapiz.actualizarPanel(lapiz);
-					} else if (botonx10.isSelected() && ventana.puntos >= lapiz.getPrecioInicial()* Math.pow(lapiz.getMultiplicador(), lapiz.getNumero()+10)) {
-						for (int i = 0; i<10; i++) {
-							ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos);
-							ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-							panelLapiz.actualizarPanel(lapiz);
-						}
-					} else if(botonx100.isSelected() && ventana.puntos >= lapiz.getPrecioInicial()* Math.pow(lapiz.getMultiplicador(), lapiz.getNumero()+100))  {
-						for (int i = 0; i < 100; i++) {
-							ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos);
-							ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-							panelLapiz.actualizarPanel(lapiz);
-							
-						}
-					}
-
-				}
-			});
-			
+			ventana.listaMejoras.add(lapiz); // Se añade la mejora a una lista para su posterior uso			
+			crearPanelMejora(ventana, lapiz);
+						
 			//Cuaderno
 			Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
-			ventana.listaMejoras.add(cuaderno);
-			PanelMejora panelCuaderno = new PanelMejora(cuaderno);
-			panelContenedor.add(panelCuaderno);
-
-			panelCuaderno.botonCompra.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					ventana.puntos = (int) cuaderno.comprarMejora(ventana.puntos); // Actualiza los puntos
-					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-					panelCuaderno.actualizarPanel(cuaderno);
-
-				}
-			});
-
-			//Borragoma
-			Mejora borragoma = new Mejora("Borragoma",1_100, 8, 1.154);
-			ventana.listaMejoras.add(borragoma);
-			PanelMejora panelBorragoma = new PanelMejora(borragoma);
-			panelContenedor.add(panelBorragoma);
-			panelBorragoma.botonCompra.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					ventana.puntos = (int) borragoma.comprarMejora(ventana.puntos); // Actualiza los puntos
-					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-					panelBorragoma.actualizarPanel(borragoma);
-
-				}
-			});
+			ventana.listaMejoras.add(cuaderno);			
+			crearPanelMejora(ventana, cuaderno);
 			
 			//Saca puntas
-			Mejora sacaPuntas = new Mejora("Saca-puntas", 12_000, 47, 1.156);
+			Mejora sacaPuntas = new Mejora("Saca-puntas", 1_100, 8, 1.156);
 			ventana.listaMejoras.add(sacaPuntas);
-			PanelMejora panelSacaPuntas = new PanelMejora(sacaPuntas);
-			panelContenedor.add(panelSacaPuntas);
-			panelSacaPuntas.botonCompra.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					ventana.puntos = (int) sacaPuntas.comprarMejora(ventana.puntos); // Actualiza los puntos
-					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-					panelSacaPuntas.actualizarPanel(sacaPuntas);
-
-				}
-			});
-					
+			crearPanelMejora(ventana, sacaPuntas);
+			
 			//Mesa
-			Mejora mesa = new Mejora("Mesa", 130_000, 260, 1.158);
+			Mejora mesa = new Mejora("Mesa", 12_000, 47, 1.158);
 			ventana.listaMejoras.add(mesa);
-			PanelMejora panelMesa = new PanelMejora(mesa);
-			panelContenedor.add(panelMesa);
-			panelMesa.botonCompra.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					ventana.puntos = (int) mesa.comprarMejora(ventana.puntos); // Actualiza los puntos
-					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-					panelMesa.actualizarPanel(mesa);
+			crearPanelMejora(ventana, mesa);
+			
+//			//Boligrafo
+			Mejora boligrafo = new Mejora("Boligrafo", 130_000, 260, 1.6);
+			PanelMejora panelBoli = new PanelMejora(boligrafo);
+			
+//			PanelMejora panelLapiz = new PanelMejora(lapiz); // Se crea un panel personalizado para cada mejora
+//			panelContenedor.add(panelLapiz); // Se añade el panel al panel que contendrá todas las mejoras
+//			panelLapiz.botonCompra.addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					if (botonx1.isSelected()) {
+//						ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos); // Actualiza los puntos
+//						ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+//						panelLapiz.actualizarPanel(lapiz);
+//						
+//					} else if (botonx10.isSelected() && ventana.puntos >= lapiz.getPrecioInicial()* Math.pow(lapiz.getMultiplicador(), lapiz.getNumero()+10)) {
+//						for (int i = 0; i<10; i++) {
+//							ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos);
+//							ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+//							panelLapiz.actualizarPanel(lapiz);
+//						}
+//						
+//					} else if(botonx100.isSelected() && ventana.puntos >= lapiz.getPrecioInicial()* Math.pow(lapiz.getMultiplicador(), lapiz.getNumero()+100))  {
+//						for (int i = 0; i < 100; i++) {
+//							ventana.puntos = (int) lapiz.comprarMejora(ventana.puntos);
+//							ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+//							panelLapiz.actualizarPanel(lapiz);
+//							
+//						}
+//					}
+//
+//				}
+//			});
+//			
+	
 
-				}
-			});
-//					
+////					
 //			//Boligrafo
 //			Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
 //			PanelMejora panelBoli = new PanelMejora(boligrafo);
 //			panelContenedor.add(panelBoli);		
 //			
 //			//Libro de Matematicas (Se desbloquean los minijuegos)
-			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 300, 1.208);
-			ventana.listaMejoras.add(libroMate);
-			PanelMejora PanelLibroMate = new PanelMejora(libroMate);
-			panelContenedor.add(PanelLibroMate);
-			PanelLibroMate.botonCompra.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					ventana.puntos = (int) libroMate.comprarMejora(ventana.puntos); // Actualiza los puntos
-					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
-					PanelLibroMate.actualizarPanel(libroMate);
-
-				}
-			});
+//			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 300, 1.208);
+//			ventana.listaMejoras.add(libroMate);
+//			PanelMejora PanelLibroMate = new PanelMejora(libroMate);
+//			panelContenedor.add(PanelLibroMate);
+//			PanelLibroMate.botonCompra.addActionListener(new ActionListener() {
+//				
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					
+//					ventana.puntos = (int) libroMate.comprarMejora(ventana.puntos); // Actualiza los puntos
+//					ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza el label de los puntos
+//					PanelLibroMate.actualizarPanel(libroMate);
+//
+//				}
+//			});
 			
 			//Profesor particular
 					
@@ -209,6 +169,7 @@ public class JScrollMateriales extends JScrollPane {
 			//Rick Sanchez
 			
 			
+			
 			panelContenedor.setVisible(true);
 			setViewportView(panelContenedor);
 
@@ -216,9 +177,38 @@ public class JScrollMateriales extends JScrollPane {
 	
 	
 	
-	public void panelDeCompra(VentanaJuego ventana, Mejora mejora) {
-		
+	public void crearPanelMejora(VentanaJuego ventana, Mejora mejora) {
+	    // Crear el panel
+	    PanelMejora panelMejora = new PanelMejora(mejora);
+	    panelContenedor.add(panelMejora); // Añadir el panel al contenedor
+
+	    // Configurar el ActionListener
+	    panelMejora.botonCompra.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            if (botonx1.isSelected()) {
+	                ventana.puntos = (int) mejora.comprarMejora(ventana.puntos); // Actualiza puntos
+	                ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza label
+	                panelMejora.actualizarPanel(mejora);
+
+	            } else if (botonx10.isSelected() && ventana.puntos >= mejora.getPrecioInicial() * Math.pow(mejora.getMultiplicador(), mejora.getNumero() + 10)) {
+	                for (int i = 0; i < 10; i++) {
+	                    ventana.puntos = (int) mejora.comprarMejora(ventana.puntos);
+	                    ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza label
+	                    panelMejora.actualizarPanel(mejora);
+	                }
+
+	            } else if (botonx100.isSelected() && ventana.puntos >= mejora.getPrecioInicial() * Math.pow(mejora.getMultiplicador(), mejora.getNumero() + 100)) {
+	                for (int i = 0; i < 100; i++) {
+	                    ventana.puntos = (int) mejora.comprarMejora(ventana.puntos);
+	                    ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza label
+	                    panelMejora.actualizarPanel(mejora);
+	                }
+	            }
+	        }
+	    });
 	}
+	
 	
 	
  
