@@ -87,10 +87,6 @@ public class JScrollMateriales extends JScrollPane {
 			ventana.listaMejoras.add(mesa);
 			crearPanelMejora(ventana, mesa);
 			
-//			//Boligrafo
-			Mejora boligrafo = new Mejora("Boligrafo", 130_000, 260, 1.6);
-			PanelMejora panelBoli = new PanelMejora(boligrafo);
-			
 //			PanelMejora panelLapiz = new PanelMejora(lapiz); // Se crea un panel personalizado para cada mejora
 //			panelContenedor.add(panelLapiz); // Se añade el panel al panel que contendrá todas las mejoras
 //			panelLapiz.botonCompra.addActionListener(new ActionListener() {
@@ -122,12 +118,7 @@ public class JScrollMateriales extends JScrollPane {
 //			});
 //			
 	
-
-////					
-//			//Boligrafo
-//			Mejora boligrafo = new Mejora("boligrafo",5_000_000,1_000);
-//			PanelMejora panelBoli = new PanelMejora(boligrafo);
-//			panelContenedor.add(panelBoli);		
+	
 //			
 //			//Libro de Matematicas (Se desbloquean los minijuegos)
 //			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 300, 1.208);
