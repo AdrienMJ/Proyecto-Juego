@@ -315,15 +315,19 @@ public class VentanaJuego extends JFrame {
         jTabbPrincipal.addTab("Ventana Principal", panelPrincipal);
         add(jTabbPrincipal);
         
-      //Pestaña estadisticas (Libro de Matemáticas):
-        JPanel panelMinijuego = new JPanel(new BorderLayout());
+        //Pestaña Tienda (Libro de Matemáticas):
+        JPanel panelTienda = new JPanel();
+        jTabbPrincipal.addTab("Tienda", panelTienda);
+        add(jTabbPrincipal);
+        
+        
+        
+        //Pestaña MiniJuego (Libro de Matemáticas):
+        JPanel panelMinijuego = new JPanel();
         jTabbPrincipal.addTab("Mini Juego", panelMinijuego);
         add(jTabbPrincipal);
         
-        //Boton de minijuego(Libro de Matemáticas)!!!!!!!!!!!!!!!!!!!
-        JButton botonMiniJuego = new JButton("JUEGA AQUÍ");
-        botonMiniJuego.setSize(new Dimension(50, 20));
-        panelMinijuego.add(botonMiniJuego, BorderLayout.EAST);
+       
         
         //Pestaña estadisticas (Tabla):
         JPanel panelEstadis = new JPanel(new BorderLayout());

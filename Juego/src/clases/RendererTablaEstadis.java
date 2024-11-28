@@ -2,6 +2,7 @@ package clases;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -25,8 +26,13 @@ public class RendererTablaEstadis extends DefaultTableCellRenderer {
 		
 		
 		//Fuente de toda la tabla
-			miCelda.setFont(new Font("Arial", Font.BOLD, 30));
+			miCelda.setFont(new Font("Arial", Font.BOLD, 22));
 			miCelda.setHorizontalAlignment(CENTER);
+		
+		//Anchura de la primera columna (MATERIAL)
+		if (table.getColumnName(0).equals("MATERIAL")) {
+		    table.getColumnModel().getColumn(0).setPreferredWidth(200); // Establecer el ancho preferido
+		}
 		
 		if (row%2 == 0) {
 			miCelda.setBackground(new Color(255,196,242));
