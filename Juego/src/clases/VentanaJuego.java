@@ -60,8 +60,8 @@ public class VentanaJuego extends JFrame {
     //REFERENCIA AL JLABEL DE MENSAJES:
     public JLabel labelMensajes;
     
-    //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR:
-    public List<String> mensajes;
+    //LISTA QUE CONTENDRÁ LOS MENSAJES A MOSTRAR: (YA INSTANCIADA)
+    public List<String> mensajes = new ArrayList<String>();
     
     //LISTA DE LAS MEJORAS
     public ArrayList<Mejora> listaMejoras;
@@ -131,9 +131,6 @@ public class VentanaJuego extends JFrame {
         mensaje.add(labelMensajes);
         add(mensaje, BorderLayout.NORTH);
         
-        //Se crea la lista que contendrá los mensajes
-        mensajes = new ArrayList<String>();
-        
         //CREDITOS:
         //Panel de la barra de progreso
       	JPanel panelBarra = new JPanel();
@@ -151,7 +148,7 @@ public class VentanaJuego extends JFrame {
       	panelBarra.setBackground(Color.LIGHT_GRAY);
       	clickerPanel.add(panelBarra, BorderLayout.CENTER);
         
-      	//Acción del botón para incrementar los PUNTOS y los CREDITOS
+      	//Acción del botón para incrementar los PUNTOS y los CREDITOS, y para cambiar el mensaje motivacional
       	labelCreditos.setText("Créditos: " + creditos);
       	estudianteClick.addActionListener(new ActionListener() {
             @Override
@@ -173,12 +170,11 @@ public class VentanaJuego extends JFrame {
                 	labelCreditos.setText("Créditos: " + creditos);
                 	
         		}
-                
-                //ESTO DA ERROR!!!!!!!!!!! ("Index "el que sea" out of bounds for length 0")
+             
                 //Actualizacion mensaje:
-                int seleccion;
+                int seleccion; //selección de línea del csv de mensajes.
                 if (puntos % 10 == 0) {
-                	seleccion = randomizador.nextInt(1, 20);        	
+                	seleccion = randomizador.nextInt(1, mensajes.size());        	
                 	labelMensajes.setText(mensajes.get(seleccion));
                 }
             }
@@ -342,12 +338,6 @@ public class VentanaJuego extends JFrame {
         // Añadir componentes al panel
         panelEstadis.add(jScrollTablaEstadis, BorderLayout.CENTER);
         
-        
-        
-        
-        
-    
-    
     }
     
     	//Método encargado de leer el csv de mensajes
@@ -362,7 +352,6 @@ public class VentanaJuego extends JFrame {
 						} catch (Exception e) {
 							System.err.println("Error procesando los datos del fichero de mensajes.");
 						}
-						//"/Imagenes/estuadinte2.png"
 					}
 					contador++;
 				}
