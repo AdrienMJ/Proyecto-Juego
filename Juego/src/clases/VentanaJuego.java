@@ -105,7 +105,7 @@ public class VentanaJuego extends JFrame {
         //Panel para el botón y el label de puntos
         JPanel clickerPanel = new JPanel();
         clickerPanel.setLayout(new BoxLayout(clickerPanel, BoxLayout.Y_AXIS));  // Aseguramos que el BoxLayout se aplique al clickerPanel
-        clickerPanel.setBackground(Color.BLUE);
+        clickerPanel.setBackground(Color.WHITE);
         
         
        
