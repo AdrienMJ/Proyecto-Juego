@@ -88,7 +88,7 @@ public class JScrollMateriales extends JScrollPane {
 			crearPanelMejora(ventana, mesa);
 		
 			//Libro de Matematicas (Se desbloquean los minijuegos)
-			Mejora libroMate = new Mejora("Libro de Mate", 130_000, 260, 1.6);
+			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.6);
 			ventana.listaMejoras.add(libroMate);
 			crearPanelMejora(ventana, libroMate);
 			
@@ -167,14 +167,14 @@ public class JScrollMateriales extends JScrollPane {
 	                ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza label
 	                panelMejora.actualizarPanel(mejora);
 
-	            } else if (botonx10.isSelected() && ventana.puntos >= mejora.getPrecioInicial() * Math.pow(mejora.getMultiplicador(), mejora.getNumero() + 10)) {
+	            } else if (botonx10.isSelected()) { //En principio compra 10 o hasta los que pueda
 	                for (int i = 0; i < 10; i++) {
 	                    ventana.puntos = (int) mejora.comprarMejora(ventana.puntos);
 	                    ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza label
 	                    panelMejora.actualizarPanel(mejora);
 	                }
 
-	            } else if (botonx100.isSelected() && ventana.puntos >= mejora.getPrecioInicial() * Math.pow(mejora.getMultiplicador(), mejora.getNumero() + 100)) {
+	            } else if (botonx100.isSelected()) { //En principio compra 100 o hasta los que pueda
 	                for (int i = 0; i < 100; i++) {
 	                    ventana.puntos = (int) mejora.comprarMejora(ventana.puntos);
 	                    ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos); // Actualiza label
