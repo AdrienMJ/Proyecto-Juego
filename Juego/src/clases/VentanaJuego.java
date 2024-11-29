@@ -338,10 +338,11 @@ public class VentanaJuego extends JFrame {
         add(jTabbPrincipal);
         
         //Tabla de tienda:
-//        JTable tablaTienda = new JTable(new ModeloTablaTienda(listaObjetos));
-//        tablaTienda.setDefaultRenderer(Object.class, new RendererTablaTienda()); 
-//        JScrollPane jScrollTablaTienda = new JScrollPane(tablaTienda);
-//        panelTienda.add(jScrollTablaTienda);
+        listaObjetos = new ArrayList<Objetos>();
+        JTable tablaTienda = new JTable(new ModeloTablaTienda(listaObjetos));
+        tablaTienda.setDefaultRenderer(Object.class, new RendererTablaTienda()); 
+        JScrollPane jScrollTablaTienda = new JScrollPane(tablaTienda);
+        panelTienda.add(jScrollTablaTienda);
         
         
         

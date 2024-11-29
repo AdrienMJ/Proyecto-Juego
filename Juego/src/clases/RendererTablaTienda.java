@@ -22,14 +22,11 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 			miCelda.setFont(new Font("Arial", Font.BOLD, 22));
 			miCelda.setHorizontalAlignment(CENTER);
 		
-		//Anchura de la primera columna (MATERIAL)
-		if (table.getColumnName(0).equals("NOMBRE DEL OBJETO")) {
-		    table.getColumnModel().getColumn(0).setPreferredWidth(200); // Establecer el ancho preferido
-		}
 		
 		if (row%2 == 0) {
 			miCelda.setBackground(new Color(255,196,242));
 		}
+		
 		
 		
 		

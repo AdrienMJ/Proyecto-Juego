@@ -33,8 +33,15 @@ public class Objetos  {
 
 
 
+	public ArrayList<Objetos> getListaObjetos() {
+		return listaObjetos;
+	}
+
+	public void setListaObjetos(ArrayList<Objetos> listaObjetos) {
+		this.listaObjetos = listaObjetos;
+	}
+
 	public Objetos(String nombreObjeto, String descrip, int costeCreditos, JButton botonObjeto) {
-		super();
 		this.nombreObjeto = nombreObjeto;
 		this.descrip = descrip;
 		this.costeCreditos = costeCreditos;
@@ -46,6 +53,7 @@ public class Objetos  {
     
     
     public Objetos() {
+    	//Super Boli:
     	JButton botonSuperBoli = new JButton("HOLA");
     	Objetos superBoli = new Objetos("Super Bolígrafo","AAA",123, botonSuperBoli);
     	listaObjetos.add(superBoli);

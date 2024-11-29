@@ -9,15 +9,15 @@ import javax.swing.table.AbstractTableModel;
 public class ModeloTablaTienda extends AbstractTableModel {
 
     private String[] nombreColumnas = { "NOMBRE DEL OBJETO", "DESCRIPCIÓN", "COSTE", "BOTÓN DE COMPRA" }; // Nombre de las columnas
-    
+    private ArrayList<Objetos> objetos;
 
 
 	
-	public ModeloTablaTienda(ArrayList<Objetos> objetos) {
+	public ModeloTablaTienda(ArrayList<Objetos>  objetos) {
 		this.objetos = objetos;
 	}
 	
-	private ArrayList<Objetos> objetos;
+	
 
 	@Override
 	public int getRowCount() {
