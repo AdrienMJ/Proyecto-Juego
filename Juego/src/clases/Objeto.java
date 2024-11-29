@@ -3,12 +3,13 @@ package clases;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 public class Objeto  {
 	private String nombreObjeto;
 	private String descrip;
 	private int costeCreditos;
-	private JButton botonObjeto;
+	private JRadioButton botonObjeto;
 	
 
     
@@ -26,7 +27,7 @@ public class Objeto  {
     }
 
    
-    public JButton getBotonObjeto() {
+    public JRadioButton getBotonObjeto() {
 		return botonObjeto;
 	}
 
@@ -34,7 +35,7 @@ public class Objeto  {
 
 
 
-	public Objeto(String nombreObjeto, String descrip, int costeCreditos, JButton botonObjeto) {
+	public Objeto(String nombreObjeto, String descrip, int costeCreditos, JRadioButton botonObjeto) {
 		this.nombreObjeto = nombreObjeto;
 		this.descrip = descrip;
 		this.costeCreditos = costeCreditos;

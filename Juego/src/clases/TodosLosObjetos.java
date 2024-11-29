@@ -1,14 +1,15 @@
 package clases;
 
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 public class TodosLosObjetos {
 	
 	public TodosLosObjetos(VentanaJuego vent){
 		
 		//SUPER BOLI:
-		JButton bSuperBoli = new JButton("COMPRAR");
-		vent.listaObjetos.add(new Objeto("Super Boligrafo","Por cada 15 Boligrafos, \n los libros de matematicas hacen 0.3 puntos extra.",2, bSuperBoli ));
+		JRadioButton bSuperBoli = new JRadioButton();
+		vent.listaObjetos.add(new Objeto("Super Boligrafo","<html>Por cada 15 Boligrafos,<br>los libros de matematicas <br>hacen 0.3 puntos extra. <html>",2, bSuperBoli ));
 		
 		//
 	}

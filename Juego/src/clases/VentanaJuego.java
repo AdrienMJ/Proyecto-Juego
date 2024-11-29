@@ -81,6 +81,8 @@ public class VentanaJuego extends JFrame {
     JLabel labelCreditosTienda = new JLabel(); //Label de la tienda
     public TodosLosObjetos todosLosObjetos;
     public ArrayList<Objeto> listaObjetos;
+    JButton botonComprar;
+    JButton botonDesechar;
     
     public VentanaJuego() {
 
@@ -343,8 +345,59 @@ public class VentanaJuego extends JFrame {
         todosLosObjetos = new TodosLosObjetos(this);
         JTable tablaTienda = new JTable(new ModeloTablaTienda(listaObjetos));
         tablaTienda.setDefaultRenderer(Object.class, new RendererTablaTienda()); 
-        JScrollPane jScrollTablaTienda = new JScrollPane(tablaTienda);
+        JScrollPane jScrollTablaTienda = new JScrollPane(tablaTienda); //Panel de los objetos que se pueden comprar
         panelTienda.add(jScrollTablaTienda);
+        
+        //Botones de la tienda(COMPRAR/DESECHAR):
+        botonComprar = new JButton("COMPRAR"); //Boton para comprar en la tienda
+        botonDesechar = new JButton("DESECHAR"); //Boton para desechar la compra
+        JPanel panelBotonesTienda = new JPanel();
+        panelBotonesTienda.setLayout(new FlowLayout());
+        panelBotonesTienda.add(botonComprar);
+        panelBotonesTienda.add(botonDesechar);
+        
+        //Listeners de los botones de la Tienda:
+        ActionListener listenerComprar = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (Objeto objeto : listaObjetos) {
+					if (creditos >= objeto.getCosteCreditos()) {
+						creditos -= objeto.getCosteCreditos();
+						
+						objeto.getBotonObjeto().setSelected(true);
+						
+						labelCreditos.setText("Creditos: " + creditos);
+						labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos));
+					}
+				}
+				
+			}
+		};
+		
+		ActionListener listenerDeschar = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for (Objeto objeto : listaObjetos) {
+					objeto.getBotonObjeto().setSelected(false);
+				}
+				
+				
+			}
+		};
+		
+		botonDesechar.addActionListener(listenerDeschar);
+		botonComprar.addActionListener(listenerComprar);
+		
+		//Exolicacion del panel de la Tienda
+		JPanel explicacion = new JPanel();
+		explicacion.setLayout(new BorderLayout());
+		JLabel funcionamientoTienda = new JLabel("<html>*Para comprar, debes clicar en el objeto que tu quieras, para después, darle al boton<br> de comprar. Para desechar la compra es el mismo proceso.<html>");
+		funcionamientoTienda.setFont(new Font("Arial", Font.ITALIC, 14));
+		explicacion.add(funcionamientoTienda, BorderLayout.SOUTH);
+		
+        panelTienda.add(panelBotonesTienda); //Panel de botones (COMPRAR/DESECHAR)
+        panelTienda.add(explicacion); //Explicacion del funcionamiento de la compra
         
         
         
