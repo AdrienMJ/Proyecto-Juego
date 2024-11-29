@@ -35,10 +35,12 @@ public class RendererTablaEstadis extends DefaultTableCellRenderer {
 		    table.getColumnModel().getColumn(0).setPreferredWidth(200); // Establecer el ancho preferido
 		}
 		
+		//Fondo de cada fila:
 		if (row%2 == 0) {
-			miCelda.setBackground(new Color(255,196,242));
+			miCelda.setBackground(new Color(196,255,252));
 		}
 		
+		//FORMATO de la columna "PRODUCCIÓN"
 		if (column == 2) {
 			
 			try {

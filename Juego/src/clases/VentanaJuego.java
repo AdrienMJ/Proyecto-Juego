@@ -79,7 +79,8 @@ public class VentanaJuego extends JFrame {
     
     //PESTAÑA TIENDA:
     JLabel labelCreditosTienda = new JLabel(); //Label de la tienda
-    public ArrayList<Objetos> listaObjetos;
+    public TodosLosObjetos todosLosObjetos;
+    public ArrayList<Objeto> listaObjetos;
     
     public VentanaJuego() {
 
@@ -338,7 +339,8 @@ public class VentanaJuego extends JFrame {
         add(jTabbPrincipal);
         
         //Tabla de tienda:
-        listaObjetos = new ArrayList<Objetos>();
+        listaObjetos = new ArrayList<Objeto>();
+        todosLosObjetos = new TodosLosObjetos(this);
         JTable tablaTienda = new JTable(new ModeloTablaTienda(listaObjetos));
         tablaTienda.setDefaultRenderer(Object.class, new RendererTablaTienda()); 
         JScrollPane jScrollTablaTienda = new JScrollPane(tablaTienda);
