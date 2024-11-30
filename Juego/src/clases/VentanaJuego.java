@@ -366,23 +366,34 @@ public class VentanaJuego extends JFrame {
         panelBotonesTienda.add(botonComprar);
         panelBotonesTienda.add(botonDesechar);
         
+        RendererTablaTienda a = new RendererTablaTienda();
         //Listeners de los botones de la Tienda:
         ActionListener listenerComprar = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 				for (Objeto objeto : listaObjetos) {
-					if (creditos >= objeto.getCosteCreditos()) {
-						creditos -= objeto.getCosteCreditos();
-						
-						objeto.getBotonObjeto().setSelected(true);
-						
-						labelCreditos.setText("Creditos: " + creditos);
-						labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos));
+					
+						if (creditos >= objeto.getCosteCreditos()) {
+							creditos -= objeto.getCosteCreditos();
+								
+							objeto.getBotonObjeto().setSelected(true);
+								
+							labelCreditos.setText("Creditos: " + creditos);
+							labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos));
+						} else {       
+							JOptionPane.showMessageDialog(null, "No tienes suficientes créditos para comprar este objeto.");
+						}
+						 
 					}
+					
+
 				}
 				
-			}
+			
 		};
 		
 		ActionListener listenerDeschar = new ActionListener() {
@@ -395,6 +406,7 @@ public class VentanaJuego extends JFrame {
 				
 			}
 		};
+		
 		
 		botonDesechar.addActionListener(listenerDeschar);
 		botonComprar.addActionListener(listenerComprar);

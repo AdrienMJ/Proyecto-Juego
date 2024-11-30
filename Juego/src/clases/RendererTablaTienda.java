@@ -1,5 +1,6 @@
 package clases;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -13,10 +14,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 
 public class RendererTablaTienda extends DefaultTableCellRenderer {
+	
+	
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		String valor = String.valueOf(value);
 		JLabel miCelda = new JLabel(valor);
+		
+		
 		
 		miCelda.setOpaque(true);
 		table.setRowHeight(40);
@@ -38,14 +43,20 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 			miCelda.setHorizontalAlignment(CENTER);
 			
 		} else if (column == 3) {
-            JRadioButton button = (JRadioButton) value;
+			
+			JRadioButton button = (JRadioButton) value;
             button.setHorizontalAlignment(CENTER); 
             
             if (row % 2 == 0) {
             	button.setBackground(new Color(255,196,242));
 			}
+            
+            if(isSelected) button.setBackground(Color.red); //Cambiar el color si esta seleccionado
+            
             return button; //devuelve el boton para que no aparezca el string de la referencia del JRadioButton
         }
+		
+		
 		
 		
 			//Anchura de la primera columna (MATERIAL)
@@ -62,12 +73,17 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 			miCelda.setBackground(new Color(255,196,242));
 		}
 		
-		
+		//Cambiar el color si esta seleccionado
+				if (isSelected) {
+					miCelda.setBackground(Color.red);
+					
+				}
 		
 		
 		return miCelda;
 		
 
 	}
+	
 	
 }

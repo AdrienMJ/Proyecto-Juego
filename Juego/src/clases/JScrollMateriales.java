@@ -74,12 +74,12 @@ public class JScrollMateriales extends JScrollPane {
 			crearPanelMejora(ventana, lapiz);
 						
 			//Cuaderno
-			Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.152);
+			Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.132);
 			ventana.listaMejoras.add(cuaderno);			
 			crearPanelMejora(ventana, cuaderno);
 			
 			//Saca puntas
-			Mejora sacaPuntas = new Mejora("Saca-puntas", 1_100, 8, 1.156);
+			Mejora sacaPuntas = new Mejora("Saca-puntas", 1_100, 8, 1.146);
 			ventana.listaMejoras.add(sacaPuntas);
 			crearPanelMejora(ventana, sacaPuntas);
 			
@@ -88,15 +88,25 @@ public class JScrollMateriales extends JScrollPane {
 			ventana.listaMejoras.add(mesa);
 			crearPanelMejora(ventana, mesa);
 		
+			//Borragoma
+			Mejora borragoma = new Mejora("Borragoma", 90_000, 90, 1.164);
+			ventana.listaMejoras.add(borragoma);
+			crearPanelMejora(ventana, borragoma);
+		
+			
+			
 			//Libro de Matematicas (Se desbloquean los minijuegos)
-			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.16);
+			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.18);
 			ventana.listaMejoras.add(libroMate);
 			crearPanelMejora(ventana, libroMate);
 			
 			//Profesor particular
-			Mejora profesor = new Mejora("Profesor Particular", 1_400_000,1_400,1.162);
+			Mejora profesor = new Mejora("Profesor Particular", 1_400_000,1_400,1.192);
 			ventana.listaMejoras.add(profesor);
 			crearPanelMejora(ventana, profesor);
+			
+			
+			
 			
 			//Proyectos escolares
 					
