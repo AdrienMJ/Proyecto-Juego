@@ -39,7 +39,7 @@ public class PanelMejora extends JPanel {
 		
 		//Boton de cada objeto con su respectivo precio
 		botonCompra = new JButton();
-		botonCompra.setText("Precio: "+ mejora.getPrecio());
+		botonCompra.setText("Precio: "+ (int) mejora.getPrecio());
 		cantidadMejora = new JLabel("Cantidad: " + mejora.getNumero());
 		
 				
@@ -64,7 +64,7 @@ public class PanelMejora extends JPanel {
 	 */
 	public void actualizarPanel(Mejora mejora) {
 		cantidadMejora.setText("Cantidad: " + mejora.getNumero()); // Actualiza la cantidad actual de la mejora
-		botonCompra.setText("Precio: "+ mejora.getPrecio()); // Actuliza el precio actual de la mejora
+		botonCompra.setText("Precio: "+ (int) mejora.getPrecio()); // Actuliza el precio actual de la mejora
 		
 	    
 	    botonCompra.setIcon(elegirImagen(mejora)); //se elige la imagen del botón
