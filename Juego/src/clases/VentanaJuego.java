@@ -69,6 +69,8 @@ public class VentanaJuego extends JFrame {
     //HILOS
     public Thread hiloActualizarPuntos;
     public ThreadActualizadorPuntos actualizarPuntos;
+    public Thread hiloActualizarCreditos;
+    public ThreadActualizadorCreditos actualizarCreditos;
     
     //PESTAÑA DE ESTADISTICAS:
     public JTabbedPane jTabbPrincipal;
@@ -99,6 +101,8 @@ public class VentanaJuego extends JFrame {
         actualizarPuntos = new ThreadActualizadorPuntos(this);
         hiloActualizarPuntos = new Thread(actualizarPuntos);
         hiloActualizarPuntos.start();
+        
+        
         
         
         //Panel PRINCIPAL:
@@ -150,6 +154,11 @@ public class VentanaJuego extends JFrame {
       	barraCreditos.setStringPainted(true);//Queremos que se pinte el X% (SÍ/NO)
       	
       	labelCreditos = new JLabel();
+      	
+       //Hilo de creditos creado
+        actualizarCreditos = new ThreadActualizadorCreditos(this);
+        hiloActualizarCreditos = new Thread(actualizarCreditos);
+        hiloActualizarCreditos.start();
       	
       	//Añadimos la barra y el Label al panel
       	panelBarra.add(labelCreditos , BorderLayout.NORTH);
@@ -316,7 +325,8 @@ public class VentanaJuego extends JFrame {
 				if (seleccion == JOptionPane.YES_OPTION) {
 					
 					//PARTE DE HILOS
-					actualizarPuntos.detener();// Detén el hilo 
+					actualizarPuntos.detener();// Detén el hilo
+					actualizarCreditos.detener();
 	                
 					System.exit(0);
 				}

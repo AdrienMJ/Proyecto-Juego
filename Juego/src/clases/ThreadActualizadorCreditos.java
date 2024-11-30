@@ -4,7 +4,7 @@ public class ThreadActualizadorCreditos implements Runnable {
 	
 	
 	private VentanaJuego ventana;
-	private boolean actualizandoCreditos;
+	private boolean actualizandoCreditos = true;
 	
 
 	
@@ -25,9 +25,33 @@ public class ThreadActualizadorCreditos implements Runnable {
 		while(actualizandoCreditos) {
 			
 			try {
+						
+				double ganaciasPuntos = 0;
 				
-			
-                Thread.sleep(100);
+				for (Mejora mejora: ventana.listaMejoras) {
+					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia();
+				}
+				float puntosRedondeado = (float) (ventana.puntosBarra + ganaciasPuntos);
+				ventana.puntosBarra = Math.round(puntosRedondeado*100)/100f;
+				ventana.barraCreditos.setValue((int) ventana.puntosBarra);
+				
+				if (ventana.puntosBarra >= ventana.barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
+                	ventana.puntosBarra = 0;
+                	ventana.maxCreditos *= 1.5;
+                	ventana.barraCreditos.setValue((int)ventana.puntosBarra);
+                	ventana.barraCreditos.setMaximum(ventana.maxCreditos);;
+                	ventana.creditos++;
+                	ventana.labelCreditos.setText("Créditos: " + ventana.creditos);
+                	
+        		}
+				
+				javax.swing.SwingUtilities.invokeLater(() -> {
+                    
+                    System.out.println("hilo  de creditos funcionando");
+                });
+				
+				Thread.sleep(1000);
+				
 			} catch (InterruptedException  e) {
 				System.out.println("Se ha interrumpido el hilo");
 				break;

@@ -31,7 +31,7 @@ public class ThreadActualizadorPuntos implements Runnable {
 				
 				javax.swing.SwingUtilities.invokeLater(() -> {
                     ventana.labelPuntos.setText("Conocimiento: " + ventana.puntos);
-                    System.out.println("hilo funcionando");
+                    System.out.println("hilo de puntos funcionando");
                 });
 				
 				Thread.sleep(1000);
