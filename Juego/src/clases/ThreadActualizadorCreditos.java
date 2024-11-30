@@ -29,7 +29,7 @@ public class ThreadActualizadorCreditos implements Runnable {
 				double ganaciasPuntos = 0;
 				
 				for (Mejora mejora: ventana.listaMejoras) {
-					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia();
+					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia()/100;
 				}
 				float puntosRedondeado = (float) (ventana.puntosBarra + ganaciasPuntos);
 				ventana.puntosBarra = Math.round(puntosRedondeado*100)/100f;
@@ -50,7 +50,7 @@ public class ThreadActualizadorCreditos implements Runnable {
                     System.out.println("hilo  de creditos funcionando");
                 });
 				
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				
 			} catch (InterruptedException  e) {
 				System.out.println("Se ha interrumpido el hilo");

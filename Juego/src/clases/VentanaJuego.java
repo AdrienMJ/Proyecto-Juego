@@ -188,15 +188,15 @@ public class VentanaJuego extends JFrame {
                 //Creditos de la pestaña tienda
                 labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos)); //Se hace un formato String para poder aplicar correctamente el formato
                 
-                if (puntosBarra >= barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
-                	puntosBarra = 0;
-                	maxCreditos *= 1.5;
-                	barraCreditos.setValue((int)puntosBarra);
-                	barraCreditos.setMaximum(maxCreditos);;
-                	creditos++;
-                	labelCreditos.setText("Créditos: " + creditos);
-                	
-        		}
+//                if (puntosBarra >= barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
+//                	puntosBarra = 0;
+//                	maxCreditos *= 1.5;
+//                	barraCreditos.setValue((int)puntosBarra);
+//                	barraCreditos.setMaximum(maxCreditos);;
+//                	creditos++;
+//                	labelCreditos.setText("Créditos: " + creditos);
+//                	
+//        		}
              
                 //Actualizacion mensaje:
                 int seleccion; //selección de línea del csv de mensajes.
