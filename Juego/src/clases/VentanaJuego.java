@@ -102,7 +102,7 @@ public class VentanaJuego extends JFrame {
         
         
         //Panel PRINCIPAL:
-        JPanel panelPrincipal = new JPanel();
+        JPanel panelPrincipal = new JPanel(new BorderLayout());
         //panelPrincipal.setLayout(new FlowLayout());
         
         //Panel para el botón y el label de puntos
@@ -127,7 +127,7 @@ public class VentanaJuego extends JFrame {
         estudianteClick.setIcon(new ImageIcon(getClass().getResource("/Imagenes/estuadinte2.png")));
         clickerPanel.add(estudianteClick);
 
-        add(clickerPanel, BorderLayout.EAST);
+        add(clickerPanel, BorderLayout.WEST);
         
         
         
@@ -143,7 +143,7 @@ public class VentanaJuego extends JFrame {
         //CREDITOS:
         //Panel de la barra de progreso
       	JPanel panelBarra = new JPanel();
-      	panelBarra.setPreferredSize(new Dimension(100,100));
+      	panelBarra.setPreferredSize(new Dimension(100,30));
       		
       	//Se crea la barra de progreso
       	barraCreditos = new JProgressBar(0, maxCreditos); //Los valores son de que valor MAX y min
@@ -203,7 +203,7 @@ public class VentanaJuego extends JFrame {
         //SCROLL de los Materiales
         JScrollMateriales jScrollMateriales = new JScrollMateriales(this);
 		jScrollMateriales.setVisible(true);
-        panelPrincipal.add(jScrollMateriales,BorderLayout.EAST);
+        
          
 
         //JMENU (ajustes)
@@ -324,9 +324,9 @@ public class VentanaJuego extends JFrame {
 		});
         
         
-        panelPrincipal.add(clickerPanel);
-        panelPrincipal.add(panelBarra);
-        panelPrincipal.add(jScrollMateriales);
+        panelPrincipal.add(clickerPanel,BorderLayout.CENTER);
+        panelPrincipal.add(panelBarra, BorderLayout.NORTH);
+        panelPrincipal.add(jScrollMateriales,BorderLayout.EAST);
         
         
         jTabbPrincipal = new JTabbedPane();

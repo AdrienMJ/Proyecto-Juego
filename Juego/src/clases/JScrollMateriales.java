@@ -26,7 +26,8 @@ public class JScrollMateriales extends JScrollPane {
 	public  JPanel panelContenedor;
 
 	public JScrollMateriales(VentanaJuego ventana) {
-		
+			
+			
 		
 		
 	      //Paneles de MULTIPLICADORES (Lápices, Cuadernos,...
@@ -34,7 +35,7 @@ public class JScrollMateriales extends JScrollPane {
 			//Panel principal de los Multiplicadores
 			panelContenedor = new JPanel();
 			panelContenedor.setLayout(new BoxLayout(panelContenedor,BoxLayout.Y_AXIS));
-			panelContenedor.setSize(new Dimension(400, 1000));
+			panelContenedor.setSize(new Dimension(500, 1000));
 			
 			JPanel panelBotonesCompra = new JPanel();
 			//Se añade un panel con botones. Estos serán los encargados de comprar de 1 en 1, de 10 en 10....
@@ -88,12 +89,15 @@ public class JScrollMateriales extends JScrollPane {
 			crearPanelMejora(ventana, mesa);
 		
 			//Libro de Matematicas (Se desbloquean los minijuegos)
-			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.6);
+			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.16);
 			ventana.listaMejoras.add(libroMate);
 			crearPanelMejora(ventana, libroMate);
 			
 			//Profesor particular
-					
+			Mejora profesor = new Mejora("Profesor Particular", 1_400_000,1_400,1.162);
+			ventana.listaMejoras.add(profesor);
+			crearPanelMejora(ventana, profesor);
+			
 			//Proyectos escolares
 					
 			//Ordenador
