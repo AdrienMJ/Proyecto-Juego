@@ -46,7 +46,7 @@ public class ThreadActualizadorCreditos implements Runnable {
         		}
 				
 				javax.swing.SwingUtilities.invokeLater(() -> {
-                    
+					ventana.labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", ventana.creditos));
                     System.out.println("hilo  de creditos funcionando");
                 });
 				
