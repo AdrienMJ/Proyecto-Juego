@@ -1,6 +1,5 @@
 package clases;
 
-import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
 public class TodosLosObjetos {

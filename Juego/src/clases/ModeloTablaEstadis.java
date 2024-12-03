@@ -5,6 +5,11 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTablaEstadis extends AbstractTableModel  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String[] nombreColumnas = {"MATERIAL", "CANTIDAD" , "PRODUCCIÓN"}; //NOMBRE de las COLUMNAS
 	private List<Mejora> mejoras;
 	

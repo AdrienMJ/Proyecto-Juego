@@ -1,8 +1,6 @@
 package clases;
 
-import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
 public class Objeto  {

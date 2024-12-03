@@ -16,11 +16,9 @@ import java.util.Random;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+
 
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -366,7 +364,7 @@ public class VentanaJuego extends JFrame {
         panelBotonesTienda.add(botonComprar);
         panelBotonesTienda.add(botonDesechar);
         
-        RendererTablaTienda a = new RendererTablaTienda();
+        
         //Listeners de los botones de la Tienda:
         ActionListener listenerComprar = new ActionListener() {
 			

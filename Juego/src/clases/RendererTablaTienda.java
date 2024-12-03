@@ -1,21 +1,23 @@
 package clases;
 
-import java.awt.Button;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.util.EventObject;
-
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
-import javax.swing.event.CellEditorListener;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellEditor;
+
 
 public class RendererTablaTienda extends DefaultTableCellRenderer {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		String valor = String.valueOf(value);

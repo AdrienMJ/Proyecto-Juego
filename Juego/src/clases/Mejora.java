@@ -5,10 +5,6 @@ package clases;
 //Siendo los bonificadores otro apartado en las mejoras
 
 public class Mejora  { // Esta clase hace todo el proceso de compra de un material
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	private String nombre;
 	private double precio;

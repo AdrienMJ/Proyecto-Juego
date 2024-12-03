@@ -1,11 +1,7 @@
 package clases;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 	// Zona de mensajes o consejos
