@@ -56,7 +56,7 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
             if (row % 2 == 0) {
             	button.setBackground(colorBotonPredeterminadoPar);
 			} else {
-				button.setBackground(null);
+				button.setBackground(new Color(226,226,226));
 			}
             
             if(isSelected) {
@@ -81,9 +81,12 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 		        table.getColumnModel().getColumn(i).setPreferredWidth(300);
 		    }
 		}
-	
+		
+		//Color de las celdas intercaladas
 		if (row%2 == 0) {
 			miCelda.setBackground(new Color(255,196,242));
+		} else {
+			miCelda.setBackground(new Color(226,226,226));
 		}
 		
 		
