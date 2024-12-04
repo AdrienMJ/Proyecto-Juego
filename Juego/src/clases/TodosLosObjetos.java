@@ -16,6 +16,6 @@ public class TodosLosObjetos {
 
 		//PROFERES EXTRA:
 		JRadioButton bProfesoresExtra = new JRadioButton();
-		vent.listaObjetos.add(new Objeto("Mega Borragoma","<html> Por cada 30 Profesores Particulares, consigues 2 puntos de conocimiento <html>",10, bProfesoresExtra ));
+		vent.listaObjetos.add(new Objeto("Profesores Extra","<html> Por cada 30 Profesores Particulares, consigues 2 puntos de conocimiento <html>",10, bProfesoresExtra ));
 	}
 }

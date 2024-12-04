@@ -53,8 +53,8 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
             	button.setBackground(new Color(255,196,242));
 			}
             
-            if(isSelected) button.setBackground(Color.red); //Cambiar el color si esta seleccionado
-            
+            if(isSelected) button.setBackground(Color.red);  //Cambiar el color si esta seleccionado
+		  
             return button; //devuelve el boton para que no aparezca el string de la referencia del JRadioButton
         }
 		

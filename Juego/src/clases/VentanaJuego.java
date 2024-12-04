@@ -374,7 +374,7 @@ public class VentanaJuego extends JFrame {
 				
 				
 				for (Objeto objeto : listaObjetos) {
-					
+					if (objeto.getBotonObjeto().getBackground().equals(Color.RED)) {
 						if (creditos >= objeto.getCosteCreditos()) {
 							creditos -= objeto.getCosteCreditos();
 								
@@ -385,6 +385,8 @@ public class VentanaJuego extends JFrame {
 						} else {       
 							JOptionPane.showMessageDialog(null, "No tienes suficientes créditos para comprar este objeto.");
 						}
+					}
+						
 						 
 					}
 					
@@ -398,7 +400,9 @@ public class VentanaJuego extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				for (Objeto objeto : listaObjetos) {
+					if (objeto.getBotonObjeto().getBackground().equals(Color.RED)) {
 					objeto.getBotonObjeto().setSelected(false);
+					}
 				}
 				
 				
