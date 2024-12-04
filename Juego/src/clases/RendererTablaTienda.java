@@ -34,7 +34,8 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 		//Fuente de toda la tabla
 		if (column == 0) {
 			miCelda.setFont(new Font("Arial", Font.BOLD, 20));
-			
+		
+		
 			
 		} else if (column == 1) {
 			miCelda.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -49,11 +50,21 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 			JRadioButton button = (JRadioButton) value;
             button.setHorizontalAlignment(CENTER); 
             
+            
+            Color colorBotonPredeterminadoPar = new Color(255,196,242);
+            
             if (row % 2 == 0) {
-            	button.setBackground(new Color(255,196,242));
+            	button.setBackground(colorBotonPredeterminadoPar);
+			} else {
+				button.setBackground(null);
 			}
             
-            if(isSelected) button.setBackground(Color.red);  //Cambiar el color si esta seleccionado
+            if(isSelected) {
+            	button.setBackground(Color.red); 
+            }
+            
+            
+            
 		  
             return button; //devuelve el boton para que no aparezca el string de la referencia del JRadioButton
         }
@@ -75,12 +86,11 @@ public class RendererTablaTienda extends DefaultTableCellRenderer {
 			miCelda.setBackground(new Color(255,196,242));
 		}
 		
-		//Cambiar el color si esta seleccionado
-				if (isSelected) {
-					miCelda.setBackground(Color.red);
-					
-				}
 		
+		//Cambiar el color si esta seleccionado
+		if (isSelected) {
+			miCelda.setBackground(Color.red);			
+		}
 		
 		return miCelda;
 		
