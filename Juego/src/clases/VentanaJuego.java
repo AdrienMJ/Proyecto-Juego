@@ -77,7 +77,6 @@ public class VentanaJuego extends JFrame {
     //PESTAÑA DE ESTADISTICAS:
     public JTabbedPane jTabbPrincipal;
     public JTabbedPane jTabbEstadis;
-    public JLabel labelPuntosSegundo;
     
     //PESTAÑA ESTADISTICAS:
     
@@ -136,15 +135,7 @@ public class VentanaJuego extends JFrame {
 
         add(clickerPanel, BorderLayout.WEST);
         
-        //Label puntos/seg
-        double puntosSegundo = 0;
-        for (Mejora mejora : listaMejoras) {
-			puntosSegundo += mejora.getGanacia();
-		}
-        labelPuntosSegundo = new JLabel("Se estan produciendo: " + puntosSegundo +" PC/seg ");
-        labelPuntosSegundo.setAlignmentX(CENTER_ALIGNMENT);
-        labelPuntosSegundo.setFont(new Font("Arial", Font.BOLD, 15));
-        clickerPanel.add(labelPuntosSegundo);
+        
         
         //Se llama al método para cargar los mensajes del csv
         cargarMensajesCSV();
@@ -418,7 +409,7 @@ public class VentanaJuego extends JFrame {
 		botonDesechar.addActionListener(listenerDeschar);
 		botonComprar.addActionListener(listenerComprar);
 		
-		//Explicacion del panel de la Tienda
+		//Exolicacion del panel de la Tienda
 		JPanel explicacion = new JPanel();
 		explicacion.setLayout(new BorderLayout());
 		JLabel funcionamientoTienda = new JLabel("<html>*Para comprar, debes clicar en el objeto que tu quieras, para después, darle al boton<br> de comprar. Para desechar la compra es el mismo proceso.<html>");
@@ -441,7 +432,6 @@ public class VentanaJuego extends JFrame {
         labelCreditosTienda.setFont(new Font("Arial", Font.BOLD, 20));
         JPanel panelEstadis = new JPanel(new BorderLayout());
         jTabbPrincipal.addTab("Estadísticas", panelEstadis);
-        
         add(jTabbPrincipal);
         
 
