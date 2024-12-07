@@ -56,7 +56,10 @@ public class RendererTablaEstadis extends DefaultTableCellRenderer {
 				
 			    System.err.println("Error: el texto no es un número válido.");
 			    miCelda.setText("0.00");
-			}		}
+			}		
+		}
+		
+		
 		
 		
 		return miCelda;
