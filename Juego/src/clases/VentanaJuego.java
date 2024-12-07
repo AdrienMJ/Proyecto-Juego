@@ -48,6 +48,10 @@ public class VentanaJuego extends JFrame {
     //LABEL DE PUNTOS
     public JLabel labelPuntos;
     
+    //CONOCIMIENTO POR SEGUNDO
+    public JLabel labelConocimientoSegundo;
+    public double conocimientoSegundo;
+    
     //BARRA Y CREDITOS
     public JProgressBar barraCreditos; //Barra de progreso de creditos
     public int creditos = 0;
@@ -187,7 +191,7 @@ public class VentanaJuego extends JFrame {
             	//Puntos:
                 puntos++;
                 puntosBarra ++;
-                labelPuntos.setText("Conocimiento: " + puntos);
+                labelPuntos.setText("Conocimiento: " + redondearPuntos(puntos));
                 
                 //Creditos:
                 barraCreditos.setValue((int)puntosBarra);// Actualiza la barra con el valor de puntosBarra
@@ -195,15 +199,7 @@ public class VentanaJuego extends JFrame {
                 //Creditos de la pestaña tienda
                 labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos)); //Se hace un formato String para poder aplicar correctamente el formato
                 
-//                if (puntosBarra >= barraCreditos.getMaximum()) {  // Asegurarse de que el valor esté dentro del rango
-//                	puntosBarra = 0;
-//                	maxCreditos *= 1.5;
-//                	barraCreditos.setValue((int)puntosBarra);
-//                	barraCreditos.setMaximum(maxCreditos);;
-//                	creditos++;
-//                	labelCreditos.setText("Créditos: " + creditos);
-//                	
-//        		}
+
              
                 //Actualizacion mensaje:
                 int seleccion; //selección de línea del csv de mensajes.
@@ -457,6 +453,8 @@ public class VentanaJuego extends JFrame {
         // Añadir componentes al panel
         panelEstadis.add(jScrollTablaEstadis, BorderLayout.CENTER);
         
+
+        
     }
     
     	//Método encargado de leer el csv de mensajes
@@ -478,6 +476,30 @@ public class VentanaJuego extends JFrame {
 				System.err.println("No se ha podido abrir el fichero de mensajes.");
 			}
 	
+    	}
+    	
+    	/**Metodo para redondear los puntos (mil, millon, billon...)
+    	 * 
+    	 * @param puntos el numero de puntos del que se quiera redondear
+    	 * @return devuelve un String con la cantidad formateada en mil, millon, mil millon, etc
+    	 */
+    	public String redondearPuntos(double puntos) {
+
+    		float redondeoPuntos = 0;
+    		if (puntos < 1_000) {
+    			return puntos + " de IQ";
+    			
+    		} else if (puntos< 1_000_000) {
+    			redondeoPuntos = (float) puntos / 1_000.0f;
+    			return redondeoPuntos + " mil de IQ";
+    			
+    		} else if (puntos < 1_000_000_000) {
+    			redondeoPuntos = (float) puntos / 1_000_000.f;
+    			return redondeoPuntos + " millones de IQ";
+    		} else if (puntos < 1*Math.pow(10, 12)) {
+    			redondeoPuntos = (float) puntos / 1_000_000_000.0f;
+    			return redondeoPuntos + " mil millones de IQ";
+    		} else return puntos + " de IQ";
     	}
     	
     	
