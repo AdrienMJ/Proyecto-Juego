@@ -36,7 +36,6 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 		return nombreColumnas[column];
 	}
 	
-	//*CAMBIAR DEPENDIENDO DE LOS VALORES DEL CONSTRUCTOR DE LA VARIABLE*
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Mejora m = mejoras.get(rowIndex); //personas es la lista de coches que hay.

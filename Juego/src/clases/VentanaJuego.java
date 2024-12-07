@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -409,7 +410,7 @@ public class VentanaJuego extends JFrame {
 		botonDesechar.addActionListener(listenerDeschar);
 		botonComprar.addActionListener(listenerComprar);
 		
-		//Exolicacion del panel de la Tienda
+		//Explicacion del panel de la Tienda
 		JPanel explicacion = new JPanel();
 		explicacion.setLayout(new BorderLayout());
 		JLabel funcionamientoTienda = new JLabel("<html>*Para comprar, debes clicar en el objeto que tu quieras, para después, darle al boton<br> de comprar. Para desechar la compra es el mismo proceso.<html>");
@@ -428,10 +429,11 @@ public class VentanaJuego extends JFrame {
         
        
         
-        //Pestaña estadisticas (Tabla):
+        //Pestaña ESTADISTICAS (Tabla):
         labelCreditosTienda.setFont(new Font("Arial", Font.BOLD, 20));
         JPanel panelEstadis = new JPanel(new BorderLayout());
         jTabbPrincipal.addTab("Estadísticas", panelEstadis);
+        
         add(jTabbPrincipal);
         
 
@@ -439,12 +441,36 @@ public class VentanaJuego extends JFrame {
         JTable tablaEstadis = new JTable(new ModeloTablaEstadis(listaMejoras));
         tablaEstadis.setDefaultRenderer(Object.class, new RendererTablaEstadis()); 
         JScrollPane jScrollTablaEstadis = new JScrollPane(tablaEstadis);
-
-        // Añadir componentes al panel
         panelEstadis.add(jScrollTablaEstadis, BorderLayout.CENTER);
+        JLabel labelPuntosSeg = new JLabel();
         
+        
+        //Visualizar los puntos/seg:
+        double puntosSeg = 0;
+        for (int i = 0; i < tablaEstadis.getRowCount(); i++) {
+            Object valor = tablaEstadis.getValueAt(i, 2); // Columna índice 2
 
+            // Verificar y convertir el valor a double
+            if (valor instanceof Number) {
+                puntosSeg += ((Number) valor).doubleValue();
+            } else if (valor instanceof String) {
+                try {
+                    puntosSeg += Double.parseDouble((String) valor);
+                } catch (NumberFormatException e) {
+                    System.err.println("No se puede convertir a número: " + valor);
+                }
+            } else {
+                System.err.println("Valor inesperado en fila " + i + ", columna 2: " + valor);
+            }
+        }
         
+        labelPuntosSeg.setText("Se están produciendo: " + puntosSeg + " IQ/seg");
+        panelEstadis.add(labelPuntosSeg, BorderLayout.SOUTH);
+        
+        
+   
+    
+    
     }
     
     	//Método encargado de leer el csv de mensajes
