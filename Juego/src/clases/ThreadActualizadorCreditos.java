@@ -1,5 +1,7 @@
 package clases;
 
+import domain.Mejora;
+
 public class ThreadActualizadorCreditos implements Runnable {
 	
 	

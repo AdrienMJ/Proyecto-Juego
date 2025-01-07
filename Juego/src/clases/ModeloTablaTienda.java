@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.table.AbstractTableModel;
 
+import domain.Objeto;
+
 public class ModeloTablaTienda extends AbstractTableModel {
 
     /**

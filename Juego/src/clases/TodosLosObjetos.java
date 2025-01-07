@@ -2,6 +2,8 @@ package clases;
 
 import javax.swing.JRadioButton;
 
+import domain.Objeto;
+
 public class TodosLosObjetos {
 	
 	public TodosLosObjetos(VentanaJuego vent){

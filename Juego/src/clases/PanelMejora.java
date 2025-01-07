@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import domain.Mejora;
+
 
 
 public class PanelMejora extends JPanel {
@@ -73,7 +75,7 @@ public class PanelMejora extends JPanel {
 	 */
 	public ImageIcon elegirImagen(Mejora mejora) {
 		
-		ImageIcon icono = new ImageIcon(getClass().getResource("/Imagenes/lapiz.png")); //hacemos que el "defecto sea el lápiz, por ejemplo"
+		ImageIcon icono = new ImageIcon("resources/images/lapiz.png"); //hacemos que el "defecto sea el lápiz, por ejemplo"
 		Image imagenTamanyoAdecuado;
 		
 		if (mejora.getNumero() >= 1) { //la imagen solo saldrá a partir de la primera compra
@@ -81,23 +83,23 @@ public class PanelMejora extends JPanel {
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH); //hacemos esto para que el png no sea demasiado grande
 				icono = new ImageIcon(imagenTamanyoAdecuado);
 			} else if (mejora.getNombre().equals("Cuaderno")) {
-				icono = new ImageIcon(getClass().getResource("/Imagenes/cuaderno.png"));
+				icono = new ImageIcon("resources/images/cuaderno.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
 			} else if (mejora.getNombre().equals("Borragoma")) {
-				icono = new ImageIcon(getClass().getResource("/Imagenes/borragoma.png"));
+				icono = new ImageIcon("resources/images/borragoma.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
 			} else if (mejora.getNombre().equals("Saca-puntas")) {
-				icono = new ImageIcon(getClass().getResource("/Imagenes/sacapuntas.png"));
+				icono = new ImageIcon("resources/images/sacapuntas.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
 			} else if (mejora.getNombre().equals("Mesa")) {
-				icono = new ImageIcon(getClass().getResource("/Imagenes/mesa.png"));
+				icono = new ImageIcon("resources/images/mesa.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
 			} else if (mejora.getNombre().equals("Libro de Matemáticas")) {
-				icono = new ImageIcon(getClass().getResource("/Imagenes/libroMates.png"));
+				icono = new ImageIcon("resources/images/libroMates.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
 			}

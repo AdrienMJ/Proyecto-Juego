@@ -34,6 +34,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
+import domain.Mejora;
+import domain.Objeto;
+
 
 
 public class VentanaJuego extends JFrame {
@@ -131,7 +134,7 @@ public class VentanaJuego extends JFrame {
         JButton estudianteClick = new JButton();
         estudianteClick.setPreferredSize(new Dimension(200, 250));
         estudianteClick.setAlignmentX(CENTER_ALIGNMENT);
-        estudianteClick.setIcon(new ImageIcon(getClass().getResource("/Imagenes/estuadinte2.png")));
+        estudianteClick.setIcon(new ImageIcon("resources/images/estuadinte2.png"));
         clickerPanel.add(estudianteClick);
 
         add(clickerPanel, BorderLayout.WEST);

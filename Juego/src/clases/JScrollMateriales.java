@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
+import domain.Mejora;
+
 public class JScrollMateriales extends JScrollPane {
 
 	/**
