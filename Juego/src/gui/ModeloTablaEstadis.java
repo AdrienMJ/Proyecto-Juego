@@ -44,7 +44,7 @@ public class ModeloTablaEstadis extends AbstractTableModel  {
 		switch(columnIndex) {
 		case 0: return m.getNombre();
 		case 1: return m.getNumero();
-		case 2: return m.getGanacia();
+		case 2: return m.getGanacia()*m.getNumero()/10;
 		default: return null;
 		}
 		
