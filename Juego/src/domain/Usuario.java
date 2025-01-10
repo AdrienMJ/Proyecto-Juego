@@ -5,9 +5,9 @@ public class Usuario {
 	private String nombre;
 	private String password;
 	private int codPartida;
-	private String ultimaConexion;
+	private long ultimaConexion;
 	
-	public Usuario(String nombre, String password, int codPartida, String ultimaConexion) {
+	public Usuario(String nombre, String password, int codPartida, long ultimaConexion) {
 		super();
 		this.nombre = nombre;
 		this.password = password;
@@ -35,8 +35,12 @@ public class Usuario {
 		return codPartida;
 	}
 
-	public String getUltimaConexion() {
+	public long getUltimaConexion() {
 		return ultimaConexion;
+	}
+
+	public void setUltimaConexion(long ultimaConexion) {
+		this.ultimaConexion = ultimaConexion;
 	}
 	
 	

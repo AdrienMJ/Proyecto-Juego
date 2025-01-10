@@ -65,6 +65,32 @@ public class VentanaLogin extends JFrame {
 		
 	}
 	
+	
+	
+	public JTextField getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(JTextField usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+	public JPasswordField getContraseña() {
+		return contraseña;
+	}
+
+
+
+	public void setContraseña(JPasswordField contraseña) {
+		this.contraseña = contraseña;
+	}
+
+
+
 	public static void main(String[] args) {
 		new VentanaLogin();
 	}

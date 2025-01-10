@@ -107,9 +107,12 @@ public class GestorBD {
 	
 	/**
 	 * Metodo que guarda la partida del usuario en la BD a partir de su nombre
+	 * Hacer con UPDATE Mejora 
+	 * set precio = ? ...
+	 * where codPartida = ? and nombre = mejora.getNombre();
 	 * @param nombreUsuario
 	 */
-	public void guardarPartida(String nombreUsuario) {
+	public void guardarPartida(String nombreUsuario, ArrayList<Mejora> listaMejoras) {
 		int codPartida = obtenerCodigoPartida(nombreUsuario);
 		if (codPartida != 0) {
 		//TODO segui desde aqui
