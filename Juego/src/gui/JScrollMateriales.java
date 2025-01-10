@@ -92,9 +92,7 @@ public class JScrollMateriales extends JScrollPane {
 			Mejora borragoma = new Mejora("Borragoma", 90_000, 90, 1.164);
 			ventana.listaMejoras.add(borragoma);
 			crearPanelMejora(ventana, borragoma);
-		
-			
-			
+					
 			//Libro de Matematicas (Se desbloquean los minijuegos)
 			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.18);
 			ventana.listaMejoras.add(libroMate);
