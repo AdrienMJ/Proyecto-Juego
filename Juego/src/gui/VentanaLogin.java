@@ -22,8 +22,9 @@ public class VentanaLogin extends JFrame {
 	private JTextField usuario;
 	private JLabel labelContraseña;
 	private JPasswordField contraseña;
-	private JButton inicioSesion;
-	private JButton registrarse;
+	public JButton inicioSesion;
+	public JButton registrarse;
+	public JButton jugar;
 	
 	public VentanaLogin() {
 		
@@ -42,15 +43,17 @@ public class VentanaLogin extends JFrame {
 		contraseña = new JPasswordField();
 		inicioSesion = new JButton("Iniciar Sesion");
 		registrarse = new JButton("Registrarse");
+		jugar = new JButton("Jugar");
 			
 		JPanel panelCampos = new JPanel();
-		panelCampos.setLayout(new GridLayout(3,2,3,10));
+		panelCampos.setLayout(new GridLayout(4,2,3,10));
 		panelCampos.add(labelUsuario);
 		panelCampos.add(usuario);
 		panelCampos.add(labelContraseña);
 		panelCampos.add(contraseña);
 		panelCampos.add(inicioSesion);
 		panelCampos.add(registrarse);
+		panelCampos.add(jugar);
 		
 		setVisible(true);
 		
@@ -92,7 +95,7 @@ public class VentanaLogin extends JFrame {
 
 
 	public static void main(String[] args) {
-		new VentanaLogin();
+		new IniciadorPartida();
 	}
 
 }

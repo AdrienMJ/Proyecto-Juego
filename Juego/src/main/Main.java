@@ -3,6 +3,7 @@ package main;
 import javax.swing.SwingUtilities;
 
 import domain.Usuario;
+import gui.IniciadorPartida;
 import gui.VentanaJuego;
 
 public class Main {
@@ -12,7 +13,8 @@ public class Main {
 
             @Override
             public void run() {
-                new VentanaJuego(admin);
+              // new IniciadorPartida(); todavia sin terminar
+            	new VentanaJuego(admin);
             }
 
         });
