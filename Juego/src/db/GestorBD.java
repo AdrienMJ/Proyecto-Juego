@@ -100,8 +100,30 @@ public class GestorBD {
 	 */
 	public List<Mejora> cargarPartida(String nombreUsuario) {
 		List<Mejora> listaMejoras = new ArrayList<Mejora>();
+		int codPartida = obtenerCodigoPartida(nombreUsuario);
 		//TODO seguir programando metodo
-		
+		try (PreparedStatement cargaPartida = conn.prepareStatement("SELECT * FROM Mejora WHERE codPartida = ?")) {
+			cargaPartida.setInt(1, codPartida);
+			
+			ResultSet rs = cargaPartida.executeQuery();
+			
+			while(rs.next()) {
+				int numero = rs.getInt("numero");
+				String nombre = rs.getString("nombre");
+				double precio = rs.getDouble("precio");
+				double precioI = rs.getDouble("precioInicial");
+				double ganancia = rs.getDouble("ganancia");
+				double gananciaI = rs.getDouble("gananciaInicial");
+				double mult = rs.getDouble("multiplicador");
+				double boni = rs.getDouble("bonificador");
+				listaMejoras.add(new Mejora(numero, nombre, precio, precioI, ganancia, gananciaI, mult, boni));
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("Error al encontrar codigo de partida: " + String.valueOf(codPartida));
+			e.printStackTrace();
+		}
 		return listaMejoras;
 	}
 	
@@ -115,8 +137,32 @@ public class GestorBD {
 	public void guardarPartida(String nombreUsuario, ArrayList<Mejora> listaMejoras) {
 		int codPartida = obtenerCodigoPartida(nombreUsuario);
 		if (codPartida != 0) {
-		//TODO segui desde aqui
-			
+			try (PreparedStatement guardarMejoras = conn.prepareStatement("UPDATE Mejora set"
+					+ "numero = ? ," //1
+					+ "precio = ? ," //2
+					+ "ganancia = ? ," //3
+					+ "multiplicador = ? ," //4
+					+ "bonificador = ? ," //5
+					+ "WHERE codPartida = ? and nombre = ?")) { // 6 y 7
+				
+			for (Mejora mejora : listaMejoras) {
+				guardarMejoras.setInt(1, mejora.getNumero());
+				guardarMejoras.setDouble(2, mejora.getPrecio());
+				guardarMejoras.setDouble(3, mejora.getBonificador());
+				guardarMejoras.setDouble(4, mejora.getMultiplicador());
+				guardarMejoras.setDouble(5, mejora.getBonificador());
+				guardarMejoras.setInt(6, codPartida);
+				guardarMejoras.setString(7, mejora.getNombre());
+				
+				guardarMejoras.executeUpdate();
+			}
+							
+			} catch (SQLException e) {
+				System.out.println("Error al guardar partida");
+				e.printStackTrace();
+				
+			}
+
 			
 			
 		} else {
