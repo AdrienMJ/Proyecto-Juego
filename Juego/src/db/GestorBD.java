@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import domain.Mejora;
+import domain.Usuario;
 
 public class GestorBD {
 	
@@ -89,6 +90,14 @@ public class GestorBD {
 		
 		
 		return mapaUsuarios;
+	}
+	
+	/**
+	 * Metodo que actualiza los puntos y creditos de un usuario (se llamara al cerrar el juego)
+	 * @param u - usuario
+	 */
+	public void actualizarUsuario(Usuario u) {
+		//TODO 
 	}
 	
 	/**
