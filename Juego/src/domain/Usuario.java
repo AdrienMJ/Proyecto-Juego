@@ -6,13 +6,17 @@ public class Usuario {
 	private String password;
 	private int codPartida;
 	private long ultimaConexion;
+	private float puntos;
+	private int creditos;
 	
-	public Usuario(String nombre, String password, int codPartida, long ultimaConexion) {
+	public Usuario(String nombre, String password, int codPartida, long ultimaConexion, float puntos, int creditos) {
 		super();
 		this.nombre = nombre;
 		this.password = password;
 		this.codPartida = codPartida;
 		this.ultimaConexion = ultimaConexion;
+		this.puntos = puntos;
+		this.creditos = creditos;
 	}
 
 	public String getNombre() {
@@ -41,6 +45,22 @@ public class Usuario {
 
 	public void setUltimaConexion(long ultimaConexion) {
 		this.ultimaConexion = ultimaConexion;
+	}
+
+	public float getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(float puntos) {
+		this.puntos = puntos;
+	}
+
+	public int getCreditos() {
+		return creditos;
+	}
+
+	public void setCreditos(int creditos) {
+		this.creditos = creditos;
 	}
 	
 	
