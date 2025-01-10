@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.SwingUtilities;
 
-import clases.VentanaJuego;
+import gui.VentanaJuego;
 
 public class Main {
 	public static void main(String[] args) {
