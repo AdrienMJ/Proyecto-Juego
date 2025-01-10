@@ -9,12 +9,12 @@ public class Usuario {
 	private float puntos;
 	private int creditos;
 	
-	public Usuario(String nombre, String password, int codPartida, long ultimaConexion, float puntos, int creditos) {
+	public Usuario(String nombre, String password, int codPartida, float puntos, int creditos) {
 		super();
 		this.nombre = nombre;
 		this.password = password;
 		this.codPartida = codPartida;
-		this.ultimaConexion = ultimaConexion;
+		this.ultimaConexion = System.currentTimeMillis();
 		this.puntos = puntos;
 		this.creditos = creditos;
 	}

@@ -67,7 +67,9 @@ public class JScrollMateriales extends JScrollPane {
 			
 			
 			//TODO - Hay que seguir construyendo las mejoras como se ha construido el lapiz
-				
+//			for (Mejora mejora : ventana.listaMejoras) { 
+//				crearPanelMejora(ventana, mejora);
+//			}
 			//lapiz
 			Mejora lapiz = new Mejora(0,"Lapiz", 15, 15, 0.1, 0.1, 1.15, 0); //Se crea la mejora con el contructor
 			ventana.listaMejoras.add(lapiz); // Se añade la mejora a una lista para su posterior uso			
