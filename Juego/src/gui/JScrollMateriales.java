@@ -69,37 +69,37 @@ public class JScrollMateriales extends JScrollPane {
 			//TODO - Hay que seguir construyendo las mejoras como se ha construido el lapiz
 				
 			//lapiz
-			Mejora lapiz = new Mejora("Lapiz", 15, 0.1, 1.15); //Se crea la mejora con el contructor
+			Mejora lapiz = new Mejora(0,"Lapiz", 15, 15, 0.1, 0.1, 1.15, 0); //Se crea la mejora con el contructor
 			ventana.listaMejoras.add(lapiz); // Se añade la mejora a una lista para su posterior uso			
 			crearPanelMejora(ventana, lapiz);
 						
 			//Cuaderno
-			Mejora cuaderno = new Mejora("Cuaderno", 100, 1, 1.132);
+			Mejora cuaderno = new Mejora(0, "Cuaderno", 100, 100, 1, 1, 1.132, 0);
 			ventana.listaMejoras.add(cuaderno);			
 			crearPanelMejora(ventana, cuaderno);
 			
 			//Saca puntas
-			Mejora sacaPuntas = new Mejora("Saca-puntas", 1_100, 8, 1.146);
+			Mejora sacaPuntas = new Mejora(0, "Saca-puntas", 1_100, 1_100, 8, 8, 1.146, 0);
 			ventana.listaMejoras.add(sacaPuntas);
 			crearPanelMejora(ventana, sacaPuntas);
 			
 			//Mesa
-			Mejora mesa = new Mejora("Mesa", 12_000, 47, 1.158);
+			Mejora mesa = new Mejora(0, "Mesa", 12_000, 12_000, 47, 47, 1.158, 0);
 			ventana.listaMejoras.add(mesa);
 			crearPanelMejora(ventana, mesa);
 		
 			//Borragoma
-			Mejora borragoma = new Mejora("Borragoma", 90_000, 90, 1.164);
+			Mejora borragoma = new Mejora(0, "Borragoma", 90_000, 90_000, 90, 90, 1.164, 0);
 			ventana.listaMejoras.add(borragoma);
 			crearPanelMejora(ventana, borragoma);
 					
 			//Libro de Matematicas (Se desbloquean los minijuegos)
-			Mejora libroMate = new Mejora("Libro de Matemáticas", 130_000, 260, 1.18);
+			Mejora libroMate = new Mejora(0, "Libro de Matemáticas", 130_000, 130_000, 260, 260, 1.18, 0);
 			ventana.listaMejoras.add(libroMate);
 			crearPanelMejora(ventana, libroMate);
 			
 			//Profesor particular
-			Mejora profesor = new Mejora("Profesor Particular", 1_400_000,1_400,1.192);
+			Mejora profesor = new Mejora(0, "Profesor Particular", 1_400_000, 1_400_000, 1_400, 1_400, 1.192, 0);
 			ventana.listaMejoras.add(profesor);
 			crearPanelMejora(ventana, profesor);
 			

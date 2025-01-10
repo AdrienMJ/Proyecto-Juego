@@ -6,10 +6,10 @@ package domain;
 
 public class Mejora  { // Esta clase hace todo el proceso de compra de un material
 	
+	private int numero;	
 	private String nombre;
 	private double precio;
 	private double precioInicial;
-	private int numero;	
 	private double ganancia;
 	private double gananciaInicial;
 	private double multiplicador;
@@ -25,17 +25,17 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 	 * @param ganancia cuanto gana en el "nivel 1"
 	 * @param multiplicador Cuanto multiplica el precio anterior
 	 */
-	public Mejora(String nombre, double precioInicial, double gananciaInicial, double multiplicador ) {
+	public Mejora(int numero, String nombre, double precio, double precioInicial, double ganancia,
+			double gananciaInicial, double multiplicador, double bonificador) {
 		super();
+		this.numero = numero;
 		this.nombre = nombre;
+		this.precio = precio;
 		this.precioInicial = precioInicial;
+		this.ganancia = ganancia;
 		this.gananciaInicial = gananciaInicial;
-		this.numero = 0; //cantidad de materiales
-		this.multiplicador = multiplicador; // El incremento de precio
-		this.bonificador = 0;
-		this.precio = precioInicial;
-		this.ganancia = 0;
-		
+		this.multiplicador = multiplicador;
+		this.bonificador = bonificador;
 	}
 
 	// Comprar algo

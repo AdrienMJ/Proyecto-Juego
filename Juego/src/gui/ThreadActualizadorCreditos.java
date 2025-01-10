@@ -31,7 +31,7 @@ public class ThreadActualizadorCreditos implements Runnable {
 				double ganaciasPuntos = 0;
 				
 				for (Mejora mejora: ventana.listaMejoras) {
-					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia()/100;
+					ganaciasPuntos = ganaciasPuntos + mejora.getGanacia()*mejora.getNumero()/100;
 				}
 				float puntosRedondeado = (float) (ventana.puntosBarra + ganaciasPuntos);
 				ventana.puntosBarra = Math.round(puntosRedondeado*100)/100f;
