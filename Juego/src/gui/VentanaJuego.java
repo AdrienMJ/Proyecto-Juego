@@ -36,18 +36,21 @@ import javax.swing.JTable;
 
 import domain.Mejora;
 import domain.Objeto;
+import domain.Usuario;
 
 
 
 public class VentanaJuego extends JFrame {
 
     private static final long serialVersionUID = 1L;
+    //USUARIO
+    public Usuario usuario;
     
     //Random:
     static Random randomizador = new Random();
     
     //PUNTOS DE CONOCIMIENTO
-    public  float puntos = 0;  // Contador de puntos
+    public  float puntos;  // Contador de puntos
     
     //LABEL DE PUNTOS
     public JLabel labelPuntos;
@@ -58,7 +61,7 @@ public class VentanaJuego extends JFrame {
     
     //BARRA Y CREDITOS
     public JProgressBar barraCreditos; //Barra de progreso de creditos
-    public int creditos = 0;
+    public int creditos;
     public double puntosBarra = 0;
     public int maxCreditos = 10; //Puntos iniciales de los creditos
     public JLabel labelCreditos;
@@ -92,8 +95,12 @@ public class VentanaJuego extends JFrame {
     JButton botonComprar;
     JButton botonDesechar;
     
-    public VentanaJuego() {
-
+    public VentanaJuego(Usuario usuario) {
+    	//Generacion de datos segun usuario
+    	this.usuario = usuario;
+    	puntos = usuario.getPuntos();
+    	creditos = usuario.getCreditos();
+    	
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setTitle("EstudianteClicker");
         setSize(600, 480);
