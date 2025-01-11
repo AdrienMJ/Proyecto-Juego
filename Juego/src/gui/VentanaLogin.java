@@ -59,12 +59,7 @@ public class VentanaLogin extends JFrame {
 		
 		this.add(labelBienvenida, BorderLayout.NORTH);
 		this.add(panelCampos, BorderLayout.CENTER);
-		
-		
-		
-		
-		
-		
+				
 		
 	}
 	

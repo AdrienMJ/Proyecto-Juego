@@ -32,6 +32,7 @@ public class IniciadorPartida {
 				gestorBD.conectarBD();
 				usuario = gestorBD.cargarUsuario(nombreUsuario, contraseña);
 				gestorBD.desconectarBD();
+				System.out.println(usuario.getCodPartida() +": "+ usuario.getNombre());
 				if (usuario == null) {
 					JOptionPane.showMessageDialog(ventanaLogin, "Usuario o contraseña incorrectas", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
 				} else {
@@ -58,6 +59,7 @@ public class IniciadorPartida {
 				if (!gestorBD.comprobarSiUsuarioExiste(nombreUsuario, contraseña)) {
 					gestorBD.insertarNuevoUsuario(nombreUsuario, contraseña);
 					usuario = gestorBD.cargarUsuario(nombreUsuario, contraseña);
+					System.out.println(usuario);
 					ventanaLogin.jugar.setEnabled(true);
 				} else {
 					JOptionPane.showMessageDialog(ventanaLogin, "Este Usuario ya existe", "Usuario ya existente", JOptionPane.WARNING_MESSAGE);

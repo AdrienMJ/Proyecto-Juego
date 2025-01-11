@@ -18,6 +18,9 @@ public class Usuario {
 		this.puntos = puntos;
 		this.creditos = creditos;
 	}
+	public Usuario() {
+		
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -61,6 +64,15 @@ public class Usuario {
 
 	public void setCreditos(int creditos) {
 		this.creditos = creditos;
+	}
+
+	public void setCodPartida(int codPartida) {
+		this.codPartida = codPartida;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 	
 	
