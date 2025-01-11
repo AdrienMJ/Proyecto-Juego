@@ -8,35 +8,45 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class VentanaAnuncioMiniJuego extends JFrame{
+public class VentanaAnuncioMiniJuego extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	public VentanaAnuncioMiniJuego() {
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private JLabel textoFijoVentanaMinijuego; //referencia al texto que se mostrará en la ventana de aviso de minijuego
+    private JLabel textoCambianteVentanaMinijuego; //referencia al texto que se mostrará en la ventana de aviso de minijuego, cambiando dependiendo de cual sea
+    
+    public VentanaAnuncioMiniJuego() {
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("¡Minijuego disponible!");
-        setSize(400, 280);
+        setSize(500, 280);
         setVisible(true);
         setLocationRelativeTo(null);
+
+        JPanel panelVentanaMinijuego = new JPanel();
+        panelVentanaMinijuego.setBackground(Color.CYAN);
+        panelVentanaMinijuego.setLayout(new BorderLayout());
+
+        textoFijoVentanaMinijuego = new JLabel();
+        textoFijoVentanaMinijuego.setText("¡Has desbloqueado un minijuego por la compra de este artículo!");
+        textoFijoVentanaMinijuego.setHorizontalAlignment(SwingConstants.CENTER);
+        textoFijoVentanaMinijuego.setVerticalAlignment(SwingConstants.CENTER);
+        panelVentanaMinijuego.add(textoFijoVentanaMinijuego, BorderLayout.NORTH);
         
-        JPanel panelMinijuego = new JPanel();
-        panelMinijuego.setBackground(Color.YELLOW);
-        panelMinijuego.setLayout(new BorderLayout());
-        
-        JLabel textoMinijuego = new JLabel();
-        textoMinijuego.setText("aa");
-        textoMinijuego.setHorizontalAlignment(SwingConstants.CENTER);
-        textoMinijuego.setVerticalAlignment(SwingConstants.CENTER);
-        panelMinijuego.add(textoMinijuego, BorderLayout.CENTER);
-        
-        add(panelMinijuego);
-        
-	}
-	
-	
-	
+        textoCambianteVentanaMinijuego = new JLabel(); //se crea el texto de la ventana de aviso de minijuego que cambiará dependiendo de cual se trata
+        //textoVentanaMinijuego.setText("aa");
+        textoCambianteVentanaMinijuego.setHorizontalAlignment(SwingConstants.CENTER);
+        textoCambianteVentanaMinijuego.setVerticalAlignment(SwingConstants.CENTER);
+        panelVentanaMinijuego.add(textoCambianteVentanaMinijuego, BorderLayout.CENTER);
+
+        add(panelVentanaMinijuego);
+
+    }
+
+    public void actualizarMensaje(String mensaje) {
+        textoCambianteVentanaMinijuego.setText(mensaje); // Actualiza el texto de la ventana con el mensaje recibido
+    }
 }

@@ -65,7 +65,7 @@ public class PanelMejora extends JPanel {
 		botonCompra.setText("Precio: "+ (int) mejora.getPrecio()); // Actuliza el precio actual de la mejora
 		
 	    
-	    botonCompra.setIcon(elegirImagen(mejora)); //se elige la imagen del botón
+	    botonCompra.setIcon(elegirImagenYCrearMinijuego(mejora)); //se elige la imagen del botón y se avisa y crea el minijuego correspondiente
 	}
 	
 	
@@ -73,12 +73,13 @@ public class PanelMejora extends JPanel {
 	 * Elige la imagen de cada mejora
 	 * @param mejora junto con la que irá la imagen
 	 */
-	public ImageIcon elegirImagen(Mejora mejora) {
+	public ImageIcon elegirImagenYCrearMinijuego(Mejora mejora) {
 		
 		ImageIcon icono = new ImageIcon("resources/images/lapiz.png"); //hacemos que el "defecto sea el lápiz, por ejemplo"
 		Image imagenTamanyoAdecuado;
 		
 		if (mejora.getNumero() >= 1) { //la imagen solo saldrá a partir de la primera compra
+			
 			if (mejora.getNombre().equals("Lapiz")) {
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH); //hacemos esto para que el png no sea demasiado grande
 				icono = new ImageIcon(imagenTamanyoAdecuado);
@@ -102,10 +103,17 @@ public class PanelMejora extends JPanel {
 				icono = new ImageIcon("resources/images/libroMates.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
+				VentanaAnuncioMiniJuego ventanaMinijuego = new VentanaAnuncioMiniJuego(); //se crea la ventana que avisa de un nuevo minijuego, pero solo se mostrará al comprar determinados artículos
+				ventanaMinijuego.actualizarMensaje("¡Completa las ecuaciones del libro! Haz click en la pestaña \"Mini Juego\".");
+				ventanaMinijuego.setVisible(true);
+			} else if (mejora.getNombre().equals("Profesor Particular")) {
+				icono = new ImageIcon("resources/images/profesorParticular.png");
+				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				icono = new ImageIcon(imagenTamanyoAdecuado);
 			}
 			return icono;
 			}
-		return null; //este caso se supone que nunca se dará, pero ha de estar cubierto
+		return null; //este caso se supone que nunca se debería dar, pero ha de estar cubierto
 	}
 	
 	

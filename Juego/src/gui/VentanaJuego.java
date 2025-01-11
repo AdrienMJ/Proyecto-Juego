@@ -431,13 +431,28 @@ public class VentanaJuego extends JFrame {
         panelTienda.add(explicacion); //Explicacion del funcionamiento de la compra
         
         
+        //--------------------------
+        
+        
+
+        
         
         //Pestaña MiniJuego (Libro de Matemáticas):
         JPanel panelMinijuego = new JPanel();
+        JLabel labelBaseMinijuego = new JLabel();
+        labelBaseMinijuego.setText("No hay minijuegos disponibles en este momento. ¡Prueba a comprar artículos!");
+        
+        panelMinijuego.add(labelBaseMinijuego);
         jTabbPrincipal.addTab("Mini Juego", panelMinijuego);
         add(jTabbPrincipal);
         
-       
+       //----------------------------------------------------------------
+        
+        
+        
+        
+        //---------------------------------------------------------------
+        
         
         //Pestaña ESTADISTICAS (Tabla):
         labelCreditosTienda.setFont(new Font("Arial", Font.BOLD, 20));
@@ -529,7 +544,7 @@ public class VentanaJuego extends JFrame {
     	}
     	
     	
-    
+
     
     
 }
