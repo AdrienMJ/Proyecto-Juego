@@ -442,12 +442,11 @@ public class VentanaJuego extends JFrame {
         panelTienda.add(explicacion); //Explicacion del funcionamiento de la compra
         
         
+        
+        
+        
         //--------------------------
-        
-        
-
-        
-        
+  
         //Pestaña MiniJuego (Libro de Matemáticas):
         //JPanel panelMinijuego = new JPanel();
         JLabel labelBaseMinijuego = new JLabel();
@@ -586,6 +585,8 @@ public class VentanaJuego extends JFrame {
     	    
     	    int numeroRespuestaCorrecta;
 
+    	   // boolean forzador = true;
+    	    
     	    int eleccionConjuntoOpciones = randomizador.nextInt(0, 5); //0 inclusivo, 5 exclusivo; 5 posibilidades
 
     	    if (eleccionConjuntoOpciones == 0) {
@@ -685,7 +686,12 @@ public class VentanaJuego extends JFrame {
     	    panelCentralMinijuego.add(botonOpcion2);
     	    panelCentralMinijuego.add(botonOpcion3);
     	    
-
+    	    
+    	   /* while (forzador) {
+    	    	
+    	    }*/
+    	    
+    	    
     	}
 
     	
