@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -22,6 +23,7 @@ import java.io.FileNotFoundException;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -33,6 +35,7 @@ import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 
 import domain.Mejora;
 import domain.Objeto;
@@ -84,6 +87,14 @@ public class VentanaJuego extends JFrame {
     //PESTAÑA DE ESTADISTICAS:
     public JTabbedPane jTabbPrincipal;
     public JTabbedPane jTabbEstadis;
+    
+    //LISTA DE LAS OPCIONES DEL MINIJUEGO DEL LIBRO DE MATEMÁTICAS:
+	ArrayList<String> listaOpcionesEcuaciones = new ArrayList<>();
+
+	//PANEL EN EL QUE SE ENCONTRARÁ EL MINIJUEGO
+	//private JPanel panelMinijuego;
+	private JPanel panelPrincipalMinijuego = new JPanel();
+	private JPanel panelCentralMinijuego = new JPanel();
     
     //PESTAÑA ESTADISTICAS:
     
@@ -438,20 +449,37 @@ public class VentanaJuego extends JFrame {
         
         
         //Pestaña MiniJuego (Libro de Matemáticas):
-        JPanel panelMinijuego = new JPanel();
+        //JPanel panelMinijuego = new JPanel();
         JLabel labelBaseMinijuego = new JLabel();
         labelBaseMinijuego.setText("No hay minijuegos disponibles en este momento. ¡Prueba a comprar artículos!");
         
-        panelMinijuego.add(labelBaseMinijuego);
-        jTabbPrincipal.addTab("Mini Juego", panelMinijuego);
+        JButton temporal = new JButton("temporal");
+        temporal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Se borra lo que previamente había en el panel
+                panelPrincipalMinijuego.remove(labelBaseMinijuego);
+                panelPrincipalMinijuego.remove(temporal);
+
+                minijuegoLibroMatematica();
+
+
+                //panelPrincipalMinijuego.revalidate();
+               // panelPrincipalMinijuego.repaint();
+            }
+        });
+
+        
+        panelPrincipalMinijuego.add(temporal);
+        
+        panelPrincipalMinijuego.add(labelBaseMinijuego);
+        jTabbPrincipal.addTab("Mini Juego", panelPrincipalMinijuego);
         add(jTabbPrincipal);
         
        //----------------------------------------------------------------
         
         
-        
-        
-        //---------------------------------------------------------------
+       
         
         
         //Pestaña ESTADISTICAS (Tabla):
@@ -543,8 +571,125 @@ public class VentanaJuego extends JFrame {
     		} else return puntos + " de IQ";
     	}
     	
-    	
+    	public void minijuegoLibroMatematica() {
+    		    		
+    		//Se inicializan los campos con valores temporales
+    		String enunciado = "";
+    	    String opcion1 = "";
+    	    String opcion2 = "";
+    	    String opcion3 = "";
+    	    
+    	    JLabel labelEnunciado = new JLabel();
+    	    JButton botonOpcion1 = new JButton();
+    	    JButton botonOpcion2 = new JButton();
+    	    JButton botonOpcion3 = new JButton();
+    	    
+    	    int numeroRespuestaCorrecta;
 
+    	    int eleccionConjuntoOpciones = randomizador.nextInt(0, 5); //0 inclusivo, 5 exclusivo; 5 posibilidades
+
+    	    if (eleccionConjuntoOpciones == 0) {
+    	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 3?";
+    	        opcion1 = "3x + 4 = 13"; //Respuesta correcta
+    	        opcion2 = "x - 7 = -2";
+    	        opcion3 = "2(x + 2) = 14";
+    	        numeroRespuestaCorrecta = 1;
+    	    } else if (eleccionConjuntoOpciones == 1) {
+    	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 7?";
+    	        opcion1 = "x - 5 = 10";
+    	        opcion2 = "x + 4 = 12";
+    	        opcion3 = "3x - 2 = 19"; //Respuesta correcta
+    	        numeroRespuestaCorrecta = 3;
+    	    } else if (eleccionConjuntoOpciones == 2) {
+    	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser -4?";
+    	        opcion1 = "x + 5 = -1";
+    	        opcion2 = "x - 3 = -7"; //Respuesta correcta
+    	        opcion3 = "2x + 8 = 4";
+    	        numeroRespuestaCorrecta = 2;
+    	    } else if (eleccionConjuntoOpciones == 3) {
+    	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 10?";
+    	        opcion1 = "x / 2 = 5";  //Respuesta correcta
+    	        opcion2 = "x - 8 = 1";
+    	        opcion3 = "3x + 4 = 24";
+    	        numeroRespuestaCorrecta = 1;
+    	    } else if (eleccionConjuntoOpciones == 4) {
+    	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 0?";
+    	        opcion1 = "x - 1 = 1";
+    	        opcion2 = "x + 5 = -5";
+    	        opcion3 = "2x + 1 = 1"; //Respuesta correcta
+    	        numeroRespuestaCorrecta = 3;
+    	    }
+
+    	    //Se asignan los valores finales:
+    	    Font fuenteBotones = new Font("Arial", Font.BOLD, 20); //Para que el texto de los botones sea más grande
+    	    
+    	    labelEnunciado.setText(enunciado);
+    	    botonOpcion1.setText(opcion1);
+    	    botonOpcion2.setText(opcion2);
+    	    botonOpcion3.setText(opcion3);
+    	    
+    	    labelEnunciado.setFont(new Font("Arial", Font.PLAIN, 18));
+    	    botonOpcion1.setFont(fuenteBotones);
+    	    botonOpcion2.setFont(fuenteBotones);
+    	    botonOpcion3.setFont(fuenteBotones);
+    	    
+   	       	    
+    	    botonOpcion1.addActionListener(new ActionListener() {
+    	    	
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (eleccionConjuntoOpciones == 0 || eleccionConjuntoOpciones == 3) {
+						JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+					} 
+					else {
+						JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			});
+    	    
+    	    botonOpcion2.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (eleccionConjuntoOpciones == 2) {
+						JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación", "Resultado", JOptionPane.INFORMATION_MESSAGE);					} 
+					else {
+						JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			});
+    	    
+    	    botonOpcion3.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (eleccionConjuntoOpciones == 1 || eleccionConjuntoOpciones == 4) {
+						JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación", "Resultado", JOptionPane.INFORMATION_MESSAGE);					} 
+					else {
+						JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			});
+    	    
+    	    //Se prepara cada pieza para su visualización:
+    	    panelPrincipalMinijuego.setBackground(Color.CYAN);
+    	    panelPrincipalMinijuego.setLayout(new BorderLayout());
+    	    
+    	    panelCentralMinijuego.setBackground(Color.CYAN);
+    	    panelCentralMinijuego.setLayout(new GridLayout(3, 1, 10, 10));
+    	    
+    	    panelPrincipalMinijuego.add(panelCentralMinijuego, BorderLayout.CENTER);
+    	    panelPrincipalMinijuego.add(labelEnunciado, BorderLayout.NORTH);
+    	    
+    	    panelCentralMinijuego.add(botonOpcion1, CENTER_ALIGNMENT);
+    	    panelCentralMinijuego.add(botonOpcion2);
+    	    panelCentralMinijuego.add(botonOpcion3);
+    	    
+
+    	}
+
+    	
+  
     
     
 }
