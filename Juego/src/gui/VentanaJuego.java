@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.text.DecimalFormat;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -51,6 +51,9 @@ public class VentanaJuego extends JFrame {
     
     //Random:
     static Random randomizador = new Random();
+    
+    //FORMATO DE PUNTOS
+    DecimalFormat formatoPuntos = new DecimalFormat("#.00");
     
     //PUNTOS DE CONOCIMIENTO
     public  float puntos;  // Contador de puntos
@@ -553,20 +556,24 @@ public class VentanaJuego extends JFrame {
     	 */
     	public String redondearPuntos(double puntos) {
 
-    		float redondeoPuntos = 0;
+    		double redondeoPuntos = 0;
     		if (puntos < 1_000) {
-    			return puntos + " de IQ";
+    			String resultado = formatoPuntos.format(puntos);
+    			return resultado + " de IQ";
     			
     		} else if (puntos< 1_000_000) {
-    			redondeoPuntos = (float) puntos / 1_000.0f;
-    			return redondeoPuntos + " mil de IQ";
+    			redondeoPuntos =  puntos / 1_000.0f;
+    			String resultado = formatoPuntos.format(redondeoPuntos);
+    			return resultado + " mil de IQ";
     			
     		} else if (puntos < 1_000_000_000) {
-    			redondeoPuntos = (float) puntos / 1_000_000.f;
-    			return redondeoPuntos + " millones de IQ";
+    			redondeoPuntos =  puntos / 1_000_000.f;
+    			String resultado = formatoPuntos.format(redondeoPuntos);
+    			return resultado + " millones de IQ";
     		} else if (puntos < 1*Math.pow(10, 12)) {
-    			redondeoPuntos = (float) puntos / 1_000_000_000.0f;
-    			return redondeoPuntos + " mil millones de IQ";
+    			redondeoPuntos =  puntos / 1_000_000_000.0f;
+    			String resultado = formatoPuntos.format(redondeoPuntos);
+    			return resultado + " mil millones de IQ";
     		} else return puntos + " de IQ";
     	}
     	

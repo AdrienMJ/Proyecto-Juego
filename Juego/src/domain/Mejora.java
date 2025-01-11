@@ -40,7 +40,7 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 
 	// Comprar algo
 	//Precio(n) = Precio inicial x Multiplicardor**n
-	//Ganancia(n) = Ganancia inicial x n x (1 + Bonificadores)
+	//Ganancia(n) = Ganancia inicial x (1 + Bonificadores)
 	
 	 /**
 	  * compra 1 unidad de la mejora
