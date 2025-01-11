@@ -3,6 +3,7 @@ package main;
 import javax.swing.SwingUtilities;
 
 import domain.Usuario;
+import gui.VentanaAnuncioMiniJuego;
 import gui.IniciadorPartida;
 import gui.VentanaJuego;
 
@@ -15,6 +16,7 @@ public class Main {
             public void run() {
               // new IniciadorPartida(); todavia sin terminar
             	new VentanaJuego(admin);
+            	//new VentanaAnuncioMiniJuego();
             }
 
         });
