@@ -54,7 +54,7 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 			double puntosRestantes = puntos - precio ;
 			numero++;           // Incrementa el numero que hay de esa mejora
 			precio = Math.round(precioInicial*(Math.pow(multiplicador, numero))); //Actualiza el precio
-			ganancia = gananciaInicial*numero*(1+bonificador);
+			ganancia = gananciaInicial*(1+bonificador);
 			
 			puntosRestantes = Math.round(puntosRestantes * 100.0) / 100.0;
 
@@ -123,7 +123,7 @@ public class Mejora  { // Esta clase hace todo el proceso de compra de un materi
 
 
 	public double getMultiplicador() {
-		//precio = precio * 1.2 // Coge el precio de el material en cuestión y lo multiplica en base al multiplicador que hay en el contructor de ese material
+		
 		return multiplicador;
 	}
 
