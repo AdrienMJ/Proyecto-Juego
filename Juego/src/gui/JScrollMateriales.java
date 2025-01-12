@@ -120,7 +120,7 @@ public class JScrollMateriales extends JScrollPane {
 			
 			
 			
-			
+			//Funciona dependiendo de que se activen los botones en de la tienda:
 			for (Mejora m : ventana.listaMejoras) {
 				if (m.getNombre().equals("Lapiz") && ventana.listaBotonesObjetos.contains(TodosLosObjetos.bSuperLapiz)) {
 					if (lapiz.getNumero()%15 == 0) {
@@ -144,10 +144,9 @@ public class JScrollMateriales extends JScrollPane {
 				}
 			}
 			
-			//Asegurarse de que cuando se elimine el boton de la tienda de cada uno, La ganancia vuelva a la normalidad
+			
+			//Asegurar que cuando se elimine el boton de la tienda de cada uno, La ganancia vuelva a la normalidad
 			for (Mejora m : ventana.listaMejoras) {
-				
-				
 				if (m.getNombre().equals("Lapiz") && !ventana.listaBotonesObjetos.contains(TodosLosObjetos.bSuperLapiz)) {
 					if (lapiz.getNumero()%15 == 0) {
 						libroMate.setGanacia(gananciaNormalLapiz);
