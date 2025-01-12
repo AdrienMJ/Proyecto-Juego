@@ -99,6 +99,9 @@ public class VentanaJuego extends JFrame {
 	private JPanel panelPrincipalMinijuego = new JPanel();
 	private JPanel panelCentralMinijuego = new JPanel();
     
+	//NUMERO DE LA RESPUESTA CORRECTA EN EL MINIJUEGO;
+	private int numeroRespuestaCorrecta;
+	
     //PESTAÑA ESTADISTICAS:
     
     
@@ -455,13 +458,14 @@ public class VentanaJuego extends JFrame {
         JLabel labelBaseMinijuego = new JLabel();
         labelBaseMinijuego.setText("No hay minijuegos disponibles en este momento. ¡Prueba a comprar artículos!");
         
+        /*
         JButton temporal = new JButton("temporal");
         temporal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Se borra lo que previamente había en el panel
-                panelPrincipalMinijuego.remove(labelBaseMinijuego);
-                panelPrincipalMinijuego.remove(temporal);
+                //panelPrincipalMinijuego.remove(labelBaseMinijuego);
+                //panelPrincipalMinijuego.remove(temporal);
 
                 minijuegoLibroMatematica();
 
@@ -472,7 +476,7 @@ public class VentanaJuego extends JFrame {
         });
 
         
-        panelPrincipalMinijuego.add(temporal);
+        panelPrincipalMinijuego.add(temporal);*/
         
         panelPrincipalMinijuego.add(labelBaseMinijuego);
         jTabbPrincipal.addTab("Mini Juego", panelPrincipalMinijuego);
@@ -577,31 +581,29 @@ public class VentanaJuego extends JFrame {
     		} else return puntos + " de IQ";
     	}
     	
+
+
     	public void minijuegoLibroMatematica() {
-    		    		
-    		//Se inicializan los campos con valores temporales
-    		String enunciado = "";
+    	    //Configuración de los elementos iniciales
+    	    String enunciado = "";
     	    String opcion1 = "";
     	    String opcion2 = "";
     	    String opcion3 = "";
-    	    
+
     	    JLabel labelEnunciado = new JLabel();
     	    JButton botonOpcion1 = new JButton();
     	    JButton botonOpcion2 = new JButton();
     	    JButton botonOpcion3 = new JButton();
-    	    
-    	    int numeroRespuestaCorrecta;
 
-    	   // boolean forzador = true;
-    	    
     	    int eleccionConjuntoOpciones = randomizador.nextInt(0, 5); //0 inclusivo, 5 exclusivo; 5 posibilidades
 
+    	    //Configuración de las opciones dependiendo de la elección
     	    if (eleccionConjuntoOpciones == 0) {
     	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 3?";
     	        opcion1 = "3x + 4 = 13"; //Respuesta correcta
     	        opcion2 = "x - 7 = -2";
     	        opcion3 = "2(x + 2) = 14";
-    	        numeroRespuestaCorrecta = 1;
+    	        numeroRespuestaCorrecta = 1; //La respuesta se identifica como la primera
     	    } else if (eleccionConjuntoOpciones == 1) {
     	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 7?";
     	        opcion1 = "x - 5 = 10";
@@ -616,7 +618,7 @@ public class VentanaJuego extends JFrame {
     	        numeroRespuestaCorrecta = 2;
     	    } else if (eleccionConjuntoOpciones == 3) {
     	        enunciado = "¿En cuál de estas operaciones el valor de \"x\" tiene que ser 10?";
-    	        opcion1 = "x / 2 = 5";  //Respuesta correcta
+    	        opcion1 = "x / 2 = 5"; //Respuesta correcta
     	        opcion2 = "x - 8 = 1";
     	        opcion3 = "3x + 4 = 24";
     	        numeroRespuestaCorrecta = 1;
@@ -628,78 +630,66 @@ public class VentanaJuego extends JFrame {
     	        numeroRespuestaCorrecta = 3;
     	    }
 
-    	    //Se asignan los valores finales:
-    	    Font fuenteBotones = new Font("Arial", Font.BOLD, 20); //Para que el texto de los botones sea más grande
-    	    
     	    labelEnunciado.setText(enunciado);
+    	    labelEnunciado.setFont(new Font("Arial", Font.PLAIN, 18));
     	    botonOpcion1.setText(opcion1);
     	    botonOpcion2.setText(opcion2);
     	    botonOpcion3.setText(opcion3);
+    	    botonOpcion1.setFont(new Font("Arial", Font.BOLD, 20));
+    	    botonOpcion2.setFont(new Font("Arial", Font.BOLD, 20));
+    	    botonOpcion3.setFont(new Font("Arial", Font.BOLD, 20));
     	    
-    	    labelEnunciado.setFont(new Font("Arial", Font.PLAIN, 18));
-    	    botonOpcion1.setFont(fuenteBotones);
-    	    botonOpcion2.setFont(fuenteBotones);
-    	    botonOpcion3.setFont(fuenteBotones);
     	    
-   	       	    
-    	    botonOpcion1.addActionListener(new ActionListener() {
-    	    	
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (eleccionConjuntoOpciones == 0 || eleccionConjuntoOpciones == 3) {
-						JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación", "Resultado", JOptionPane.INFORMATION_MESSAGE);
-					} 
-					else {
-						JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
-					}
-				}
-			});
     	    
-    	    botonOpcion2.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (eleccionConjuntoOpciones == 2) {
-						JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación", "Resultado", JOptionPane.INFORMATION_MESSAGE);					} 
-					else {
-						JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
-					}
-				}
-			});
-    	    
-    	    botonOpcion3.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (eleccionConjuntoOpciones == 1 || eleccionConjuntoOpciones == 4) {
-						JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación", "Resultado", JOptionPane.INFORMATION_MESSAGE);					} 
-					else {
-						JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
-					}
-				}
-			});
-    	    
-    	    //Se prepara cada pieza para su visualización:
-    	    panelPrincipalMinijuego.setBackground(Color.CYAN);
+    	    botonOpcion1.addActionListener(e -> procesarRespuesta(1));
+    	    botonOpcion2.addActionListener(e -> procesarRespuesta(2));
+    	    botonOpcion3.addActionListener(e -> procesarRespuesta(3));
+
+    	    //Reconfiguración del panel tras la acción
+    	    panelPrincipalMinijuego.removeAll(); //Se quita todo lo que ya hubiese en el panel 
     	    panelPrincipalMinijuego.setLayout(new BorderLayout());
-    	    
+    	    panelPrincipalMinijuego.setBackground(Color.CYAN);
+
+    	    panelCentralMinijuego = new JPanel(new GridLayout(3, 1, 10, 10));
     	    panelCentralMinijuego.setBackground(Color.CYAN);
-    	    panelCentralMinijuego.setLayout(new GridLayout(3, 1, 10, 10));
-    	    
-    	    panelPrincipalMinijuego.add(panelCentralMinijuego, BorderLayout.CENTER);
-    	    panelPrincipalMinijuego.add(labelEnunciado, BorderLayout.NORTH);
-    	    
-    	    panelCentralMinijuego.add(botonOpcion1, CENTER_ALIGNMENT);
+    	    //Se añaden las respuestas posibles a la ecuación
+    	    panelCentralMinijuego.add(botonOpcion1);
     	    panelCentralMinijuego.add(botonOpcion2);
     	    panelCentralMinijuego.add(botonOpcion3);
-    	    
-    	    
-    	   /* while (forzador) {
-    	    	
-    	    }*/
-    	    
-    	    
+
+    	    panelPrincipalMinijuego.add(labelEnunciado, BorderLayout.NORTH);
+    	    panelPrincipalMinijuego.add(panelCentralMinijuego, BorderLayout.CENTER);
+
+
+    	  //  panelPrincipalMinijuego.revalidate();
+    	  //  panelPrincipalMinijuego.repaint();
     	}
+
+    	//Le indica al jugador si la respuesta es acertada o no.
+    	private void procesarRespuesta(int respuestaUsuario) {
+    	    if (respuestaUsuario == numeroRespuestaCorrecta) {
+    	        JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+    	    
+    	    } else {
+    	        JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
+    	    }
+
+    	    
+    	    restaurarEstadoInicial(); //Se devuelve el panel a su estado previo al minijuego.
+    	}
+
+
+    	private void restaurarEstadoInicial() {
+    	    panelPrincipalMinijuego.removeAll(); 
+    	    JLabel labelBaseMinijuego = new JLabel("No hay minijuegos disponibles en este momento. ¡Prueba a comprar artículos!");
+    	    labelBaseMinijuego.setHorizontalAlignment(SwingConstants.CENTER);
+    	    labelBaseMinijuego.setFont(new Font("Arial", Font.PLAIN, 16));
+    	    panelPrincipalMinijuego.add(labelBaseMinijuego, BorderLayout.CENTER);
+
+    	    //panelPrincipalMinijuego.revalidate();
+    	    //panelPrincipalMinijuego.repaint();
+    	}
+
 
     	
   
