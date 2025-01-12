@@ -32,6 +32,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -51,6 +52,9 @@ public class VentanaJuego extends JFrame {
     
     //Random:
     static Random randomizador = new Random();
+    
+    //Message:
+    JOptionPane mensaje = new JOptionPane();
     
     //FORMATO DE PUNTOS
     DecimalFormat formatoPuntos = new DecimalFormat("#.00");
@@ -111,6 +115,9 @@ public class VentanaJuego extends JFrame {
     public ArrayList<Objeto> listaObjetos;
     JButton botonComprar;
     JButton botonDesechar;
+    
+    
+    public ArrayList<JRadioButton> listaBotonesObjetos = new ArrayList<JRadioButton>(); //Lista de los botones de clase "TodosLosObjetos"
     
     public VentanaJuego(Usuario usuario) {
     	//Generacion de datos segun usuario
@@ -232,7 +239,7 @@ public class VentanaJuego extends JFrame {
       
    
         //SCROLL de los Materiales
-        JScrollMateriales jScrollMateriales = new JScrollMateriales(this);
+        JScrollMateriales jScrollMateriales = new JScrollMateriales(this); ////////////////////////////////
 		jScrollMateriales.setVisible(true);
         
          
@@ -388,7 +395,7 @@ public class VentanaJuego extends JFrame {
         panelBotonesTienda.add(botonComprar);
         panelBotonesTienda.add(botonDesechar);
         
-        
+
         //Listeners de los botones de la Tienda:
         ActionListener listenerComprar = new ActionListener() {
 			
@@ -403,19 +410,43 @@ public class VentanaJuego extends JFrame {
 							creditos -= objeto.getCosteCreditos();
 								
 							objeto.getBotonObjeto().setSelected(true);
-								
+							listaBotonesObjetos.add(objeto.getBotonObjeto());
+							
+							
 							labelCreditos.setText("Creditos: " + creditos);
 							labelCreditosTienda.setText(String.format("Tienes para gastar: %d Créditos", creditos));
 						} else {       
 							JOptionPane.showMessageDialog(null, "No tienes suficientes créditos para comprar este objeto.");
+						}
+						
+					
+						if (!listaBotonesObjetos.contains(objeto.getBotonObjeto())) {
+							objeto.getBotonObjeto().setSelected(false);
+						} else if (listaBotonesObjetos.contains(objeto.getBotonObjeto()) &&  !objeto.getBotonObjeto().isSelected()) {
+							objeto.getBotonObjeto().setSelected(true);
+						}
+						
+						if (listaBotonesObjetos.size() > 3) {
+							VentanaJuego.this.mensaje.showMessageDialog(null, "Solo se pueden comprar 3 objetos");
+							
+							if (listaObjetos.getLast() == objeto) {
+								listaBotonesObjetos.remove(objeto);
+								objeto.getBotonObjeto().setSelected(false);
+								creditos += objeto.getCosteCreditos();
+							}
 						}
 					}
 						
 						 
 					}
 					
-
+					
 				}
+				
+				
+				
+
+			
 				
 			
 		};
@@ -425,12 +456,28 @@ public class VentanaJuego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				for (Objeto objeto : listaObjetos) {
 					if (objeto.getBotonObjeto().getBackground().equals(Color.RED)) {
+					
 					objeto.getBotonObjeto().setSelected(false);
+					listaBotonesObjetos.remove(objeto.getBotonObjeto());
+					
+					if (!listaBotonesObjetos.contains(objeto.getBotonObjeto())) {
+						objeto.getBotonObjeto().setSelected(false);
+					} else if (listaBotonesObjetos.contains(objeto.getBotonObjeto()) &&  !objeto.getBotonObjeto().isSelected()) {
+						objeto.getBotonObjeto().setSelected(true);
+					}
+					
+					if (listaBotonesObjetos.size() == 0) {
+						VentanaJuego.this.mensaje.showMessageDialog(null, "No se puede tener menos de 0 objetos");
 					}
 				}
-				
-				
+
+					
+					
+				}
+					
 			}
+
+			
 		};
 		
 		
@@ -440,7 +487,7 @@ public class VentanaJuego extends JFrame {
 		//Explicacion del panel de la Tienda
 		JPanel explicacion = new JPanel();
 		explicacion.setLayout(new BorderLayout());
-		JLabel funcionamientoTienda = new JLabel("<html>*Para comprar, debes clicar en el objeto que tu quieras, para después, darle al boton<br> de comprar. Para desechar la compra es el mismo proceso.<html>");
+		JLabel funcionamientoTienda = new JLabel("<html>*Para comprar, debes clicar en el objeto que tu quieras, para después, darle al boton<br> de comprar. Para desechar la compra es el mismo proceso. Solo puedes tener comprados 3 objetos.<html>");
 		funcionamientoTienda.setFont(new Font("Arial", Font.ITALIC, 14));
 		explicacion.add(funcionamientoTienda, BorderLayout.SOUTH);
 		

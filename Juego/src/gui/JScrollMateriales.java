@@ -12,6 +12,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 import domain.Mejora;
+import domain.Objeto; 
+
+import gui.TodosLosObjetos;
 
 public class JScrollMateriales extends JScrollPane {
 
@@ -25,6 +28,7 @@ public class JScrollMateriales extends JScrollPane {
 	public JRadioButton botonx100;
 	public  JPanel panelContenedor;
 
+	
 	public JScrollMateriales(VentanaJuego ventana) {
 			
 			
@@ -74,40 +78,99 @@ public class JScrollMateriales extends JScrollPane {
 			Mejora lapiz = new Mejora(0,"Lapiz", 15, 15, 0.1, 0.1, 1.15, 0); //Se crea la mejora con el contructor
 			ventana.listaMejoras.add(lapiz); // Se añade la mejora a una lista para su posterior uso			
 			crearPanelMejora(ventana, lapiz);
-						
+			final double gananciaNormalLapiz = lapiz.getGanacia();
+			
+			
 			//Cuaderno
 			Mejora cuaderno = new Mejora(0, "Cuaderno", 100, 100, 1, 1, 1.132, 0);
 			ventana.listaMejoras.add(cuaderno);			
 			crearPanelMejora(ventana, cuaderno);
+			final double gananciaNormalCuaderno = cuaderno.getGanacia();
 			
 			//Saca puntas
 			Mejora sacaPuntas = new Mejora(0, "Saca-puntas", 1_100, 1_100, 8, 8, 1.146, 0);
 			ventana.listaMejoras.add(sacaPuntas);
 			crearPanelMejora(ventana, sacaPuntas);
+			final double gananciaNormalSacaPuntas = sacaPuntas.getGanacia();
+			
 			
 			//Mesa
 			Mejora mesa = new Mejora(0, "Mesa", 12_000, 12_000, 47, 47, 1.158, 0);
 			ventana.listaMejoras.add(mesa);
 			crearPanelMejora(ventana, mesa);
+			final double gananciaNormalMesa = mesa.getGanacia();
 		
 			//Borragoma
 			Mejora borragoma = new Mejora(0, "Borragoma", 90_000, 90_000, 90, 90, 1.164, 0);
 			ventana.listaMejoras.add(borragoma);
 			crearPanelMejora(ventana, borragoma);
+			final double gananciaNormalBorragoma = borragoma.getGanacia();
 					
 			//Libro de Matematicas (Se desbloquean los minijuegos)
 			Mejora libroMate = new Mejora(0, "Libro de Matemáticas", 130_000, 130_000, 260, 260, 1.18, 0);
 			ventana.listaMejoras.add(libroMate);
 			crearPanelMejora(ventana, libroMate);
+			final double gananciaNormalLibroMate = libroMate.getGanacia();
 			
 			//Profesor particular
 			Mejora profesor = new Mejora(0, "Profesor Particular", 1_400_000, 1_400_000, 1_400, 1_400, 1.192, 0);
 			ventana.listaMejoras.add(profesor);
 			crearPanelMejora(ventana, profesor);
+			final double gananciaNormalProfesor = profesor.getGanacia();
 			
 			
 			
 			
+			for (Mejora m : ventana.listaMejoras) {
+				if (m.getNombre().equals("Lapiz") && ventana.listaBotonesObjetos.contains(TodosLosObjetos.bSuperLapiz)) {
+					if (lapiz.getNumero()%15 == 0) {
+						libroMate.setGanacia(libroMate.getGanacia() + (lapiz.getNumero()%2) * 0.7);
+					}
+				}
+				if (m.getNombre().equals("Borragoma") && ventana.listaBotonesObjetos.contains(TodosLosObjetos.bMegaBorragoma)) {
+					if (borragoma.getNumero()%10 == 0) {
+						borragoma.setGanacia(borragoma.getGanacia() + (borragoma.getNumero()%2)* 1.5);
+					}
+				}
+				if (m.getNombre().equals("Mesa") && ventana.listaBotonesObjetos.contains(TodosLosObjetos.bMesasExtra)) {
+					if (profesor.getNumero()%30 == 0) {
+						profesor.setGanacia(profesor.getGanacia() + (profesor.getNumero()%2)* 3);
+					}
+				}
+				if (m.getNombre().equals("Profesor Particular") && ventana.listaBotonesObjetos.contains(TodosLosObjetos.bProfesoresExtra)) {
+					if (mesa.getNumero()%60 == 0) {
+						mesa.setGanacia(mesa.getGanacia() + (mesa.getNumero()%2) * 25);
+					}
+				}
+			}
+			
+			//Asegurarse de que cuando se elimine el boton de la tienda de cada uno, La ganancia vuelva a la normalidad
+			for (Mejora m : ventana.listaMejoras) {
+				
+				
+				if (m.getNombre().equals("Lapiz") && !ventana.listaBotonesObjetos.contains(TodosLosObjetos.bSuperLapiz)) {
+					if (lapiz.getNumero()%15 == 0) {
+						libroMate.setGanacia(gananciaNormalLapiz);
+					}
+				}
+				if (m.getNombre().equals("Borragoma") && !ventana.listaBotonesObjetos.contains(TodosLosObjetos.bMegaBorragoma)) {
+					if (borragoma.getNumero()%10 == 0) {
+						borragoma.setGanacia(gananciaNormalBorragoma);
+					}
+				}
+				if (m.getNombre().equals("Mesa") && !ventana.listaBotonesObjetos.contains(TodosLosObjetos.bMesasExtra)) {
+					if (profesor.getNumero()%30 == 0) {
+						profesor.setGanacia(gananciaNormalMesa);
+					}
+				}
+				if (m.getNombre().equals("Profesor Particular") && !ventana.listaBotonesObjetos.contains(TodosLosObjetos.bProfesoresExtra)) {
+					if (mesa.getNumero()%60 == 0) {
+						mesa.setGanacia(gananciaNormalProfesor);
+					}
+				}
+			}
+			
+				
 			//Proyectos escolares
 					
 			//Ordenador
@@ -164,6 +227,7 @@ public class JScrollMateriales extends JScrollPane {
 			setViewportView(panelContenedor);
 
 	}
+
 	
 	
 	
