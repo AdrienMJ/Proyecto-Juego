@@ -65,7 +65,7 @@ public class GestorBD {
 	 */
 	public int obtenerCodigoPartida(String nombreUsuario, String contraseña) {
 		int codigo = 0;
-		try(PreparedStatement stmt = conn.prepareStatement("SELECT codPartida FROM Usuario"
+		try(PreparedStatement stmt = conn.prepareStatement("SELECT codPartida FROM Usuario "
 				+ "WHERE nombre = ? and password = ?")) {
 			stmt.setString(1, nombreUsuario);
 			stmt.setString(2, contraseña);
@@ -75,7 +75,8 @@ public class GestorBD {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("Error al obtener el codigo de partida del usuario: " + nombreUsuario);
+			System.out.println("Error al obtener el codigo de partida del usuario: " + nombreUsuario + e.getMessage());
+			e.printStackTrace();
 		}
 		return codigo;
 		
@@ -99,6 +100,20 @@ public class GestorBD {
 	 */
 	public void actualizarUsuario(Usuario u) {
 		//TODO 
+		try (PreparedStatement actualizarUsuario = conn.prepareStatement("UPDATE Usuario SET puntos = ?, creditos = ? WHERE codPartida = ?")) {
+			
+			actualizarUsuario.setFloat(1, u.getPuntos());
+			actualizarUsuario.setInt(2, u.getCreditos());
+			actualizarUsuario.setInt(3, u.getCodPartida());
+			
+			actualizarUsuario.executeUpdate();
+			
+			System.out.println("Exito al actualizar usuario: " + u.getNombre());
+			
+		} catch (SQLException e) {
+			System.out.println("Error al actulizar Usuario: " + u.getNombre());
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -126,12 +141,14 @@ public class GestorBD {
 				double gananciaI = rs.getDouble("gananciaInicial");
 				double mult = rs.getDouble("multiplicador");
 				double boni = rs.getDouble("bonificador");
-				listaMejoras.add(new Mejora(numero, nombre, precio, precioI, ganancia, gananciaI, mult, boni));
+				Mejora m = new Mejora(numero, nombre, precio, precioI, ganancia, gananciaI, mult, boni);
+				listaMejoras.add(m);
+				System.out.println("Mejora: "  + m.getNombre() + "cargada en la lista");
 			}
 			
 			
 		} catch (SQLException e) {
-			System.out.println("Error al encontrar codigo de partida: " + String.valueOf(codPartida));
+			System.out.println("Error al cargar partida: " + String.valueOf(codPartida));
 			e.printStackTrace();
 		}
 		return listaMejoras;
@@ -176,15 +193,15 @@ public class GestorBD {
 	 * where codPartida = ? and nombre = mejora.getNombre();
 	 * @param nombreUsuario
 	 */
-	public void guardarPartida(String nombreUsuario, String contraseña, ArrayList<Mejora> listaMejoras) {
+	public void guardarPartida(String nombreUsuario, String contraseña, List<Mejora> listaMejoras) {
 		int codPartida = obtenerCodigoPartida(nombreUsuario, contraseña);
 		if (codPartida != 0) {
-			try (PreparedStatement guardarMejoras = conn.prepareStatement("UPDATE Mejora set"
+			try (PreparedStatement guardarMejoras = conn.prepareStatement("UPDATE Mejora set "
 					+ "numero = ? ," //1
 					+ "precio = ? ," //2
 					+ "ganancia = ? ," //3
 					+ "multiplicador = ? ," //4
-					+ "bonificador = ? ," //5
+					+ "bonificador = ? " //5
 					+ "WHERE codPartida = ? and nombre = ?")) { // 6 y 7 (el nombre se refiere al nombre de la Mejora)
 				
 			for (Mejora mejora : listaMejoras) {
@@ -275,7 +292,7 @@ public class GestorBD {
 			try {
 				conn.setAutoCommit(false);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} // Deshabilitar el autocommit
 

@@ -14,8 +14,8 @@ public class Main {
 
             @Override
             public void run() {
-              // new IniciadorPartida(); todavia sin terminar
-            	new VentanaJuego(admin);
+              new IniciadorPartida(); 
+            	//new VentanaJuego(admin);
             	//new VentanaAnuncioMiniJuego();
             }
 

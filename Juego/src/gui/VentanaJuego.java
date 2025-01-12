@@ -38,6 +38,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
+import db.GestorBD;
 import domain.Mejora;
 import domain.Objeto;
 import domain.Usuario;
@@ -49,6 +50,9 @@ public class VentanaJuego extends JFrame {
     private static final long serialVersionUID = 1L;
     //USUARIO
     public Usuario usuario;
+    
+    //Gestion de BD
+    private GestorBD gestorBD = new GestorBD();
     
     //Random:
     static Random randomizador = new Random();
@@ -83,7 +87,7 @@ public class VentanaJuego extends JFrame {
     public List<String> mensajes = new ArrayList<String>();
     
     //LISTA DE LAS MEJORAS
-    public ArrayList<Mejora> listaMejoras;
+    public List<Mejora> listaMejoras;
     
     //HILOS
     public Thread hiloActualizarPuntos;
@@ -132,7 +136,11 @@ public class VentanaJuego extends JFrame {
         setLocationRelativeTo(null);
         
         //Lista de Mejoras
-        listaMejoras = new ArrayList<Mejora>();
+        gestorBD.conectarBD();
+        listaMejoras = gestorBD.cargarPartida(usuario.getNombre(), usuario.getPassword());
+        gestorBD.desconectarBD();
+        System.out.println(listaMejoras.size());
+        
         
         //Hilo  de puntos creado
         actualizarPuntos = new ThreadActualizadorPuntos(this);
@@ -334,6 +342,18 @@ public class VentanaJuego extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int seleccion = JOptionPane.showConfirmDialog(VentanaJuego.this, "¿Quiere salir?", "Salir", JOptionPane.YES_NO_OPTION);
 				if (seleccion == JOptionPane.YES_OPTION) {
+					
+					actualizarPuntos.detener();// Detén el hilo
+					actualizarCreditos.detener();
+					
+					//Guardar partida del usuario
+					usuario.setPuntos(puntos);
+					usuario.setCreditos(creditos);
+					gestorBD.conectarBD();
+					gestorBD.actualizarUsuario(usuario);
+					gestorBD.guardarPartida(usuario.getNombre(), usuario.getPassword(), listaMejoras);
+					gestorBD.desconectarBD();
+					
 					System.exit(0);
 				}
 				
@@ -356,6 +376,13 @@ public class VentanaJuego extends JFrame {
 					//PARTE DE HILOS
 					actualizarPuntos.detener();// Detén el hilo
 					actualizarCreditos.detener();
+					//Guardar usuario
+					usuario.setPuntos(puntos);
+					usuario.setCreditos(creditos);
+					gestorBD.conectarBD();
+					gestorBD.actualizarUsuario(usuario);
+					gestorBD.guardarPartida(usuario.getNombre(), usuario.getPassword(), listaMejoras);
+					gestorBD.desconectarBD();
 	                
 					System.exit(0);
 				}
