@@ -25,6 +25,7 @@ public class VentanaLogin extends JFrame {
 	public JButton inicioSesion;
 	public JButton registrarse;
 	public JButton jugar;
+	public JButton borrarPartida;
 	
 	public VentanaLogin() {
 		
@@ -34,7 +35,8 @@ public class VentanaLogin extends JFrame {
 		setLocationRelativeTo(null);
 		
 		//Componentes
-		JLabel labelBienvenida = new JLabel("<html>Hola! Introduce tu usuario y contraseña porfavor! <br> O registrate si aún no lo has hecho!</html>");
+		JLabel labelBienvenida = new JLabel("<html>   ¡Hola Estudiante! <br>   ¡Introduce tu usuario y contraseña porfavor! <br>   O regístrate si aún no lo has hecho </html>");
+		labelBienvenida.setFont(new Font("Arial", Font.CENTER_BASELINE, 16));
 		labelUsuario = new JLabel("  Usuario:");
 		labelUsuario.setFont(new Font("Arial" , Font.BOLD ,  18));
 		labelContraseña = new JLabel("  Contraseña:");
@@ -44,9 +46,10 @@ public class VentanaLogin extends JFrame {
 		inicioSesion = new JButton("Iniciar Sesion");
 		registrarse = new JButton("Registrarse");
 		jugar = new JButton("Jugar");
+		borrarPartida = new JButton("Borrar Partida");
 			
 		JPanel panelCampos = new JPanel();
-		panelCampos.setLayout(new GridLayout(4,2,3,10));
+		panelCampos.setLayout(new GridLayout(4,2,5,5));
 		panelCampos.add(labelUsuario);
 		panelCampos.add(usuario);
 		panelCampos.add(labelContraseña);
@@ -54,6 +57,7 @@ public class VentanaLogin extends JFrame {
 		panelCampos.add(inicioSesion);
 		panelCampos.add(registrarse);
 		panelCampos.add(jugar);
+		panelCampos.add(borrarPartida);
 		
 		setVisible(true);
 		

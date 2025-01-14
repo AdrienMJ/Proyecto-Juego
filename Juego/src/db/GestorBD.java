@@ -348,6 +348,31 @@ public class GestorBD {
 		
 	}
 	
+	public void borrarPartida (Usuario usuario) {
+		try (PreparedStatement borrarMejoras = conn.prepareStatement("DELETE FROM Mejora WHERE codPartida = ?")) {
+			
+			borrarMejoras.setInt(1, usuario.getCodPartida());
+			
+			borrarMejoras.executeUpdate();
+			
+			
+			try (PreparedStatement borrarUsuario = conn.prepareStatement("DELETE FROM Usuario WHERE codPartida = ?")) {
+				
+				borrarUsuario.setInt(1, usuario.getCodPartida());
+				
+				borrarUsuario.executeUpdate();
+				
+			} catch (SQLException e) {
+				System.out.println("Error al borrar usuario: " + usuario.getNombre());
+				e.printStackTrace();
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error al borrar mejoras de: " + usuario.getNombre());
+			e.printStackTrace();
+		}
+	}
+	
 	public ArrayList<Mejora> crearMejoraPorDefecto() {
 		ArrayList<Mejora> lMejoras = new ArrayList<Mejora>();
 		lMejoras.add(new Mejora(0,"Lapiz", 15, 15, 0.1, 0.1, 1.15, 0));
