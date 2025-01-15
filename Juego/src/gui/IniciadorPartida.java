@@ -77,7 +77,7 @@ public class IniciadorPartida {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaJuego ventanaJuego = new VentanaJuego(usuario);
+				
 				ventanaLogin.dispose();
 				
 			}

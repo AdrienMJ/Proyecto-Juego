@@ -12,9 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 import domain.Mejora;
-import domain.Objeto; 
 
-import gui.TodosLosObjetos;
 
 public class JScrollMateriales extends JScrollPane {
 
