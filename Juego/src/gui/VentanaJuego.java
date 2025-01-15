@@ -89,6 +89,8 @@ public class VentanaJuego extends JFrame {
     //LISTA DE LAS MEJORAS
     public List<Mejora> listaMejoras;
     
+    public PanelMejora panelMejora;
+    
     //HILOS
     public Thread hiloActualizarPuntos;
     public ThreadActualizadorPuntos actualizarPuntos;
@@ -608,7 +610,7 @@ public class VentanaJuego extends JFrame {
     
     	//Método encargado de leer el csv de mensajes
     	public void cargarMensajesCSV() {
-			try (Scanner scanner = new Scanner(new File("src/ficheros/mensajes.csv"))) {
+			try (Scanner scanner = new Scanner(new File("resources/data/mensajes.csv"))) {
 				int contador = 0;
 				while (scanner.hasNextLine()) {
 					String linea = scanner.nextLine();
@@ -742,8 +744,10 @@ public class VentanaJuego extends JFrame {
     	//Le indica al jugador si la respuesta es acertada o no.
     	private void procesarRespuesta(int respuestaUsuario) {
     	    if (respuestaUsuario == numeroRespuestaCorrecta) {
-    	        JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación.", "Resultado", JOptionPane.INFORMATION_MESSAGE);
-    	    
+    	        JOptionPane.showMessageDialog(null, "¡Correcto! Recibes unba bonificación del 20% en tu IQ", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+    	        
+    	        this.puntos = (float) (this.puntos + this.puntos  * 0.2);
+    	        
     	    } else {
     	        JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
     	    }
