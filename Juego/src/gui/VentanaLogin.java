@@ -35,7 +35,7 @@ public class VentanaLogin extends JFrame {
 		setLocationRelativeTo(null);
 		
 		//Componentes
-		JLabel labelBienvenida = new JLabel("<html>   ¡Hola Estudiante! <br>   ¡Introduce tu usuario y contraseña porfavor! <br>   O regístrate si aún no lo has hecho </html>");
+		JLabel labelBienvenida = new JLabel("<html>   ¡Hola, Estudiante! <br>   ¡Introduce tu usuario y contraseña, por favor! <br>   O regístrate si aún no lo has hecho </html>");
 		labelBienvenida.setFont(new Font("Arial", Font.CENTER_BASELINE, 16));
 		labelUsuario = new JLabel("  Usuario:");
 		labelUsuario.setFont(new Font("Arial" , Font.BOLD ,  18));

@@ -268,7 +268,7 @@ public class VentanaJuego extends JFrame {
             menuPrincipal.add(menuCheats);
         }
         
-        JMenuItem menuSumar100Puntos = new JMenuItem("Sumar 100 puntos (conocimiento)");
+        JMenuItem menuSumar100Puntos = new JMenuItem("Sumar 100 puntos (IQ)");
         menuSumar100Puntos.addActionListener(new ActionListener() {
 			
 			@Override
@@ -281,23 +281,23 @@ public class VentanaJuego extends JFrame {
 		});
         menuCheats.add(menuSumar100Puntos);
         
-        JMenuItem menuSumar1000Puntos = new JMenuItem("Sumar 1000000000 puntos (conocimiento)");
-        menuSumar1000Puntos.addActionListener(new ActionListener() {
+        JMenuItem menuSumar100000Puntos = new JMenuItem("Sumar 100000 puntos (IQ)");
+        menuSumar100000Puntos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				puntos = puntos + 1000000000;
-				creditos = creditos + 100;
+				puntos = puntos + 100000;
+				creditos = creditos + 10000;
 				labelPuntos.setText("Conocimiento: " + puntos);
 				labelCreditos.setText("Créditos: " + creditos);
 			}
 		});
-        menuCheats.add(menuSumar1000Puntos);
+        menuCheats.add(menuSumar100000Puntos);
         
         menuCheats.addSeparator();
         
-        JMenuItem menuSumar10Creditos = new JMenuItem("Sumar 100 créditos");
-        menuSumar10Creditos.addActionListener(new ActionListener() {
+        JMenuItem menuSumar100Creditos = new JMenuItem("Sumar 100 créditos");
+        menuSumar100Creditos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -307,20 +307,20 @@ public class VentanaJuego extends JFrame {
 				labelCreditos.setText("Créditos: " + creditos);
 			}
 		});
-        menuCheats.add(menuSumar10Creditos);
+        menuCheats.add(menuSumar100Creditos);
         
-        JMenuItem menuSumar100Creditos = new JMenuItem("Sumar 100 créditos");
+        JMenuItem menuSumar100000Creditos = new JMenuItem("Sumar 100000 créditos");
         menuSumar100Creditos.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				puntos = puntos + 10000; 
-				creditos = creditos + 1000;
+				puntos = puntos + 1000000; 
+				creditos = creditos + 100000;
 				labelPuntos.setText("Conocimiento: " + puntos);
 				labelCreditos.setText("Créditos: " + creditos);
 			}
 		});
-        menuCheats.add(menuSumar100Creditos);
+        menuCheats.add(menuSumar100000Creditos);
         
         menuCheats.addSeparator();
         

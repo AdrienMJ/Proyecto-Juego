@@ -26,7 +26,7 @@ public class TodosLosObjetos {
 		
 		//SUPER BOLI:
 		bSuperLapiz = new JRadioButton();
-		vent.listaObjetos.add(new Objeto("Super Lapiz","<html>Por cada 15 lapizes,<br>los libros de matematicas <br>hacen 0.7 puntos extra. <html>",24, bSuperLapiz ));
+		vent.listaObjetos.add(new Objeto("Super Lapiz","<html>Por cada 15 lapices,<br>los libros de matematicas <br>hacen 0.7 puntos extra. <html>",24, bSuperLapiz ));
 
 		//MEGA BORRAGOMA:
 		bMegaBorragoma = new JRadioButton();

@@ -47,6 +47,6 @@ public class VentanaAnuncioMiniJuego extends JFrame {
     }
 
     public void actualizarMensaje(String mensaje) {
-        textoCambianteVentanaMinijuego.setText(mensaje); // Actualiza el texto de la ventana con el mensaje recibido
+        textoCambianteVentanaMinijuego.setText(mensaje); //Actualiza el texto de la ventana con el mensaje recibido
     }
 }
