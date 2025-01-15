@@ -122,7 +122,7 @@ public class JScrollMateriales extends JScrollPane {
 //			final double gananciaNormalProfesor = profesor.getGanacia();
 //			
 /////////////////////////////////////////////////////////////////////////////////////////////////
-		//Prueba commit
+		
 //			//Funciona dependiendo de que se activen los botones en de la tienda:
 //			for (Mejora m : ventana.listaMejoras) {
 //				if (m.getNombre().equals("Lapiz") && ventana.listaBotonesObjetos.contains(TodosLosObjetos.bSuperLapiz)) {
