@@ -207,7 +207,7 @@ public class GestorBD {
 			for (Mejora mejora : listaMejoras) {
 				guardarMejoras.setInt(1, mejora.getNumero());
 				guardarMejoras.setDouble(2, mejora.getPrecio());
-				guardarMejoras.setDouble(3, mejora.getGanacia());
+				guardarMejoras.setDouble(3, mejora.getGanancia());
 				guardarMejoras.setDouble(4, mejora.getMultiplicador());
 				guardarMejoras.setDouble(5, mejora.getBonificador());
 				guardarMejoras.setInt(6, codPartida);
@@ -314,8 +314,8 @@ public class GestorBD {
 			            insertarMejoras.setDouble(3, mejora.getPrecio());
 			            insertarMejoras.setDouble(4, mejora.getPrecioInicial());
 			            insertarMejoras.setInt(5, mejora.getNumero());
-			            insertarMejoras.setDouble(6, mejora.getGanacia());
-			            insertarMejoras.setDouble(7, mejora.getGanaciaInicial());
+			            insertarMejoras.setDouble(6, mejora.getGanancia());
+			            insertarMejoras.setDouble(7, mejora.getGananciaInicial());
 			            insertarMejoras.setDouble(8, mejora.getMultiplicador());
 			            insertarMejoras.setDouble(9, mejora.getBonificador());
 

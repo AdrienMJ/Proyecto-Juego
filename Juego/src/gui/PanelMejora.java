@@ -88,6 +88,16 @@ public class PanelMejora extends JPanel {
 				icono = new ImageIcon("resources/images/cuaderno.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				icono = new ImageIcon(imagenTamanyoAdecuado);
+				
+				VentanaAnuncioMiniJuego ventanaMinijuego = new VentanaAnuncioMiniJuego(); //se crea la ventana que avisa de un nuevo minijuego, pero solo se mostrará al comprar determinados artículos
+				ventanaMinijuego.actualizarMensaje("¡Selecciona el color de cuaderno indicado! Haz click en la pestaña \"Mini Juego\".");
+				ventanaMinijuego.setVisible(true);
+				
+				VentanaJuego ventanaJuego = (VentanaJuego) SwingUtilities.getWindowAncestor(this); //Hacemos refencia a la propia ventana principal para llamar al método relacionado con el minijuego
+				if (ventanaJuego != null) {
+			        ventanaJuego.minijuegoCuaderno();
+			    }
+				
 			} else if (mejora.getNombre().equals("Borragoma")) {
 				icono = new ImageIcon("resources/images/borragoma.png");
 				imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);

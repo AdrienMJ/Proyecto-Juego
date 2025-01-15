@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -115,7 +116,15 @@ public class VentanaJuego extends JFrame {
 	
     //PESTAÑA ESTADISTICAS:
     
+	
+	//HILO MINIJUEGO CUADERNOS:
+	private Thread hiloCuadernos;
     
+	//VALORES MINIJUEGO CUADERNO:
+	JLabel textoCuadernoSolicitado = new JLabel();
+	JLabel imagenCuadernoActual = new JLabel();
+	ArrayList<ImageIcon> listaLlenaCuadernos = new ArrayList<>();
+	
     //PESTAÑA TIENDA:
     JLabel labelCreditosTienda = new JLabel(); //Label de la tienda
     public TodosLosObjetos todosLosObjetos;
@@ -719,9 +728,9 @@ public class VentanaJuego extends JFrame {
     	    
     	    
     	    
-    	    botonOpcion1.addActionListener(e -> procesarRespuesta(1));
-    	    botonOpcion2.addActionListener(e -> procesarRespuesta(2));
-    	    botonOpcion3.addActionListener(e -> procesarRespuesta(3));
+    	    botonOpcion1.addActionListener(e -> procesarRespuestaLibroMatematicas(1));
+    	    botonOpcion2.addActionListener(e -> procesarRespuestaLibroMatematicas(2));
+    	    botonOpcion3.addActionListener(e -> procesarRespuestaLibroMatematicas(3));
 
     	    //Reconfiguración del panel tras la acción
     	    panelPrincipalMinijuego.removeAll(); //Se quita todo lo que ya hubiese en el panel 
@@ -744,9 +753,9 @@ public class VentanaJuego extends JFrame {
     	}
 
     	//Le indica al jugador si la respuesta es acertada o no.
-    	private void procesarRespuesta(int respuestaUsuario) {
+    	private void procesarRespuestaLibroMatematicas(int respuestaUsuario) {
     	    if (respuestaUsuario == numeroRespuestaCorrecta) {
-    	        JOptionPane.showMessageDialog(null, "¡Correcto! Recibes unba bonificación del 20% en tu IQ", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+    	        JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación del 20% en tu IQ", "Resultado", JOptionPane.INFORMATION_MESSAGE);
     	        
     	        this.puntos = (float) (this.puntos + this.puntos  * 0.2);
     	        
@@ -758,7 +767,136 @@ public class VentanaJuego extends JFrame {
     	    restaurarEstadoInicial(); //Se devuelve el panel a su estado previo al minijuego.
     	}
 
+    	
+    	
+		
+    	public void minijuegoCuaderno() {
+    		
+    		JLabel labelInicial = new JLabel();
+    		labelInicial.setText("Haz click en INICIAR para comenzar el minijuego. ¡Concéntrate!");
+    		labelInicial.setHorizontalAlignment(SwingConstants.CENTER);
+    		
+    		listaLlenaCuadernos = (ArrayList<ImageIcon>) cargarImagenesCuadernos();
+    		
+    		int auxiliarEleccionCuaderno = randomizador.nextInt(0, 3);
+    		
+    		if (auxiliarEleccionCuaderno == 0) {
+    			textoCuadernoSolicitado.setText("¡Detén el carrusel en el cuaderno azul!");
+    		} else if (auxiliarEleccionCuaderno == 1 ) {
+    			textoCuadernoSolicitado.setText("¡Detén el carrusel en el cuaderno rojo!");
+    		} else {
+    			textoCuadernoSolicitado.setText("¡Detén el carrusel en el cuaderno verde!");
+    		}
+    		
+    		
+    		imagenCuadernoActual.setIcon(listaLlenaCuadernos.get(0));; //empezamos por el primer cuaderno, por ejemplo
+    		JPanel panelInferior = new JPanel(new BorderLayout());
+    		
+    		JButton botonDetener = new JButton("DETENER CARRUSEL");
+    		botonDetener.setEnabled(false);
+    		
+    		JButton botonIniciar = new JButton("INICIAR");
 
+    		botonIniciar.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					botonIniciar.setEnabled(false);
+					panelPrincipalMinijuego.remove(labelInicial);
+					botonDetener.setEnabled(true);
+					
+					
+					panelPrincipalMinijuego.add(imagenCuadernoActual, BorderLayout.CENTER);
+					
+					hiloCuadernos = new Thread() {
+						public void run() {
+							while (! Thread.currentThread().isInterrupted()) {
+								int indiceCuadernoElegido = randomizador.nextInt(0, 3);
+								imagenCuadernoActual.setIcon(listaLlenaCuadernos.get(indiceCuadernoElegido));
+								panelPrincipalMinijuego.add(imagenCuadernoActual, BorderLayout.CENTER);
+								try {
+									Thread.sleep(500);
+								} catch (InterruptedException e) {
+									Thread.currentThread().interrupt();
+								}
+								System.out.println("hilo de cuadernos funcionando");
+							}
+						}
+						
+					};
+					
+					hiloCuadernos.start();
+				}
+			});
+    		
+    		
+    		botonDetener.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					hiloCuadernos.interrupt();
+					
+					procesarRespuestaCuaderno(auxiliarEleccionCuaderno);
+					
+				}
+			});
+    		
+    	    panelPrincipalMinijuego.removeAll(); //Se quita todo lo que ya hubiese en el panel 
+    	    panelPrincipalMinijuego.setLayout(new BorderLayout());
+    	    panelPrincipalMinijuego.setBackground(Color.CYAN);
+    		
+    	    textoCuadernoSolicitado.setHorizontalAlignment(SwingConstants.CENTER); //para que el texto salga centrado
+    		panelPrincipalMinijuego.add(textoCuadernoSolicitado, BorderLayout.NORTH);
+    		panelPrincipalMinijuego.add(labelInicial, BorderLayout.CENTER);
+    	    
+    	    panelInferior.setBackground(Color.CYAN);
+    	    panelInferior.add(botonIniciar, BorderLayout.WEST);
+    	    panelInferior.add(botonDetener, BorderLayout.EAST);
+    	    panelPrincipalMinijuego.add(panelInferior, BorderLayout.SOUTH);
+    	    
+    	    //panelPrincipalMinijuego.revalidate();
+    	    //panelPrincipalMinijuego.repaint();
+    	    
+    	}
+
+//		icono = new ImageIcon("resources/images/cuaderno.png");
+//		imagenTamanyoAdecuado = icono.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+//		icono = new ImageIcon(imagenTamanyoAdecuado);
+    	
+    	public List<ImageIcon> cargarImagenesCuadernos() {
+    		ArrayList<ImageIcon> listaCuadernos = new ArrayList<>();
+    		ImageIcon cuadernoAzul = new ImageIcon("resources/images/cuadernoAzulMiniJuego.png");
+    		ImageIcon cuadernoRojo = new ImageIcon("resources/images/cuadernoRojoMiniJuego.png");
+    		ImageIcon cuadernoVerde = new ImageIcon("resources/images/cuadernoVerdeMiniJuego.png");
+
+    		listaCuadernos.add(cuadernoAzul);
+    		listaCuadernos.add(cuadernoRojo);
+    		listaCuadernos.add(cuadernoVerde);
+    		return listaCuadernos;
+    	}
+    	
+    	private void procesarRespuestaCuaderno(int respuestaUsuario) {
+    		boolean detenidoCorrectamente = false; //por defecto "creemos"que el carrusel no se ha detenido correctamente
+			
+			if (textoCuadernoSolicitado.getText().contains("azul") && imagenCuadernoActual.getIcon().equals(listaLlenaCuadernos.get(0))) { //comprobamos que ambos valores coinciden
+		            detenidoCorrectamente = true;
+		        } else if (textoCuadernoSolicitado.getText().contains("rojo") && imagenCuadernoActual.getIcon().equals(listaLlenaCuadernos.get(1))) {
+		            detenidoCorrectamente = true;
+		        } else if (textoCuadernoSolicitado.getText().contains("verde") && imagenCuadernoActual.getIcon().equals(listaLlenaCuadernos.get(2))) {
+		            detenidoCorrectamente = true;
+		        }
+			if (detenidoCorrectamente) {
+				JOptionPane.showMessageDialog(null, "¡Correcto! Recibes una bonificación del 10% en tu IQ", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+			
+				this.puntos = (float) (this.puntos + this.puntos  * 0.1);
+			
+			} else {
+				JOptionPane.showMessageDialog(null, "¡Incorrecto! No te desanimes...", "Resultado", JOptionPane.ERROR_MESSAGE);
+			}
+    	    
+    	    restaurarEstadoInicial(); //Se devuelve el panel a su estado previo al minijuego.
+    	}
+    	
     	private void restaurarEstadoInicial() {
     	    panelPrincipalMinijuego.removeAll(); 
     	    JLabel labelBaseMinijuego = new JLabel("No hay minijuegos disponibles en este momento. ¡Prueba a comprar artículos!");
