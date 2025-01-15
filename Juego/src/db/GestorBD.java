@@ -15,7 +15,7 @@ import domain.Mejora;
 import domain.Usuario;
 
 public class GestorBD {
-	
+		//Prueba commit pull
 		//Driver de la BBDD
 		private static final String DRIVER = "org.sqlite.JDBC";
 		//Cadena de conexión a la BBDD
