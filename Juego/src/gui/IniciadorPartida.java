@@ -64,7 +64,7 @@ public class IniciadorPartida {
 					usuario = gestorBD.cargarUsuario(nombreUsuario, contraseña);
 					System.out.println(usuario);
 					ventanaLogin.jugar.setEnabled(true);
-					JOptionPane.showMessageDialog(ventanaLogin, "Usuario registrado  ¡Disfruta del juego!","Usuario registrado con exito" , JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(ventanaLogin, "Usuario registrado  ¡Disfruta del juego!","Usuario registrado con exito" , JOptionPane.INFORMATION_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(ventanaLogin, "Este Usuario ya existe", "Usuario ya existente", JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -77,7 +77,7 @@ public class IniciadorPartida {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				new VentanaJuego(usuario);
 				ventanaLogin.dispose();
 				
 			}

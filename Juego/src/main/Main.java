@@ -5,6 +5,7 @@ import javax.swing.SwingUtilities;
 
 import gui.IniciadorPartida;
 
+
 public class Main {
 	public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -12,6 +13,8 @@ public class Main {
             @Override
             public void run() {
               new IniciadorPartida(); 
+            	//new VentanaJuego(admin);
+            	//new VentanaAnuncioMiniJuego();
             }
 
         });
