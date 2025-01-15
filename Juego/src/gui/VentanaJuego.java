@@ -89,6 +89,7 @@ public class VentanaJuego extends JFrame {
     //LISTA DE LAS MEJORAS
     public List<Mejora> listaMejoras;
     
+    //REFERENCIA AL PANEL DE MEJORAS:
     public PanelMejora panelMejora;
     
     //HILOS
@@ -262,7 +263,10 @@ public class VentanaJuego extends JFrame {
         
         JMenu menuCheats = new JMenu("Cheats");
         menuCheats.setMnemonic(KeyEvent.VK_C);
-        menuPrincipal.add(menuCheats);
+        
+        if (usuario.getNombre().equals("admin") && usuario.getPassword().equals("admin")) { //Cheats solo visibles si eres admin
+            menuPrincipal.add(menuCheats);
+        }
         
         JMenuItem menuSumar100Puntos = new JMenuItem("Sumar 100 puntos (conocimiento)");
         menuSumar100Puntos.addActionListener(new ActionListener() {
@@ -473,8 +477,6 @@ public class VentanaJuego extends JFrame {
 				}
 				
 				
-				
-
 			
 				
 			
